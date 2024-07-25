@@ -1,0 +1,36 @@
+#!/usr/bin/env python3
+import argparse
+import requests
+
+def _map_inputs(input):
+    return ('inputs', (input.split('/')[-1], open(input, 'rb'), 'application/octet-stream'))
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Zetic.Mentat Converter: On-device Model generator")
+    parser.add_argument('-m', help="Input PyTorch/ONNX Model path to be converted")
+    parser.add_argument('-i', help="Input sample paths to be converted, e.g.(input1.np,input2.np,...)")
+    
+    print("# Enter your email to receive updates from us")
+    print("# Press Enter to skip")
+    email = input("Email : ")
+    
+    args = parser.parse_args()
+    
+    model_name = args.m.split(".")[0]
+    input_paths = args.i.replace(" ", "").split(",")
+    
+    url = "https://gcp.zeticai.com"
+    
+    payload = {'name': model_name, 'email': email}
+    files=[
+        ('model',(args.m.split('/')[-1], open(args.m, 'rb'), 'application/octet-stream')),
+        *list(map(
+            _map_inputs,
+            input_paths
+        ))
+    ]
+    
+    response = requests.request("POST", url, headers={}, data=payload, files=files)
+
+    print(f"MLange Model Key : {response.text}")
+    print("You can download model 5 times with this key")
