@@ -38,7 +38,7 @@ We guarantee that your AI model and data remain confidential and we are not goin
 
 ``` bash
     $ wget https://github.com/zetic-ai/ZETIC_MLange_document/raw/main/bin/mlange_gen
-    $ ./mlange_gen -m TORCH_SCRIPT_MODEL -i INPUT0.npy,INPUT1.npy,...
+    $ ./mlange_gen -m ai_model.pt -i input0.npy,input1.npy,...
 
     # Expected Output
     # Enter your email to receive updates from us
@@ -58,15 +58,15 @@ We guarantee that your AI model and data remain confidential and we are not goin
 - Android
   - (Kotlin)
     ``` kotlin
-        ZeticMLangeModel model = new ZeticMLangeModel("YOUR MODEL KEY");
+        val model = ZeticMLangeModel(this, "YOUR MODEL KEY")
         model.run(YOUR_INPUT_BYTE_BUFFERS)
     ```
 
 - iOS
   - (Swift)
     ``` swift
-        val model = ZeticMLangeModel(this, "YOUR MODEL KEY")
-        model.run(YOUR_INPUT_BYTE_BUFFERS)
+        let model = try ZeticMLangeModel("YOUR MODEL KEY")
+        model.run(YOUR_INPUT_DATA_ARRAY)
     ```
 
 

@@ -365,7 +365,7 @@ We guarantee that your AI model and data remain confidential and we are not goin
 <section id="zetic-model-generator">
 <h2>1. ZETIC Model generator<a class="headerlink" href="#zetic-model-generator" title="Link to this heading">#</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">    </span>$<span class="w"> </span>wget<span class="w"> </span>https://github.com/zetic-ai/ZETIC_MLange_document/raw/main/bin/mlange_gen
-<span class="w">    </span>$<span class="w"> </span>./mlange_gen<span class="w"> </span>-m<span class="w"> </span>TORCH_SCRIPT_MODEL<span class="w"> </span>-i<span class="w"> </span>INPUT0.npy,INPUT1.npy,...
+<span class="w">    </span>$<span class="w"> </span>./mlange_gen<span class="w"> </span>-m<span class="w"> </span>ai_model.pt<span class="w"> </span>-i<span class="w"> </span>input0.npy,input1.npy,...
 
 <span class="w">    </span><span class="c1"># Expected Output</span>
 <span class="w">    </span><span class="c1"># Enter your email to receive updates from us</span>
@@ -386,7 +386,7 @@ We guarantee that your AI model and data remain confidential and we are not goin
 <li><p>Android</p>
 <ul>
 <li><p>(Kotlin)</p>
-<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="n">ZeticMLangeModel</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">new</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="s">&quot;YOUR MODEL KEY&quot;</span><span class="p">);</span>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;YOUR MODEL KEY&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="n">model</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">YOUR_INPUT_BYTE_BUFFERS</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -396,8 +396,8 @@ We guarantee that your AI model and data remain confidential and we are not goin
 <li><p>iOS</p>
 <ul>
 <li><p>(Swift)</p>
-<div class="highlight-swift notranslate"><div class="highlight"><pre><span></span>    <span class="n">val</span> <span class="n">model</span> <span class="p">=</span> <span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="n">this</span><span class="p">,</span> <span class="s">&quot;YOUR MODEL KEY&quot;</span><span class="p">)</span>
-    <span class="n">model</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">YOUR_INPUT_BYTE_BUFFERS</span><span class="p">)</span>
+<div class="highlight-swift notranslate"><div class="highlight"><pre><span></span>    <span class="kd">let</span> <span class="nv">model</span> <span class="p">=</span> <span class="k">try</span> <span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="s">&quot;YOUR MODEL KEY&quot;</span><span class="p">)</span>
+    <span class="n">model</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">YOUR_INPUT_DATA_ARRAY</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>

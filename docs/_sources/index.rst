@@ -35,7 +35,7 @@ Quick Start
 
 .. code-block:: bash
    
-   $ ./mlange_gen -m TORCHSCRIPT_MODEL -i INPUT0.npy,INPUT1.npy,...
+   $ ./mlange_gen -m ai_model.pt -i input0.npy,input1.npy,...
 
    # Expected Output
     # Enter your email to receive updates from us
@@ -49,22 +49,22 @@ Quick Start
     The number of model downloads is limited. You can download it 5 times during the trial.
 
 
-2. Use result hash value of your model in Mobile Applications
+2. Use key of your model in Mobile Applications
 
 - Android - Kotlin
 
 .. code-block:: Kotlin
 
-   let model = try ZeticMLangeModel("YOUR MODEL KEY")
-   model.run(YOUR_INPUT_DATA_ARRAY)
+   val model = ZeticMLangeModel(this, "YOUR MODEL KEY")
+   model.run(YOUR_INPUT_BYTE_BUFFERS)
 
 
 - iOS - Swift
 
 .. code-block:: Swift
 
-   val model = ZeticMLangeModel(this, "YOUR MODEL KEY")
-   model.run(YOUR_INPUT_BYTE_BUFFERS)
+   let model = try ZeticMLangeModel("YOUR MODEL KEY")
+   model.run(YOUR_INPUT_DATA_ARRAY)
 
 
 

@@ -357,7 +357,7 @@ Since we are keep developing very hardly with speed, Please contact ZETIC.ai for
 <ol class="arabic simple">
 <li><p>Let ZETIC.MLange automatically make runnable target model for heterogeneous target devices!</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>./mlange_gen<span class="w"> </span>-m<span class="w"> </span>TORCHSCRIPT_MODEL<span class="w"> </span>-i<span class="w"> </span>INPUT0.npy,INPUT1.npy,...
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>./mlange_gen<span class="w"> </span>-m<span class="w"> </span>ai_model.pt<span class="w"> </span>-i<span class="w"> </span>input0.npy,input1.npy,...
 
 <span class="c1"># Expected Output</span>
 <span class="w"> </span><span class="c1"># Enter your email to receive updates from us</span>
@@ -372,20 +372,20 @@ Since we are keep developing very hardly with speed, Please contact ZETIC.ai for
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li><p>Use result hash value of your model in Mobile Applications</p></li>
+<li><p>Use key of your model in Mobile Applications</p></li>
 </ol>
 <ul class="simple">
 <li><p>Android - Kotlin</p></li>
 </ul>
-<div class="highlight-Kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">let</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">try</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="s">&quot;YOUR MODEL KEY&quot;</span><span class="p">)</span>
-<span class="n">model</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">YOUR_INPUT_DATA_ARRAY</span><span class="p">)</span>
+<div class="highlight-Kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="nv">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;YOUR MODEL KEY&quot;</span><span class="p">)</span>
+<span class="n">model</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">YOUR_INPUT_BYTE_BUFFERS</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>iOS - Swift</p></li>
 </ul>
-<div class="highlight-Swift notranslate"><div class="highlight"><pre><span></span><span class="n">val</span> <span class="n">model</span> <span class="p">=</span> <span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="n">this</span><span class="p">,</span> <span class="s">&quot;YOUR MODEL KEY&quot;</span><span class="p">)</span>
-<span class="n">model</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">YOUR_INPUT_BYTE_BUFFERS</span><span class="p">)</span>
+<div class="highlight-Swift notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nv">model</span> <span class="p">=</span> <span class="k">try</span> <span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="s">&quot;YOUR MODEL KEY&quot;</span><span class="p">)</span>
+<span class="n">model</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">YOUR_INPUT_DATA_ARRAY</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
