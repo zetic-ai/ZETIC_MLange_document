@@ -1,6 +1,0 @@
-.. Librosa detail
-
-Librosa
-======
-
-TBD

@@ -3,13 +3,13 @@
 Deploy to Android Studio
 ========================
 
- Currently Java Native Interface is provided.
+- MLange supports both for Kotlin and Java implementations
 
 ## Prerequisite
 
-1. Model file
+1. Model Key
 
-    - Model file is provided by ZETIC.ai with URL. You can simply use the model url.
+    - You can get Model Key in with `mlange_gen` at Getting-start
 
 2. Aar Library
 
@@ -30,46 +30,48 @@ app
 
 ## App settings
 
-- build.gradle (Groovy)
+- You can use `Groovy` build or `Kotlin DSL` build
+    - build.gradle (Groovy)
 
-``` gradle
+    ``` gradle
 
-android {
-    ...
-    packagingOptions {
-        jniLibs {
-            useLegacyPackaging true
+    android {
+        ...
+        packagingOptions {
+            jniLibs {
+                useLegacyPackaging true
+            }
         }
     }
-}
 
-dependencies {
-    implementation files('libs/zeticlibs/zeticMLange.aar')
-}
+    dependencies {
+        implementation files('libs/zeticlibs/zeticMLange.aar')
+    }
 
-```
-- build.gradle.kts (Kotlin DSL)
+    ```
 
-``` gradle
+    - build.gradle.kts (Kotlin DSL)
 
-android {
-    ...
-    packaging {
-        jniLibs {
-            useLegacyPackaging = true
+    ``` gradle
+
+    android {
+        ...
+        packaging {
+            jniLibs {
+                useLegacyPackaging = true
+            }
         }
     }
-}
 
-dependencies {
-    implementation(files("libs/zeticlibs/zeticMLange.aar"))
-}
+    dependencies {
+        implementation(files("libs/zeticlibs/zeticMLange.aar"))
+    }
 
-```
+    ```
 
 
 ## Application Implementation
-
+- We support both Kotlin and Java implementation
 
 1. Zetic MLange model running (Java)
 

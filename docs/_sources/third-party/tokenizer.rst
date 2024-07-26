@@ -1,6 +1,0 @@
-.. Tokenizer detail
-
-Tokenizer
-=========
-
-TBD

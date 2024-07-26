@@ -28,7 +28,7 @@ Quick Start
 
 .. code-block:: bash
    
-   $ wget https://github.com/zetic-ai/zetic_mentat/blob/20fccdf7a117d319b1c676d2f9a4640d35790db0/mlange_gen
+   $ wget https://github.com/zetic-ai/ZETIC_MLange_document/raw/main/bin/mlange_gen
 
 
 1. Let ZETIC.MLange automatically make runnable target model for heterogeneous target devices!
@@ -38,9 +38,15 @@ Quick Start
    $ ./mlange_gen -m TORCHSCRIPT_MODEL -i INPUT0.npy,INPUT1.npy,...
 
    # Expected Output
-   # [Type your e-mail if you want to get contact about the mail: ] (Press Enter to skip)
+    # Enter your email to receive updates from us
+    # Press Enter to skip
+    Email : {INPUT EMAIL}
 
-   # - MLange Model key: {YOUR MODEL KEY}
+    File Uploading...
+
+    MLange Model Key : {YOUR_MODEL_KEY}
+    MLange model profiling started. it might takes 10 or more minutes.
+    The number of model downloads is limited. You can download it 5 times during the trial.
 
 
 2. Use result hash value of your model in Mobile Applications
@@ -69,10 +75,8 @@ Contents
    :maxdepth: 1
    :caption: Overview
 
+   overview/what-is-zetic-mlange.md
    overview/getting-started.md
-   .. overview/what-is-zetic-mlange.rst
-   .. overview/melange-api.md
-   .. preparation/model_converting.md
 
 .. toctree::
    :maxdepth: 1
@@ -91,12 +95,6 @@ Contents
    :caption: Additional features
 
    future_works.md
-   .. preprocess/preprocess.md
-   .. preprocess/opencv.rst
-   .. preprocess/librosa.rst
-   .. preprocess/tokenizer.rst
-
-   .. api_versions/api_versions.rst
 
 
 

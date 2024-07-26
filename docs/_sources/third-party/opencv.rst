@@ -1,6 +1,0 @@
-.. OpenCV detail
-
-OpenCV
-======
-
-TBD

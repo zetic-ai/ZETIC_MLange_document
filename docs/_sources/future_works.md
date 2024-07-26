@@ -1,18 +1,24 @@
+
 # Future Works
 
-### 1. Preprocess to handle multi-modal Input features
-    - Librosa
-    - OpenCV
-    - Tokenizer
+- ZETIC.ai is working hardly to implement below items to official releses
 
-### 2. ML Library support
-    - GGML
-    - TFLite
-    - ARM NN
-    - Samsung Exynos NPU support
+## 1. Preprocess to handle multi-modal Input features
 
-### 3. Example Applications
-    - STT
-    - TTS
-    - Segmentations
-    - sLLM
+- Librosa
+- OpenCV
+- Tokenizer
+
+## 2. ML Library support
+
+- GGML
+- TFLite
+- ARM NN
+- Samsung Exynos NPU support
+
+## 3. Example Applications
+
+- STT
+- TTS
+- Segmentations
+- sLLM

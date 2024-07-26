@@ -47,7 +47,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Deploy to XCode" href="../ios/deploy-to-xcode.html" />
-    <link rel="prev" title="Getting Started (Requirements)" href="../overview/getting-started.html" />
+    <link rel="prev" title="Getting Started" href="../overview/getting-started.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -153,7 +153,8 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../overview/getting-started.html">Getting Started (Requirements)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/what-is-zetic-mlange.html">What is ZETIC.MLange?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/getting-started.html">Getting Started</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Android</span></p>
 <ul class="current nav bd-sidenav">
@@ -333,13 +334,15 @@ document.write(`
   <p>.. Deploy to Android Studio to use MLange in Android app</p>
 <section id="deploy-to-android-studio">
 <h1>Deploy to Android Studio<a class="headerlink" href="#deploy-to-android-studio" title="Link to this heading">#</a></h1>
-<p>Currently Java Native Interface is provided.</p>
+<ul class="simple">
+<li><p>MLange supports both for Kotlin and Java implementations</p></li>
+</ul>
 <section id="prerequisite">
 <h2>Prerequisite<a class="headerlink" href="#prerequisite" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
-<li><p>Model file</p>
+<li><p>Model Key</p>
 <ul class="simple">
-<li><p>Model file is provided by ZETIC.ai with URL. You can simply use the model url.</p></li>
+<li><p>You can get Model Key in with <code class="docutils literal notranslate"><span class="pre">mlange_gen</span></code> at Getting-start</p></li>
 </ul>
 </li>
 <li><p>Aar Library</p>
@@ -363,6 +366,8 @@ app
 </section>
 <section id="app-settings">
 <h2>App settings<a class="headerlink" href="#app-settings" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>You can use <code class="docutils literal notranslate"><span class="pre">Groovy</span></code> build or <code class="docutils literal notranslate"><span class="pre">Kotlin</span> <span class="pre">DSL</span></code> build</p>
 <ul class="simple">
 <li><p>build.gradle (Groovy)</p></li>
 </ul>
@@ -401,9 +406,14 @@ dependencies {
 
 </pre></div>
 </div>
+</li>
+</ul>
 </section>
 <section id="application-implementation">
 <h2>Application Implementation<a class="headerlink" href="#application-implementation" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>We support both Kotlin and Java implementation</p></li>
+</ul>
 <ol class="arabic simple">
 <li><p>Zetic MLange model running (Java)</p></li>
 </ol>
@@ -482,7 +492,7 @@ dependencies {
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Getting Started (Requirements)</p>
+        <p class="prev-next-title">Getting Started</p>
       </div>
     </a>
     <a class="right-next"

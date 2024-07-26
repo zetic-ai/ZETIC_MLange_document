@@ -1,6 +1,6 @@
 .. Librosa detail
 
 Librosa
-======
+=======
 
 TBD

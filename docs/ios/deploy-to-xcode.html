@@ -153,7 +153,8 @@
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../overview/getting-started.html">Getting Started (Requirements)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/what-is-zetic-mlange.html">What is ZETIC.MLange?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/getting-started.html">Getting Started</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Android</span></p>
 <ul class="nav bd-sidenav">
@@ -378,12 +379,12 @@ document.write(`
 <span class="kd">let</span> <span class="nv">inputs</span><span class="p">:</span> <span class="p">[</span><span class="n">Data</span><span class="p">]</span> <span class="p">=</span> <span class="p">[]</span> <span class="c1">// Prepare your inputs</span>
 
 <span class="c1">// (2) Load Zetic MLange model</span>
-<span class="kd">let</span> <span class="nv">model</span> <span class="p">=</span> <span class="k">try</span> <span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="n">modelName</span><span class="p">:</span> <span class="s">&quot;MLANGE MODEL KEY&quot;</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">model</span> <span class="p">=</span> <span class="k">try</span> <span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="s">&quot;MLANGE MODEL KEY&quot;</span><span class="p">)</span>
 
 <span class="c1">// (3) Run model and get outputs</span>
-<span class="k">try</span> <span class="n">model</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">userInput</span><span class="p">:</span> <span class="n">inputs</span><span class="p">)</span>
+<span class="k">try</span> <span class="n">model</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
 
-<span class="c1">// (4) Get output buffers</span>
+<span class="c1">// (4) Get output data array</span>
 <span class="kd">let</span> <span class="nv">outputs</span> <span class="p">=</span> <span class="n">model</span><span class="p">.</span><span class="n">getOutputDataArray</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -392,7 +393,7 @@ document.write(`
 <h2>(+) Additional API for MLange-iOS usage<a class="headerlink" href="#additional-api-for-mlange-ios-usage" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>[This will be updated very soon]</p></li>
-<li><p>As a default we set the model to use FP166 data type over NPU</p></li>
+<li><p>As a default we set the model to use FP16 data type over NPU</p></li>
 <li><p>We set 1 more option for user to choose runtime mode for Better output accuracy.</p></li>
 </ul>
 </section>

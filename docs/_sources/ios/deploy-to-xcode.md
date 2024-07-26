@@ -5,7 +5,6 @@ Deploy to XCode
 
  Currently Swift Native Interface is provided.
 
-
 ## Prerequisite
 
 1. Model file
@@ -47,12 +46,12 @@ ZeticMLangeiOSSample
 let inputs: [Data] = [] // Prepare your inputs
 
 // (2) Load Zetic MLange model
-let model = try ZeticMLangeModel(modelName: "MLANGE MODEL KEY")
+let model = try ZeticMLangeModel("MLANGE MODEL KEY")
 
 // (3) Run model and get outputs
-try model.run(userInput: inputs)
+try model.run(inputs)
 
-// (4) Get output buffers
+// (4) Get output data array
 let outputs = model.getOutputDataArray()
 ```
 
@@ -60,5 +59,5 @@ let outputs = model.getOutputDataArray()
 ## (+) Additional API for MLange-iOS usage
 
 - [This will be updated very soon]
-- As a default we set the model to use FP166 data type over NPU
+- As a default we set the model to use FP16 data type over NPU
 - We set 1 more option for user to choose runtime mode for Better output accuracy.
