@@ -92,5 +92,5 @@ if __name__ == "__main__":
         print("The number of model downloads is limited. You can download it 5 times during the trial.")
     except urllib.error.HTTPError as e:
         print("Error occurred while uploading files.")
-        print("Contact us. software@zetic.ai")
+        print("Contact us. bug_report@zetic.ai")
         print(f"Code : {e.code}, Reason : {e.reason}")
