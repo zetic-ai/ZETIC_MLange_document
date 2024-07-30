@@ -39,22 +39,13 @@ Quick Start
 
 .. code-block:: bash
    
-   $ ./mlange_gen -m ai_model.pt -i input0.npy,input1.npy,...
-   # You can also use onnx model for `mlange_gen`
+   $ ./mlange_gen -m ai_model -i input0.npy,input1.npy,...
 
-   # (Expected Output)
-    # Enter your email to receive updates from us
-    # Press Enter to skip
-    Email : {INPUT EMAIL}
-
-    File Uploading...
-
-    MLange Model Key : {YOUR_MODEL_KEY}
-    MLange model profiling started. it might takes 10 or more minutes.
-    The number of model downloads is limited. You can download it 5 times during the trial.
+   # ...
+   # MLange Model Key : {YOUR_MODEL_KEY}
 
 
-2. Use key of your model in Mobile Applications
+2. Use your model key in Mobile Applications
 
 - Android - Kotlin
 

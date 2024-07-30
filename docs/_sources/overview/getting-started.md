@@ -40,24 +40,29 @@ We guarantee that your AI model and data remain confidential and we won't use or
 ## 1. ZETIC.MLange Model generator
 
 - Run `mlange_gen` and get `MLANGE_MODEL_KEY` for your model
-    - Please save your `MLANGE_MODEL_KEY` to utilize in your app.
+    - Please save your `MLANGE_MODEL_KEY` to utilize in your app
 
     ``` bash
         $ wget https://github.com/zetic-ai/ZETIC_MLange_document/raw/main/bin/mlange_gen
         $ ./mlange_gen -m ai_model.pt -i input0.npy,input1.npy,...
-
-        # Expected Output
-        # Enter your email to receive updates from us
-        # Press Enter to skip
-        Email : {INPUT EMAIL}
-
-        File Uploading...
-
-        MLange Model Key : **{MLANGE_MODEL_KEY}**
-        MLange model profiling started. it might takes 10 or more minutes.
-        The number of model downloads is limited. You can download it 5 times during the trial.
-
+        # You can also use onnx model for `mlange_gen`
+    
     ```
+        
+    - Expected Output: Save `MLANGE_MODEL_KEY`
+
+        ``` bash     
+            # Enter your email to receive updates from us
+            # Press Enter to skip
+            Email : {TYPE YOUR EMAIL}
+
+            File Uploading...
+
+            MLange Model Key : **{MLANGE_MODEL_KEY}**
+            MLange model profiling started. it might takes 10 or more minutes.
+            The number of model downloads is limited. You can download it 5 times during the trial.
+
+        ```
 
 
 ## 2. Initialize and run your model in mobile app
