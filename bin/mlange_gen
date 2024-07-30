@@ -7,7 +7,6 @@ import urllib.parse
 import re
 
 boundary = '----WebKitFormBoundary7MA4YWxkTrZu0gW'
-
 regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
  
 def email_validation(email):
@@ -35,30 +34,30 @@ def encode_multipart_formdata(fields, files):
     return body.encode('latin-1')
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Zetic.Mentat Converter: On-device Model generator")
+    parser = argparse.ArgumentParser(description="Zetic.MLange - On-device Model generator")
     parser.add_argument('-m', help="Input PyTorch/ONNX Model path to be converted")
     parser.add_argument('-i', help="Input sample paths to be converted, e.g.(input1.np,input2.np,...)")
     
     args = parser.parse_args()
     
     if not args.m:
-        print("Model file is not valid.")
+        print("[ERROR] Please give valid model file!")
         exit()
     
     if not args.i:
-        print("Input files are not valid.")
+        print("[ERROR] Please give valid input files!")
         exit()
     
     model_name = args.m.split(".")[0]
     input_paths = args.i.replace(" ", "").split(",")
  
     if not os.path.isfile(args.m):
-        print(f"{args.m} is not valid file.")
+        print(f"[ERROR] Given \'{args.m}\' is not valid model file")
         exit()
     
     for input_path in input_paths:
         if not os.path.isfile(input_path):
-            print(f"{input_path} is not valid file.")
+            print(f"[ERROR] {input_path} is not valid file.")
             exit()
     
     print("# Enter your email to receive updates from us")
@@ -91,6 +90,6 @@ if __name__ == "__main__":
         print("MLange model profiling started. It might takes 10 or more minutes.")
         print("The number of model downloads is limited. You can download it 5 times during the trial.")
     except urllib.error.HTTPError as e:
-        print("Error occurred while uploading files.")
+        print("Error occurred while uploading files!")
         print("Contact us. bug_report@zetic.ai")
         print(f"Code : {e.code}, Reason : {e.reason}")
