@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Deploy to Android Studio &#8212; ZETIC.MLange  documentation</title>
+    <title>Deploy MLange to Android Studio &#8212; ZETIC.MLange  documentation</title>
   
   
   
@@ -158,7 +158,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Android</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Deploy to Android Studio</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Deploy MLange to Android Studio</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">iOS</span></p>
 <ul class="nav bd-sidenav">
@@ -305,7 +305,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Deploy to Android Studio</h1>
+    <h1>Deploy MLange to Android Studio</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -316,9 +316,10 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisite">Prerequisite</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#android-application-project-structure">Android application project structure</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#app-settings">App settings</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-implementation">Application Implementation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-and-place-zeticmlange-aar-to-your-project">1. Download and place <code class="docutils literal notranslate"><span class="pre">zeticMLange.aar</span></code> to your project</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-zeticmlange-aar-dependency-to-your-app">2. Add <code class="docutils literal notranslate"><span class="pre">zeticMLange.aar</span></code> dependency to your app</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-and-run-zeticmlangemodel-model-with-your-model-key">3. Initialize and run <code class="docutils literal notranslate"><span class="pre">ZeticMLangeModel</span></code> model with your Model Key</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mlange-android-sample-app">MLange Android Sample App</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-api-for-mlange-android-usage">(+) Additional API for MLange-Android usage</a></li>
 </ul>
             </nav>
@@ -331,43 +332,53 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p>.. Deploy to Android Studio to use MLange in Android app</p>
-<section id="deploy-to-android-studio">
-<h1>Deploy to Android Studio<a class="headerlink" href="#deploy-to-android-studio" title="Link to this heading">#</a></h1>
-<ul class="simple">
-<li><p>MLange supports both for Kotlin and Java implementations</p></li>
-</ul>
+  <section id="deploy-mlange-to-android-studio">
+<h1>Deploy MLange to Android Studio<a class="headerlink" href="#deploy-mlange-to-android-studio" title="Link to this heading">#</a></h1>
+<p>MLange supports both for <strong>Kotlin</strong> and <strong>Java</strong> implementations.</p>
+<p>Deploy your own On-device AI Android application easily.
+There are only three steps are needed.</p>
+<ol class="arabic simple">
+<li><p>Download <a class="reference external" href="https://github.com/zetic-ai/zetic_mlange_android_sample/releases/download/v0.2.0/zeticMLange.aar"><code class="docutils literal notranslate"><span class="pre">zeticMLange.aar</span></code></a> and place it in your application library directory</p></li>
+<li><p>Add module dependency in your library</p></li>
+<li><p>Initiailize <code class="docutils literal notranslate"><span class="pre">ZeticMLangeModel</span></code> with your Model Key and run</p></li>
+</ol>
 <section id="prerequisite">
 <h2>Prerequisite<a class="headerlink" href="#prerequisite" title="Link to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Model Key</p>
 <ul class="simple">
-<li><p>You can get Model Key in with <code class="docutils literal notranslate"><span class="pre">mlange_gen</span></code> at Getting-start</p></li>
+<li><p>You can get Model Key in with <code class="docutils literal notranslate"><span class="pre">mlange_gen</span></code> at <a class="reference external" href="https://zetic-ai.github.io/ZETIC_MLange_document/overview/getting-started.html">Getting-started</a> page</p></li>
 </ul>
 </li>
 <li><p>Aar Library</p>
 <ul class="simple">
-<li><p>Zetic MLange : <code class="docutils literal notranslate"><span class="pre">zeticMLange.aar</span></code></p></li>
+<li><p>Zetic MLange : <a class="reference external" href="https://github.com/zetic-ai/zetic_mlange_android_sample/releases/download/v0.2.0/zeticMLange.aar"><code class="docutils literal notranslate"><span class="pre">zeticMLange.aar</span></code> (<em>click to download</em>)</a></p></li>
 </ul>
 </li>
 </ol>
 </section>
-<section id="android-application-project-structure">
-<h2>Android application project structure<a class="headerlink" href="#android-application-project-structure" title="Link to this heading">#</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
-app
+<section id="download-and-place-zeticmlange-aar-to-your-project">
+<h2>1. Download and place <code class="docutils literal notranslate"><span class="pre">zeticMLange.aar</span></code> to your project<a class="headerlink" href="#download-and-place-zeticmlange-aar-to-your-project" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>Leave <a class="reference external" href="https://github.com/zetic-ai/zetic_mlange_android_sample/releases/download/v0.2.0/zeticMLange.aar"><code class="docutils literal notranslate"><span class="pre">zeticMLange.aar</span></code></a> under <code class="docutils literal notranslate"><span class="pre">app/libs/zeticlibs</span></code></p>
+<ul>
+<li><p>e.g. Android project structure</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>app
 └── libs
     └── zeticlibs
         └── zeticMLange.aar
-
-
 </pre></div>
 </div>
+</li>
+</ul>
+</li>
+</ul>
 </section>
-<section id="app-settings">
-<h2>App settings<a class="headerlink" href="#app-settings" title="Link to this heading">#</a></h2>
+<section id="add-zeticmlange-aar-dependency-to-your-app">
+<h2>2. Add <code class="docutils literal notranslate"><span class="pre">zeticMLange.aar</span></code> dependency to your app<a class="headerlink" href="#add-zeticmlange-aar-dependency-to-your-app" title="Link to this heading">#</a></h2>
 <ul>
-<li><p>You can use <code class="docutils literal notranslate"><span class="pre">Groovy</span></code> build or <code class="docutils literal notranslate"><span class="pre">Kotlin</span> <span class="pre">DSL</span></code> build</p>
+<li><p>Update gradle to use <code class="docutils literal notranslate"><span class="pre">zeticMLange.aar</span></code></p></li>
+<li><p>You can choose <code class="docutils literal notranslate"><span class="pre">Groovy</span></code> build or <code class="docutils literal notranslate"><span class="pre">Kotlin</span> <span class="pre">DSL</span></code> build</p>
 <ul class="simple">
 <li><p>build.gradle (Groovy)</p></li>
 </ul>
@@ -409,26 +420,23 @@ dependencies {
 </li>
 </ul>
 </section>
-<section id="application-implementation">
-<h2>Application Implementation<a class="headerlink" href="#application-implementation" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>We support both Kotlin and Java implementation</p></li>
-</ul>
+<section id="initialize-and-run-zeticmlangemodel-model-with-your-model-key">
+<h2>3. Initialize and run <code class="docutils literal notranslate"><span class="pre">ZeticMLangeModel</span></code> model with your Model Key<a class="headerlink" href="#initialize-and-run-zeticmlangemodel-model-with-your-model-key" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>MLange supports both Kotlin and Java implementation</p>
 <ol class="arabic simple">
 <li><p>Zetic MLange model running (Java)</p></li>
 </ol>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// 1. Zetic MLange model running</span>
 
-<span class="c1">// (1) Prepare model inputs</span>
+<span class="c1">// (1) Load Zetic MLange model</span>
+<span class="n">ZeticMLangeModel</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MLANGE_MODEL_KEY&quot;</span><span class="p">);</span>
+
+<span class="c1">// (2) Run model after preparing model inputs</span>
 <span class="n">ByteBuffer</span><span class="o">[]</span><span class="w"> </span><span class="n">inputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">// Prepare your inputs;</span>
-
-<span class="c1">// (2) Load Zetic MLange model</span>
-<span class="n">ZeticMLangeModel</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MLANGE MODEL KEY&quot;</span><span class="p">);</span>
-
-<span class="c1">// (3) Run model and get outputs</span>
 <span class="n">model</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">inputs</span><span class="p">);</span>
 
-<span class="c1">// (4) Get output buffers</span>
+<span class="c1">// (3) Get output buffers of the model</span>
 <span class="n">ByteBuffer</span><span class="o">[]</span><span class="w"> </span><span class="n">outputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model</span><span class="p">.</span><span class="na">getOutputBuffers</span><span class="p">();</span>
 </pre></div>
 </div>
@@ -437,41 +445,48 @@ dependencies {
 </ol>
 <div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="c1">// 1. Zetic MLange Model Running</span>
 
-<span class="c1">// (1) Prepare model inputs</span>
+<span class="c1">// (1) Load Zetic MLange model</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MLANGE_MODEL_KEY&quot;</span><span class="p">)</span>
+
+<span class="c1">// (2) Run model after preparing model inputs</span>
 <span class="kd">val</span><span class="w"> </span><span class="nv">inputs</span><span class="p">:</span><span class="w"> </span><span class="n">Array</span><span class="o">&lt;</span><span class="n">ByteBuffer</span><span class="o">&gt;</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="c1">// Prepare your inputs</span>
-
-<span class="c1">// (2) Load Zetic MLange model</span>
-<span class="kd">val</span><span class="w"> </span><span class="nv">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MODEL KEY&quot;</span><span class="p">)</span>
-
-<span class="c1">// (3) Run model and get outputs</span>
 <span class="n">model</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
 
-<span class="c1">// (4) Get output buffers</span>
+<span class="c1">// (3) Get output buffers of the model</span>
 <span class="kd">val</span><span class="w"> </span><span class="nv">outputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model</span><span class="p">.</span><span class="na">outputBuffers</span>
 </pre></div>
 </div>
+</li>
+</ul>
+</section>
+<section id="mlange-android-sample-app">
+<h2>MLange Android Sample App<a class="headerlink" href="#mlange-android-sample-app" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Please refer <a class="reference external" href="https://github.com/zetic-ai/zetic_mlange_android_sample">MLange Android sample app</a> for more details</p></li>
+</ul>
 </section>
 <section id="additional-api-for-mlange-android-usage">
 <h2>(+) Additional API for MLange-Android usage<a class="headerlink" href="#additional-api-for-mlange-android-usage" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>As a default we set the model to use FP16 data type over NPU.</p></li>
-<li><p>We set 2 more options for user to choose runtime mode for (1) Better output accuracy and (2) High-speed inference.</p></li>
-<li><p>You cas set model option while you laod the model like sample code below.</p></li>
-</ul>
+<ul>
+<li><p>As a default we set the model to use <strong>FP16</strong> data type over <strong>NPU</strong>.</p></li>
+<li><p>We set 2 more options for user to choose runtime mode for <strong>(1) Better output accuracy</strong> and <strong>(2) High-speed inference</strong>.</p></li>
+<li><p>You cas set model option while you laod the model like sample code below.</p>
 <div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="c1">// (1) Output Accuracy mode - `FP32 - (CPU, GPU)` mode</span>
-<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MODEL KEY&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">.</span><span class="na">ZETIC_MLANGE_RUN_MODE_FP32</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MLANGE_MODEL_KEY&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">.</span><span class="na">ZETIC_MLANGE_RUN_MODE_FP32</span><span class="p">)</span>
 
 <span class="w">    </span><span class="c1">// (2) High-speed inference mode - `Quantized - (NPU)` mode</span>
-<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MODEL KEY&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">.</span><span class="na">ZETIC_MLANGE_RUN_MODE_QUANTIZED</span><span class="p">)</span>
+<span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MLANGE_MODEL_KEY&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">.</span><span class="na">ZETIC_MLANGE_RUN_MODE_QUANTIZED</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="c1">// (1) Output Accuracy mode - `FP32 - (CPU, GPU)` mode</span>
-<span class="w">    </span><span class="n">ZeticMLangeModel</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MLANGE MODEL KEY&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">.</span><span class="na">ZETIC_MLANGE_RUN_MODE_FP32</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ZeticMLangeModel</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MLANGE_MODEL_KEY&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">.</span><span class="na">ZETIC_MLANGE_RUN_MODE_FP32</span><span class="p">);</span>
 
 <span class="w">    </span><span class="c1">// (2) High-speed inference mode - `Quantized - (NPU)` mode</span>
-<span class="w">    </span><span class="n">ZeticMLangeModel</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MLANGE MODEL KEY&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">.</span><span class="na">ZETIC_MLANGE_RUN_MODE_QUANTIZED</span><span class="p">);</span>
+<span class="w">    </span><span class="n">ZeticMLangeModel</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MLANGE_MODEL_KEY&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">.</span><span class="na">ZETIC_MLANGE_RUN_MODE_QUANTIZED</span><span class="p">);</span>
 </pre></div>
 </div>
+</li>
+</ul>
 </section>
 </section>
 
@@ -521,9 +536,10 @@ dependencies {
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisite">Prerequisite</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#android-application-project-structure">Android application project structure</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#app-settings">App settings</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-implementation">Application Implementation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-and-place-zeticmlange-aar-to-your-project">1. Download and place <code class="docutils literal notranslate"><span class="pre">zeticMLange.aar</span></code> to your project</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-zeticmlange-aar-dependency-to-your-app">2. Add <code class="docutils literal notranslate"><span class="pre">zeticMLange.aar</span></code> dependency to your app</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-and-run-zeticmlangemodel-model-with-your-model-key">3. Initialize and run <code class="docutils literal notranslate"><span class="pre">ZeticMLangeModel</span></code> model with your Model Key</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mlange-android-sample-app">MLange Android Sample App</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-api-for-mlange-android-usage">(+) Additional API for MLange-Android usage</a></li>
 </ul>
   </nav></div>

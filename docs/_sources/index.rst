@@ -6,9 +6,13 @@
 ZETIC.MLange API
 =============================================
 
+.. image:: icon/zetic_mlange_icon.png
+  :width: 75
+  :alt: MLange icon image
+
 ZETIC.MLange is an On-device AI runtime library supporting heterogeneous Mobile NPUs' utilizations.
 
-We provides below key features for real On-device AI
+We provide the real On-device AI immediately with key features below
    1. `End-to-end on-device AI`
    2. `One-stop deployment`
    3. `Heterogeneous OS and target Hardware supporting`
@@ -16,7 +20,7 @@ We provides below key features for real On-device AI
 In this documentations, we provide instructions and examples for the ZETIC.MLange.
 Since we are keep developing very hardly with speed, Please contact ZETIC.ai for any kind of issues.
 
-This is the `Beta` version of the ZETIC.MLange before official release.
+*This is the `Beta` version of the ZETIC.MLange before official release.*
 
 
 ---------------------
@@ -36,8 +40,9 @@ Quick Start
 .. code-block:: bash
    
    $ ./mlange_gen -m ai_model.pt -i input0.npy,input1.npy,...
+   # You can also use onnx model for `mlange_gen`
 
-   # Expected Output
+   # (Expected Output)
     # Enter your email to receive updates from us
     # Press Enter to skip
     Email : {INPUT EMAIL}
