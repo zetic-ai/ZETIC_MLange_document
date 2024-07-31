@@ -5,6 +5,7 @@ import urllib.request
 import urllib.error
 import urllib.parse
 import re
+import json
 
 boundary = '----WebKitFormBoundary7MA4YWxkTrZu0gW'
 regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,7}\b'
@@ -33,43 +34,31 @@ def encode_multipart_formdata(fields, files):
     body = '\r\n'.join(lines)
     return body.encode('latin-1')
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Zetic.MLange - On-device Model generator")
-    parser.add_argument('-m', help="Input PyTorch/ONNX Model path to be converted")
-    parser.add_argument('-i', help="Input sample paths to be converted, e.g.(input1.np,input2.np,...)")
+
+def profile_model(model, inputs):
     
-    args = parser.parse_args()
-    
-    if not args.m:
-        print("[ERROR] Please give valid model file!")
-        exit()
-    
-    if not args.i:
-        print("[ERROR] Please give valid input files!")
-        exit()
-    
-    model_name = args.m.split(".")[0]
-    input_paths = args.i.replace(" ", "").split(",")
+    model_name = args.m.split('.')[0]
+    input_paths = args.i.replace(' ', '').split(',')
  
     if not os.path.isfile(args.m):
-        print(f"[ERROR] Given \'{args.m}\' is not valid model file")
+        print(f'{args.m} is not valid file.')
         exit()
     
     for input_path in input_paths:
         if not os.path.isfile(input_path):
-            print(f"[ERROR] {input_path} is not valid file.")
+            print(f'{input_path} is not valid file.')
             exit()
     
-    print("# Enter your email to receive updates from us")
-    print("# Press Enter to skip")
+    print('# Enter your email to receive updates from us')
+    print('# Press Enter to skip')
     while True:
-        email = input("Email : ")
+        email = input('Email : ')
         if len(email) == 0 or email_validation(email):
             break 
         else:
-            print("Email is not valid.")
+            print('Email is not valid.')
     
-    url = "https://gcp.zeticai.com"
+    url = 'https://gcp.zeticai.com'
     
     fields = {'name': model_name, 'email': email}
     files = [
@@ -81,15 +70,44 @@ if __name__ == "__main__":
         
     data = encode_multipart_formdata(fields, files)
     
-    print("File Uploading...")
+    print('File Uploading...')
     request = urllib.request.Request(url, data=data, headers={'Content-Type': f'multipart/form-data; boundary={boundary}'})
 
     try:
         response = urllib.request.urlopen(request)
-        print(f"MLange Model Key : {response.read().decode('utf-8')}")
-        print("MLange model profiling started. It might takes 10 or more minutes.")
-        print("The number of model downloads is limited. You can download it 5 times during the trial.")
+        print(f'MLange Model Key : {response.read().decode("utf-8")}')
+        print('MLange model profiling started. It might takes 10 or more minutes.')
+        print('The number of model downloads is limited. You can download it 5 times during the trial.')
     except urllib.error.HTTPError as e:
-        print("Error occurred while uploading files!")
-        print("Contact us. bug_report@zetic.ai")
-        print(f"Code : {e.code}, Reason : {e.reason}")
+        print('Error occurred while uploading files.')
+        print('Contact us. software@zetic.ai')
+        print(f'Code : {e.code}, Reason : {e.reason}')
+
+def check_model_available(model_key):
+    url = f'https://aws.zeticai.com/model/ztc/{model_key}/available'
+    
+    request = urllib.request.Request(url, headers={'Authorization': ''})
+    try:
+        response = urllib.request.urlopen(request)
+        if response.code == 200:
+            body = json.loads(response.read().decode('utf-8'))
+            print(f'MLange Model : {model_key} is available now! Remaining download count : {body["count"]}')
+        else:
+            print(f'MLange Model : {model_key} is not available.')
+    except urllib.error.HTTPError as e:
+        print(f'MLange Model : {model_key} is not available.')
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Zetic.Mentat Converter: On-device Model generator')
+    parser.add_argument('-k', help='MLange Model key to check availability')
+    parser.add_argument('-m', help='Input PyTorch/ONNX Model path to be converted')
+    parser.add_argument('-i', help='Input sample paths to be converted, e.g.(input1.np,input2.np,...)')
+    
+    args = parser.parse_args()
+    
+    if args.m and args.i and not args.k:
+        profile_model(args.m, args.i)
+    elif not args.m and not args.i and args.k:
+        check_model_available(args.k)
+    else:
+        print("Argument not valid. check path of input files.")
