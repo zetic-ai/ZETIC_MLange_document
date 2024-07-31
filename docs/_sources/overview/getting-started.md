@@ -58,11 +58,25 @@ We guarantee that your AI model and data remain confidential and we won't use or
 
             File Uploading...
 
-            MLange Model Key : **{MLANGE_MODEL_KEY}**
+            MLange Model Key : MLANGE_MODEL_KEY
             MLange model profiling started. it might takes 10 or more minutes.
             The number of model downloads is limited. You can download it 5 times during the trial.
 
         ```
+    
+    - You can check your model's availability using mlange_gen 
+
+        ``` bash
+            $ ./mlagne_gen -k MLANGE_MODEL_KEY
+        
+            # [If the model is available to use]
+            # MLange Model : MLANGE_MODEL_KEY is available now! Remaining download count : 5
+
+            # [If the model is getting ready to use]
+            # MLange Model : MLANGE_MODEL_KEY is not available.
+        ```
+
+        > (To be done) Model profiling status checker will be updated.
 
 
 ## 2. Initialize and run your model in mobile app
@@ -70,7 +84,7 @@ We guarantee that your AI model and data remain confidential and we won't use or
   - Please follow [deploy-to-android-studio](https://zetic-ai.github.io/ZETIC_MLange_document/android/deploy-to-android-studio.html) page for details
   - (Kotlin)
     ``` kotlin
-        val model = ZeticMLangeModel(this, "YOUR MODEL KEY")
+        val model = ZeticMLangeModel(this, "MLANGE_MODEL_KEY")
         model.run(YOUR_INPUT_BYTE_BUFFERS)
     ```
 

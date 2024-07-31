@@ -46,7 +46,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'overview/getting-started';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Deploy MLange to Android Studio" href="../android/deploy-to-android-studio.html" />
+    <link rel="next" title="Deploy to Android Studio" href="../android/deploy-to-android-studio.html" />
     <link rel="prev" title="What is ZETIC.MLange?" href="what-is-zetic-mlange.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -158,7 +158,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Android</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../android/deploy-to-android-studio.html">Deploy MLange to Android Studio</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../android/deploy-to-android-studio.html">Deploy to Android Studio</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">iOS</span></p>
 <ul class="nav bd-sidenav">
@@ -390,11 +390,25 @@ We guarantee that your AI model and data remain confidential and we won’t use 
 
 <span class="w">    </span>File<span class="w"> </span>Uploading...
 
-<span class="w">    </span>MLange<span class="w"> </span>Model<span class="w"> </span>Key<span class="w"> </span>:<span class="w"> </span>**<span class="o">{</span>MLANGE_MODEL_KEY<span class="o">}</span>**
+<span class="w">    </span>MLange<span class="w"> </span>Model<span class="w"> </span>Key<span class="w"> </span>:<span class="w"> </span>MLANGE_MODEL_KEY
 <span class="w">    </span>MLange<span class="w"> </span>model<span class="w"> </span>profiling<span class="w"> </span>started.<span class="w"> </span>it<span class="w"> </span>might<span class="w"> </span>takes<span class="w"> </span><span class="m">10</span><span class="w"> </span>or<span class="w"> </span>more<span class="w"> </span>minutes.
 <span class="w">    </span>The<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>model<span class="w"> </span>downloads<span class="w"> </span>is<span class="w"> </span>limited.<span class="w"> </span>You<span class="w"> </span>can<span class="w"> </span>download<span class="w"> </span>it<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="nb">times</span><span class="w"> </span>during<span class="w"> </span>the<span class="w"> </span>trial.
 </pre></div>
 </div>
+</li>
+<li><p>You can check your model’s availability using mlange_gen</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">    </span>$<span class="w"> </span>./mlagne_gen<span class="w"> </span>-k<span class="w"> </span>MLANGE_MODEL_KEY
+
+<span class="w">    </span><span class="c1"># [If the model is available to use]</span>
+<span class="w">    </span><span class="c1"># MLange Model : MLANGE_MODEL_KEY is available now! Remaining download count : 5</span>
+
+<span class="w">    </span><span class="c1"># [If the model is getting ready to use]</span>
+<span class="w">    </span><span class="c1"># MLange Model : MLANGE_MODEL_KEY is not available.</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>(To be done) Model profiling status checker will be updated.</p>
+</div></blockquote>
 </li>
 </ul>
 </li>
@@ -407,7 +421,7 @@ We guarantee that your AI model and data remain confidential and we won’t use 
 <ul>
 <li><p>Please follow <a class="reference external" href="https://zetic-ai.github.io/ZETIC_MLange_document/android/deploy-to-android-studio.html">deploy-to-android-studio</a> page for details</p></li>
 <li><p>(Kotlin)</p>
-<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;YOUR MODEL KEY&quot;</span><span class="p">)</span>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MLANGE_MODEL_KEY&quot;</span><span class="p">)</span>
 <span class="w">    </span><span class="n">model</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">YOUR_INPUT_BYTE_BUFFERS</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -454,7 +468,7 @@ We guarantee that your AI model and data remain confidential and we won’t use 
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Deploy MLange to Android Studio</p>
+        <p class="prev-next-title">Deploy to Android Studio</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

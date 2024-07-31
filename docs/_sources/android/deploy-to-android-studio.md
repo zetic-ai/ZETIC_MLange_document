@@ -1,4 +1,4 @@
-Deploy MLange to Android Studio
+Deploy to Android Studio
 ========================
 
  MLange supports both for **Kotlin** and **Java** implementations.
