@@ -32,7 +32,7 @@ Quick Start
 
 .. code-block:: bash
    
-   $ wget https://github.com/zetic-ai/ZETIC_MLange_document/raw/main/bin/mlange_gen
+   $ wget https://github.com/zetic-ai/ZETIC_MLange_document/raw/main/bin/mlange_gen && chmod 755 mlange_gen
 
 
 1. Let ZETIC.MLange automatically make runnable target model for heterogeneous target devices!
@@ -90,7 +90,8 @@ Contents
    :maxdepth: 1
    :caption: Additional features
 
-   future_works.md
+   additional_features/model_profiling.md
+   additional_features/future_works.md
 
 
 

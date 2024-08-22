@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Getting Started &#8212; ZETIC.MLange  documentation</title>
+    <title>Future Works &#8212; ZETIC.MLange  documentation</title>
   
   
   
@@ -43,12 +43,11 @@
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'overview/getting-started';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'additional_features/future_works';</script>
     <script src="../_static/insert_hotjar.js?v=02373137"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Deploy to Android Studio" href="../android/deploy-to-android-studio.html" />
-    <link rel="prev" title="What is ZETIC.MLange?" href="what-is-zetic-mlange.html" />
+    <link rel="prev" title="ZETIC.MLange Target Based On-Device Benchmark" href="model_profiling.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -153,9 +152,9 @@
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="what-is-zetic-mlange.html">What is ZETIC.MLange?</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Getting Started</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../overview/what-is-zetic-mlange.html">What is ZETIC.MLange?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/getting-started.html">Getting Started</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Android</span></p>
 <ul class="nav bd-sidenav">
@@ -166,9 +165,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../ios/deploy-to-xcode.html">Deploy to XCode</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional features</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../additional_features/model_profiling.html">ZETIC.MLange Target Based On-Device Benchmark</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../additional_features/future_works.html">Future Works</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="model_profiling.html">ZETIC.MLange Target Based On-Device Benchmark</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Future Works</a></li>
 </ul>
 
     </div>
@@ -223,7 +222,7 @@
       
       
       
-      <li><a href="../_sources/overview/getting-started.md" target="_blank"
+      <li><a href="../_sources/additional_features/future_works.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -307,7 +306,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Getting Started</h1>
+    <h1>Future Works</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -317,9 +316,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-model">0. Prepare model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zetic-mlange-model-generator">1. ZETIC.MLange Model generator</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-and-run-your-model-in-mobile-app">2. Initialize and run your model in mobile app</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocess-to-handle-multi-modal-input-features">1. Preprocess to handle multi-modal Input features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-library-support">2. ML Library support</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-applications">3. Example Applications</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contact-us">Contact us</a></li>
 </ul>
             </nav>
         </div>
@@ -331,116 +331,42 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="getting-started">
-<h1>Getting Started<a class="headerlink" href="#getting-started" title="Link to this heading">#</a></h1>
-<p>This page describes the requirements to start ZETIC.MLange</p>
-<div class="admonition-beta-version-notification admonition">
-<p class="admonition-title">Beta version notification</p>
-<p>Current version of ZETIC.MLange generates an on-device AI library from your model on a remote server.
-We guarantee that your AI model and data remain confidential and we won’t use or leak it.</p>
-</div>
-<section id="prepare-model">
-<h2>0. Prepare model<a class="headerlink" href="#prepare-model" title="Link to this heading">#</a></h2>
-<ul>
-<li><p>The input for the MLange is (1) [TorchScript, ONNX] model and (2) numpy input.</p></li>
-<li><p>To use Torch <code class="docutils literal notranslate"><span class="pre">nn.Module</span></code>, please trace your model first.</p>
+  <section id="future-works">
+<h1>Future Works<a class="headerlink" href="#future-works" title="Link to this heading">#</a></h1>
 <ul class="simple">
-<li><p>Refer the following page for details: <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.jit.save.html">link</a></p></li>
+<li><p>ZETIC.ai is working hardly to implement below items to official releses</p></li>
 </ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="kn">import</span> <span class="nn">torch</span>
-    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-    <span class="n">torch_model</span> <span class="o">=</span> <span class="n">Torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
-
-    <span class="c1"># Trace Your PyTorch model</span>
-    <span class="n">torchscript_model</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">your_torch_model</span><span class="p">,</span> <span class="n">TORCH_INPUTS</span><span class="p">)</span>
-
-    <span class="c1"># (1) Save your traced model</span>
-    <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">torchscript_model</span><span class="p">,</span> <span class="n">OUTPUT_TORCHSCRIPT_MODEL_PATH</span><span class="p">)</span>
-
-    <span class="c1"># (2) Save your sample inputs to use</span>
-    <span class="n">np_input</span> <span class="o">=</span> <span class="n">TORCH_INPUT</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
-    <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;INPUT.npy&quot;</span><span class="p">,</span> <span class="n">np_input</span><span class="p">)</span>
-
+<section id="preprocess-to-handle-multi-modal-input-features">
+<h2>1. Preprocess to handle multi-modal Input features<a class="headerlink" href="#preprocess-to-handle-multi-modal-input-features" title="Link to this heading">#</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- Util functions handling input &amp; output data from MLange run
+- Librosa
+- OpenCV
+- Tokenizer
 </pre></div>
 </div>
-</li>
-<li><p>Or you can get ONNX model from your own model</p>
-<ul class="simple">
-<li><p>Refer the following page for getting ONNX model: <a class="reference external" href="https://github.com/onnx/tutorials#converting-to-onnx-format">link</a></p></li>
-</ul>
-</li>
-</ul>
 </section>
-<section id="zetic-mlange-model-generator">
-<h2>1. ZETIC.MLange Model generator<a class="headerlink" href="#zetic-mlange-model-generator" title="Link to this heading">#</a></h2>
-<ul>
-<li><p>Run <code class="docutils literal notranslate"><span class="pre">mlange_gen</span></code> and get <code class="docutils literal notranslate"><span class="pre">MLANGE_MODEL_KEY</span></code> for your model</p>
-<ul class="simple">
-<li><p>Please save your <code class="docutils literal notranslate"><span class="pre">MLANGE_MODEL_KEY</span></code> to utilize in your app</p></li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">    </span>$<span class="w"> </span>wget<span class="w"> </span>https://github.com/zetic-ai/ZETIC_MLange_document/raw/main/bin/mlange_gen
-<span class="w">    </span>$<span class="w"> </span>./mlange_gen<span class="w"> </span>-m<span class="w"> </span>ai_model.pt<span class="w"> </span>-i<span class="w"> </span>input0.npy,input1.npy,...
-<span class="w">    </span><span class="c1"># You can also use onnx model for `mlange_gen`</span>
+<section id="ml-library-support">
+<h2>2. ML Library support<a class="headerlink" href="#ml-library-support" title="Link to this heading">#</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- GGML
+- TFLite
+- ARM NN
+- Samsung Exynos NPU support
 </pre></div>
 </div>
-<ul>
-<li><p>Expected Output: Save <code class="docutils literal notranslate"><span class="pre">MLANGE_MODEL_KEY</span></code></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="c1"># Enter your email to receive updates from us</span>
-<span class="w">    </span><span class="c1"># Press Enter to skip</span>
-<span class="w">    </span>Email<span class="w"> </span>:<span class="w"> </span><span class="o">{</span>TYPE<span class="w"> </span>YOUR<span class="w"> </span>EMAIL<span class="o">}</span>
-
-<span class="w">    </span>File<span class="w"> </span>Uploading...
-
-<span class="w">    </span>MLange<span class="w"> </span>Model<span class="w"> </span>Key<span class="w"> </span>:<span class="w"> </span>MLANGE_MODEL_KEY
-<span class="w">    </span>MLange<span class="w"> </span>model<span class="w"> </span>profiling<span class="w"> </span>started.<span class="w"> </span>it<span class="w"> </span>might<span class="w"> </span>takes<span class="w"> </span><span class="m">10</span><span class="w"> </span>or<span class="w"> </span>more<span class="w"> </span>minutes.
-<span class="w">    </span>The<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>model<span class="w"> </span>downloads<span class="w"> </span>is<span class="w"> </span>limited.<span class="w"> </span>You<span class="w"> </span>can<span class="w"> </span>download<span class="w"> </span>it<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="nb">times</span><span class="w"> </span>during<span class="w"> </span>the<span class="w"> </span>trial.
-</pre></div>
-</div>
-</li>
-<li><p>You can check your model’s availability using mlange_gen</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">    </span>$<span class="w"> </span>./mlagne_gen<span class="w"> </span>-k<span class="w"> </span>MLANGE_MODEL_KEY
-
-<span class="w">    </span><span class="c1"># [If the model is available to use]</span>
-<span class="w">    </span><span class="c1"># MLange Model : MLANGE_MODEL_KEY is available now! Remaining download count : 5</span>
-
-<span class="w">    </span><span class="c1"># [If the model is getting ready to use]</span>
-<span class="w">    </span><span class="c1"># MLange Model : MLANGE_MODEL_KEY is not available.</span>
-</pre></div>
-</div>
-<blockquote>
-<div><p>(To be done) Model profiling status checker will be updated.</p>
-</div></blockquote>
-</li>
-</ul>
-</li>
-</ul>
 </section>
-<section id="initialize-and-run-your-model-in-mobile-app">
-<h2>2. Initialize and run your model in mobile app<a class="headerlink" href="#initialize-and-run-your-model-in-mobile-app" title="Link to this heading">#</a></h2>
-<ul>
-<li><p>Android</p>
-<ul>
-<li><p>Please follow <a class="reference external" href="https://zetic-ai.github.io/ZETIC_MLange_document/android/deploy-to-android-studio.html">deploy-to-android-studio</a> page for details</p></li>
-<li><p>(Kotlin)</p>
-<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MLANGE_MODEL_KEY&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="n">model</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">YOUR_INPUT_BYTE_BUFFERS</span><span class="p">)</span>
+<section id="example-applications">
+<h2>3. Example Applications<a class="headerlink" href="#example-applications" title="Link to this heading">#</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- STT
+- TTS
+- Segmentations
+- sLLM
 </pre></div>
 </div>
-</li>
-</ul>
-</li>
-<li><p>iOS</p>
-<ul>
-<li><p>Please follow <a class="reference external" href="https://zetic-ai.github.io/ZETIC_MLange_document/ios/deploy-to-xcode.html">deploy-to-xcode</a> page for details</p></li>
-<li><p>(Swift)</p>
-<div class="highlight-swift notranslate"><div class="highlight"><pre><span></span>    <span class="kd">let</span> <span class="nv">model</span> <span class="p">=</span> <span class="k">try</span> <span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="s">&quot;MLANGE_MODEL_KEY&quot;</span><span class="p">)</span>
-    <span class="n">model</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">YOUR_INPUT_DATA_ARRAY</span><span class="p">)</span>
-</pre></div>
-</div>
-</li>
-</ul>
-</li>
+</section>
+<section id="contact-us">
+<h2>Contact us<a class="headerlink" href="#contact-us" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Collaborations or update request are always welcome to us! Please contact us via <a class="reference external" href="mailto:contact&#37;&#52;&#48;zetic&#46;ai">contact</a></p></li>
 </ul>
 </section>
 </section>
@@ -457,22 +383,13 @@ We guarantee that your AI model and data remain confidential and we won’t use 
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="what-is-zetic-mlange.html"
+       href="model_profiling.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">What is ZETIC.MLange?</p>
+        <p class="prev-next-title">ZETIC.MLange Target Based On-Device Benchmark</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="../android/deploy-to-android-studio.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Deploy to Android Studio</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -490,9 +407,10 @@ We guarantee that your AI model and data remain confidential and we won’t use 
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-model">0. Prepare model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zetic-mlange-model-generator">1. ZETIC.MLange Model generator</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-and-run-your-model-in-mobile-app">2. Initialize and run your model in mobile app</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocess-to-handle-multi-modal-input-features">1. Preprocess to handle multi-modal Input features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-library-support">2. ML Library support</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-applications">3. Example Applications</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contact-us">Contact us</a></li>
 </ul>
   </nav></div>
 
