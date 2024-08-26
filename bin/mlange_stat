@@ -27,10 +27,10 @@ def print_information(model_key, status, count):
         print(f'MLange Model : {model_key} download limit exceeded.')
         print('Please contact us. https://zetic.ai/contact-sales')
     if status == 'CONVERTING':
-        print('Model converting started.')
+        print('Your model is converting to target libraries.')
         print('It approximately takes 5 ~ 10 minutes.')
     elif status == 'BENCHMARKING':
-        print('Model benchmarking started.')
+        print('Converted target libraries will be benchmarked on a pool of real devices.')
         print('It approximately takes 20 ~ 30 minutes.')
     elif status == 'UPLOADING':
         print('Converted model files will be uploaded to the storage server.')
@@ -40,7 +40,7 @@ def print_information(model_key, status, count):
         print('Refer to the documentation to get started. https://docs.zetic.ai/')
         print(f'You have {count} downloads left.')
     elif status == 'FAILED':
-        print('Model profiling has failed. Try again later.')
+        print('Model profiling has failed. Please Contact us. https://zetic.ai/contact-sales')
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='ZETIC.MLange Stat: On-device Model status')
