@@ -1,0 +1,31 @@
+#!/usr/bin/env python3
+import argparse
+import urllib.request
+import urllib.error
+import urllib.parse
+import json
+
+def check_model_available(model_key):
+    url = f'https://aws.zeticai.com/model/ztc/{model_key}/status'
+    
+    request = urllib.request.Request(url, headers={'Authorization': ''})
+    try:
+        response = urllib.request.urlopen(request)
+        if response.code == 200:
+            body = json.loads(response.read().decode('utf-8'))
+            print(f'MLange Model : {model_key} is {body["status"]}.')
+        else:
+            print(f'MLange Model : {model_key} is not available.')
+    except urllib.error.HTTPError as e:
+        print(f'MLange Model : {model_key} is not available.')
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Zetic.Mentat Converter: On-device Model status')
+    parser.add_argument('-k', help='MLange Model key to check status')
+    
+    args = parser.parse_args()
+    
+    if args.k:
+        check_model_available(args.k)
+    else:
+        print("Argument not valid.")

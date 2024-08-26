@@ -83,31 +83,14 @@ def profile_model(model, inputs):
         print('Contact us. software@zetic.ai')
         print(f'Code : {e.code}, Reason : {e.reason}')
 
-def check_model_available(model_key):
-    url = f'https://aws.zeticai.com/model/ztc/{model_key}/available'
-    
-    request = urllib.request.Request(url, headers={'Authorization': ''})
-    try:
-        response = urllib.request.urlopen(request)
-        if response.code == 200:
-            body = json.loads(response.read().decode('utf-8'))
-            print(f'MLange Model : {model_key} is available now! Remaining download count : {body["count"]}')
-        else:
-            print(f'MLange Model : {model_key} is not available.')
-    except urllib.error.HTTPError as e:
-        print(f'MLange Model : {model_key} is not available.')
-
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Zetic.Mentat Converter: On-device Model generator')
-    parser.add_argument('-k', help='MLange Model key to check availability')
     parser.add_argument('-m', help='Input PyTorch/ONNX Model path to be converted')
     parser.add_argument('-i', help='Input sample paths to be converted, e.g.(input1.np,input2.np,...)')
     
     args = parser.parse_args()
     
-    if args.m and args.i and not args.k:
+    if args.m and args.i:
         profile_model(args.m, args.i)
-    elif not args.m and not args.i and args.k:
-        check_model_available(args.k)
     else:
         print("Argument not valid. check path of input files.")
