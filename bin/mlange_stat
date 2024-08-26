@@ -13,19 +13,46 @@ def check_model_available(model_key):
         response = urllib.request.urlopen(request)
         if response.code == 200:
             body = json.loads(response.read().decode('utf-8'))
-            print(f'MLange Model : {model_key} is {body["status"]}.')
+            count = int(body['count'])
+            status = body['status']
+            print_information(model_key, status, count)
         else:
             print(f'MLange Model : {model_key} is not available.')
     except urllib.error.HTTPError as e:
-        print(f'MLange Model : {model_key} is not available.')
+        print(f'[ERROR] MLange Model Server is not available.')
+
+def print_information(model_key, status, count):
+    print(f'MLange Model : {model_key} is on {status}.')
+    if count <= 0:
+        print(f'MLange Model : {model_key} download limit exceeded.')
+        print('Please contact us. https://zetic.ai/contact-sales')
+    if status == 'CONVERTING':
+        print('Model converting started.')
+        print('It approximately takes 5 ~ 10 minutes.')
+    elif status == 'BENCHMARKING':
+        print('Model benchmarking started.')
+        print('It approximately takes 20 ~ 30 minutes.')
+    elif status == 'UPLOADING':
+        print('Converted model files will be uploaded to the storage server.')
+        print('Your original model is not uploading. only converted models will be securely uploaded.')
+    elif status == 'AVAILABLE':
+        print('ZETIC.ai Model is ready and available to use.')
+        print('Refer to the documentation to get started. https://docs.zetic.ai/')
+        print(f'You have {count} downloads left.')
+    elif status == 'FAILED':
+        print('Model profiling has failed. Try again later.')
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Zetic.Mentat Converter: On-device Model status')
+    parser = argparse.ArgumentParser(description='ZETIC.MLange Stat: On-device Model status')
     parser.add_argument('-k', help='MLange Model key to check status')
     
     args = parser.parse_args()
     
+    print('[ZETIC.MLange Model Status Checker]')
+    
     if args.k:
+        print(f'Request current status of model {args.k}...')
+        print()
         check_model_available(args.k)
     else:
-        print("Argument not valid.")
+        print('Argument not valid.')
