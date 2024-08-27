@@ -1,4 +1,4 @@
-# On-device Object Detection
+# Object Detection (YOLOv8)
 
 ![Image](img_yolov8_demo.png)
 
