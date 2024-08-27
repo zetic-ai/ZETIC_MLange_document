@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>On-device AI Object Detection App with ZETIC.MLange (Yolo V8) &#8212; ZETIC.MLange  documentation</title>
+    <title>On-device Object Detection &#8212; ZETIC.MLange  documentation</title>
   
   
   
@@ -47,6 +47,8 @@
     <script src="../_static/insert_hotjar.js?v=02373137"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Deploy to Android Studio" href="../android/deploy-to-android-studio.html" />
+    <link rel="prev" title="Global Device Benchmark" href="../overview/model_profiling.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -109,8 +111,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -156,7 +156,11 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../overview/what-is-zetic-mlange.html">What is ZETIC.MLange?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview/getting-started.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview/model_profiling.html">ZETIC.MLange Target Based On-Device Benchmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/model_profiling.html">Global Device Benchmark</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">On-device Object Detection</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Android</span></p>
 <ul class="nav bd-sidenav">
@@ -307,7 +311,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>On-device AI Object Detection App with ZETIC.MLange (Yolo V8)</h1>
+    <h1>On-device Object Detection</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -318,15 +322,15 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#github-repository">Github repository</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-yolo-v8">What is YOLO v8</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-yolov8">What is YOLOv8</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-by-step-implementation">Step-by-step implementation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">0. Prerequisites</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-the-yolo-v8-model-and-input-sample">Prepare the Yolo v8 model and input sample</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-the-yolov8-model-and-input-sample">Prepare the YOLOv8 model and input sample</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-zetic-mlange-model-key">1. Generate ZETIC.MLange model key</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implement-zeticmlangemodel-with-your-model-key">2. Implement ZeticMLangeModel with your model key</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-yolo-v8-image-feature-extractor-for-android-and-ios">3. Prepare YOLO V8 image feature extractor for Android and iOS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-yolov8-image-feature-extractor-for-android-and-ios">3. Prepare YOLOv8 image feature extractor for Android and iOS</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#total-yolov8-process-implementation">Total YOLOv8 Process implementation</a></li>
@@ -342,21 +346,24 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="on-device-ai-object-detection-app-with-zetic-mlange-yolo-v8">
-<h1>On-device AI Object Detection App with ZETIC.MLange (Yolo V8)<a class="headerlink" href="#on-device-ai-object-detection-app-with-zetic-mlange-yolo-v8" title="Link to this heading">#</a></h1>
+  <section id="on-device-object-detection">
+<h1>On-device Object Detection<a class="headerlink" href="#on-device-object-detection" title="Link to this heading">#</a></h1>
 <p><img alt="Image" src="../_images/img_yolov8_demo.png" /></p>
+<ul class="simple">
+<li><p>On-device AI Object Detection App with ZETIC.MLange (YOLOv8)</p></li>
+</ul>
 <section id="github-repository">
 <h2>Github repository<a class="headerlink" href="#github-repository" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>We provide YoloV8 demo application source code for both Android and iOS applications for the Yolo V8 demo. <a class="reference external" href="https://github.com/zetic-ai/ZETIC_MLange_apps/tree/main/yolov8">repository</a></p></li>
+<li><p>We provide YOLOv8 demo application source code for both Android and iOS applications for the YOLOv8 demo. <a class="reference external" href="https://github.com/zetic-ai/ZETIC_MLange_apps/tree/main/yolov8">repository</a></p></li>
 </ul>
 </section>
-<section id="what-is-yolo-v8">
-<h2>What is YOLO v8<a class="headerlink" href="#what-is-yolo-v8" title="Link to this heading">#</a></h2>
+<section id="what-is-yolov8">
+<h2>What is YOLOv8<a class="headerlink" href="#what-is-yolov8" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>The YOLOv8 is the latest version of the acclaimed real-time object detection and image segmentation model.</p></li>
-<li><p>YoloV8 document page by Ultralytics: <a class="reference external" href="https://docs.ultralytics.com">link</a></p></li>
-<li><p>Currently, we only support detector mode. We’ll support other features for the Yolo model later.</p></li>
+<li><p>YOLOv8 document page by Ultralytics: <a class="reference external" href="https://docs.ultralytics.com">link</a></p></li>
+<li><p>Currently, we only support detector mode. We’ll support other features for the YOLOv8 model later.</p></li>
 </ul>
 </section>
 <section id="step-by-step-implementation">
@@ -366,10 +373,10 @@ document.write(`
 <ul class="simple">
 <li><p>We prepared the model key for the model for you. You can skip to step <code class="docutils literal notranslate"><span class="pre">2</span></code> if you want.</p></li>
 </ul>
-<section id="prepare-the-yolo-v8-model-and-input-sample">
-<h4>Prepare the Yolo v8 model and input sample<a class="headerlink" href="#prepare-the-yolo-v8-model-and-input-sample" title="Link to this heading">#</a></h4>
+<section id="prepare-the-yolov8-model-and-input-sample">
+<h4>Prepare the YOLOv8 model and input sample<a class="headerlink" href="#prepare-the-yolov8-model-and-input-sample" title="Link to this heading">#</a></h4>
 <ul>
-<li><p>Export yolo v8n model</p>
+<li><p>Export YOLOv8 model</p>
 <ul class="simple">
 <li><p>You will get <code class="docutils literal notranslate"><span class="pre">yolov8n.onnx</span></code> model after the following script</p></li>
 </ul>
@@ -465,13 +472,13 @@ document.write(`
 </li>
 </ul>
 </section>
-<section id="prepare-yolo-v8-image-feature-extractor-for-android-and-ios">
-<h3>3. Prepare YOLO V8 image feature extractor for Android and iOS<a class="headerlink" href="#prepare-yolo-v8-image-feature-extractor-for-android-and-ios" title="Link to this heading">#</a></h3>
+<section id="prepare-yolov8-image-feature-extractor-for-android-and-ios">
+<h3>3. Prepare YOLOv8 image feature extractor for Android and iOS<a class="headerlink" href="#prepare-yolov8-image-feature-extractor-for-android-and-ios" title="Link to this heading">#</a></h3>
 <ul>
-<li><p>We provide a YoloV8 feature extractor as an Android and iOS module.</p>
+<li><p>We provide a YOLOv8 feature extractor as an Android and iOS module.</p>
 <ul class="simple">
-<li><p>(The YoloV8 feature extractor extension will be exposed as an open-source repository soon.)</p></li>
-<li><p>You can use your own feature extractor if you have one for Yolo V8 usage</p></li>
+<li><p>(The YOLOv8 feature extractor extension will be exposed as an open-source repository soon.)</p></li>
+<li><p>You can use your own feature extractor if you have one for YOLOv8 usage</p></li>
 </ul>
 </li>
 <li><p>For Android</p>
@@ -571,6 +578,24 @@ document.write(`
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="../overview/model_profiling.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Global Device Benchmark</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../android/deploy-to-android-studio.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Deploy to Android Studio</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -588,15 +613,15 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#github-repository">Github repository</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-yolo-v8">What is YOLO v8</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-yolov8">What is YOLOv8</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-by-step-implementation">Step-by-step implementation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">0. Prerequisites</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-the-yolo-v8-model-and-input-sample">Prepare the Yolo v8 model and input sample</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-the-yolov8-model-and-input-sample">Prepare the YOLOv8 model and input sample</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-zetic-mlange-model-key">1. Generate ZETIC.MLange model key</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implement-zeticmlangemodel-with-your-model-key">2. Implement ZeticMLangeModel with your model key</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-yolo-v8-image-feature-extractor-for-android-and-ios">3. Prepare YOLO V8 image feature extractor for Android and iOS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-yolov8-image-feature-extractor-for-android-and-ios">3. Prepare YOLOv8 image feature extractor for Android and iOS</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#total-yolov8-process-implementation">Total YOLOv8 Process implementation</a></li>

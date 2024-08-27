@@ -1,5 +1,5 @@
 
-# ZETIC.MLange Target Based On-Device Benchmark
+# Global Device Benchmark 
 
 ZETIC.MLange provides the best user experience by benchmarking the performance of AI models on a pool of real-world devices. It performs benchmarking for different manufacturers' different processors including CPU, GPU, and NPU. With the result of the benchmark, the MLange ensures the best performance in the deployed user target device, regardless of the device type.
 

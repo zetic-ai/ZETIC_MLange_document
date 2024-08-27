@@ -77,6 +77,12 @@ Contents
 
 .. toctree::
    :maxdepth: 1
+   :caption: Examples
+
+   examples/yolov8.md
+
+.. toctree::
+   :maxdepth: 1
    :caption: Android
 
    android/deploy-to-android-studio.md

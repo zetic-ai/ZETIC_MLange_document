@@ -1,23 +1,25 @@
-# On-device AI Object Detection App with ZETIC.MLange (Yolo V8)
+# On-device Object Detection
 
 ![Image](img_yolov8_demo.png)
 
-## Github repository
-- We provide YoloV8 demo application source code for both Android and iOS applications for the Yolo V8 demo. [repository](https://github.com/zetic-ai/ZETIC_MLange_apps/tree/main/yolov8)
+- On-device AI Object Detection App with ZETIC.MLange (YOLOv8)
 
-## What is YOLO v8
+## Github repository
+- We provide YOLOv8 demo application source code for both Android and iOS applications for the YOLOv8 demo. [repository](https://github.com/zetic-ai/ZETIC_MLange_apps/tree/main/yolov8)
+
+## What is YOLOv8
  - The YOLOv8 is the latest version of the acclaimed real-time object detection and image segmentation model.
- - YoloV8 document page by Ultralytics: [link](https://docs.ultralytics.com)
- - Currently, we only support detector mode. We'll support other features for the Yolo model later.
+ - YOLOv8 document page by Ultralytics: [link](https://docs.ultralytics.com)
+ - Currently, we only support detector mode. We'll support other features for the YOLOv8 model later.
 
 ## Step-by-step implementation
 
 ### 0. Prerequisites
   - We prepared the model key for the model for you. You can skip to step `2` if you want.
 
-#### Prepare the Yolo v8 model and input sample
+#### Prepare the YOLOv8 model and input sample
 
-- Export yolo v8n model 
+- Export YOLOv8 model 
     - You will get `yolov8n.onnx` model after the following script
 
     ``` python
@@ -98,10 +100,10 @@
   ```
 
 
-### 3. Prepare YOLO V8 image feature extractor for Android and iOS
-- We provide a YoloV8 feature extractor as an Android and iOS module.
-    - (The YoloV8 feature extractor extension will be exposed as an open-source repository soon.)
-    - You can use your own feature extractor if you have one for Yolo V8 usage
+### 3. Prepare YOLOv8 image feature extractor for Android and iOS
+- We provide a YOLOv8 feature extractor as an Android and iOS module.
+    - (The YOLOv8 feature extractor extension will be exposed as an open-source repository soon.)
+    - You can use your own feature extractor if you have one for YOLOv8 usage
 
 - For Android 
     ``` java
