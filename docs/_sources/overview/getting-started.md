@@ -63,21 +63,6 @@ We guarantee that your AI model and data remain confidential and we won't use or
             The number of model downloads is limited. You can download it 5 times during the trial.
 
         ```
-    
-    - You can check your model's availability using mlange_gen 
-
-        ``` bash
-            $ ./mlagne_gen -k MLANGE_MODEL_KEY
-        
-            # [If the model is available to use]
-            # MLange Model : MLANGE_MODEL_KEY is available now! Remaining download count : 5
-
-            # [If the model is getting ready to use]
-            # MLange Model : MLANGE_MODEL_KEY is not available.
-        ```
-
-        > (To be done) Model profiling status checker will be updated.
-
 
 ## 2. Initialize and run your model in mobile app
 - Android
@@ -97,3 +82,34 @@ We guarantee that your AI model and data remain confidential and we won't use or
     ```
 
 
+## (+) MLange model status checker
+ - We provide `mlange_stat` to check the profiling status of your model.
+    ``` bash
+    $ ./mlange_stat -k MLANGE_MODEL_KEY
+    ```
+   ### [Expected outputs per status]
+   - (1) On Converting 
+        ``` bash
+        MLange Model : MODEL_KEY is on CONVERTING.
+        Your model is converting to target libraries.
+        It takes about 5 ~ 10 minutes.
+        ```
+   - (2) On Benchmarking
+        - Benchmark result will be provided to starter package users only: [Contact us for detail](https://zetic.ai/contact-sales)
+        ``` bash
+        MLange Model : MODEL_KEY is on BENCHMARKING
+        Converted target libraries will be benchmarked on a pool of real devices.
+        It takes about 20 ~ 30 minutes.
+        ```
+   - (3) On Available
+        ``` bash
+        MLange Model : MODEL_KEY is on AVAILABLE
+        ZETIC.MLange Model is now ready to be used.
+        Please refer the documentation to deploy on real device. https://docs.zetic.ai/
+        You have 5 downloads left.
+        ```
+   - (4) On Failed
+        ``` bash
+        MLange Model : MODEL_KEY is on FAILED.
+        Model profiling has failed. Please Contact us. https://zetic.ai/contact-sales
+        ```

@@ -47,7 +47,7 @@
     <script src="../_static/insert_hotjar.js?v=02373137"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Deploy to Android Studio" href="../android/deploy-to-android-studio.html" />
+    <link rel="next" title="ZETIC.MLange Target Based On-Device Benchmark" href="model_profiling.html" />
     <link rel="prev" title="What is ZETIC.MLange?" href="what-is-zetic-mlange.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -156,6 +156,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="what-is-zetic-mlange.html">What is ZETIC.MLange?</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model_profiling.html">ZETIC.MLange Target Based On-Device Benchmark</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Android</span></p>
 <ul class="nav bd-sidenav">
@@ -167,7 +168,6 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional features</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../additional_features/model_profiling.html">ZETIC.MLange Target Based On-Device Benchmark</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../additional_features/future_works.html">Future Works</a></li>
 </ul>
 
@@ -320,6 +320,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-model">0. Prepare model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zetic-mlange-model-generator">1. ZETIC.MLange Model generator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-and-run-your-model-in-mobile-app">2. Initialize and run your model in mobile app</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mlange-model-status-checker">(+) MLange model status checker</a></li>
 </ul>
             </nav>
         </div>
@@ -398,20 +399,6 @@ We guarantee that your AI model and data remain confidential and we won’t use 
 </pre></div>
 </div>
 </li>
-<li><p>You can check your model’s availability using mlange_gen</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">    </span>$<span class="w"> </span>./mlagne_gen<span class="w"> </span>-k<span class="w"> </span>MLANGE_MODEL_KEY
-
-<span class="w">    </span><span class="c1"># [If the model is available to use]</span>
-<span class="w">    </span><span class="c1"># MLange Model : MLANGE_MODEL_KEY is available now! Remaining download count : 5</span>
-
-<span class="w">    </span><span class="c1"># [If the model is getting ready to use]</span>
-<span class="w">    </span><span class="c1"># MLange Model : MLANGE_MODEL_KEY is not available.</span>
-</pre></div>
-</div>
-<blockquote>
-<div><p>(To be done) Model profiling status checker will be updated.</p>
-</div></blockquote>
-</li>
 </ul>
 </li>
 </ul>
@@ -443,6 +430,50 @@ We guarantee that your AI model and data remain confidential and we won’t use 
 </li>
 </ul>
 </section>
+<section id="mlange-model-status-checker">
+<h2>(+) MLange model status checker<a class="headerlink" href="#mlange-model-status-checker" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>We provide <code class="docutils literal notranslate"><span class="pre">mlange_stat</span></code> to check the profiling status of your model.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>./mlange_stat<span class="w"> </span>-k<span class="w"> </span>MLANGE_MODEL_KEY
+</pre></div>
+</div>
+<h3 class="rubric" id="expected-outputs-per-status">[Expected outputs per status]</h3>
+<ul>
+<li><p>(1) On Converting</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>MLange<span class="w"> </span>Model<span class="w"> </span>:<span class="w"> </span>MODEL_KEY<span class="w"> </span>is<span class="w"> </span>on<span class="w"> </span>CONVERTING.
+Your<span class="w"> </span>model<span class="w"> </span>is<span class="w"> </span>converting<span class="w"> </span>to<span class="w"> </span>target<span class="w"> </span>libraries.
+It<span class="w"> </span>takes<span class="w"> </span>about<span class="w"> </span><span class="m">5</span><span class="w"> </span>~<span class="w"> </span><span class="m">10</span><span class="w"> </span>minutes.
+</pre></div>
+</div>
+</li>
+<li><p>(2) On Benchmarking</p>
+<ul class="simple">
+<li><p>Benchmark result will be provided to starter package users only: <a class="reference external" href="https://zetic.ai/contact-sales">Contact us for detail</a></p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>MLange<span class="w"> </span>Model<span class="w"> </span>:<span class="w"> </span>MODEL_KEY<span class="w"> </span>is<span class="w"> </span>on<span class="w"> </span>BENCHMARKING
+Converted<span class="w"> </span>target<span class="w"> </span>libraries<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>benchmarked<span class="w"> </span>on<span class="w"> </span>a<span class="w"> </span>pool<span class="w"> </span>of<span class="w"> </span>real<span class="w"> </span>devices.
+It<span class="w"> </span>takes<span class="w"> </span>about<span class="w"> </span><span class="m">20</span><span class="w"> </span>~<span class="w"> </span><span class="m">30</span><span class="w"> </span>minutes.
+</pre></div>
+</div>
+</li>
+<li><p>(3) On Available</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>MLange<span class="w"> </span>Model<span class="w"> </span>:<span class="w"> </span>MODEL_KEY<span class="w"> </span>is<span class="w"> </span>on<span class="w"> </span>AVAILABLE
+ZETIC.MLange<span class="w"> </span>Model<span class="w"> </span>is<span class="w"> </span>now<span class="w"> </span>ready<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>used.
+Please<span class="w"> </span>refer<span class="w"> </span>the<span class="w"> </span>documentation<span class="w"> </span>to<span class="w"> </span>deploy<span class="w"> </span>on<span class="w"> </span>real<span class="w"> </span>device.<span class="w"> </span>https://docs.zetic.ai/
+You<span class="w"> </span>have<span class="w"> </span><span class="m">5</span><span class="w"> </span>downloads<span class="w"> </span>left.
+</pre></div>
+</div>
+</li>
+<li><p>(4) On Failed</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>MLange<span class="w"> </span>Model<span class="w"> </span>:<span class="w"> </span>MODEL_KEY<span class="w"> </span>is<span class="w"> </span>on<span class="w"> </span>FAILED.
+Model<span class="w"> </span>profiling<span class="w"> </span>has<span class="w"> </span>failed.<span class="w"> </span>Please<span class="w"> </span>Contact<span class="w"> </span>us.<span class="w"> </span>https://zetic.ai/contact-sales
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+</ul>
+</section>
 </section>
 
 
@@ -466,11 +497,11 @@ We guarantee that your AI model and data remain confidential and we won’t use 
       </div>
     </a>
     <a class="right-next"
-       href="../android/deploy-to-android-studio.html"
+       href="model_profiling.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Deploy to Android Studio</p>
+        <p class="prev-next-title">ZETIC.MLange Target Based On-Device Benchmark</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -493,6 +524,7 @@ We guarantee that your AI model and data remain confidential and we won’t use 
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-model">0. Prepare model</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zetic-mlange-model-generator">1. ZETIC.MLange Model generator</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-and-run-your-model-in-mobile-app">2. Initialize and run your model in mobile app</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mlange-model-status-checker">(+) MLange model status checker</a></li>
 </ul>
   </nav></div>
 

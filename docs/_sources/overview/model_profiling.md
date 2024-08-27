@@ -29,12 +29,6 @@ Using the analyzed benchmark results, target libraries are prioritized by SoC ma
 
 ![Image](mlange_profiling_02.png)
 
-## [WIP] Future works
+## Detailed profiling result is our premium feature
 
-`mlange_stat` will provide the status of the current profiling model.
-
-```
-$ ./mlange_stat -k MLANGE_MODEL_KEY
-...
-Model [MLANGE_MODEL_KEY] is now available!
-```
+ We execute profiling for all kinds of users and guarantee the best performance of the On-device AI app. However, we currently provide detailed profiling results for `Starter` users only. Please contact us by the [`contact us`](https://zetic.ai/contact-sales).
