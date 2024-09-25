@@ -80,6 +80,9 @@ Contents
    :caption: Examples
 
    examples/yolov8.md
+   examples/face_detection.md
+   examples/face_landmark.md
+   examples/face_emotion_recognition.md
 
 .. toctree::
    :maxdepth: 1

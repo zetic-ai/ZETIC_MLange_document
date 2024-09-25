@@ -38,7 +38,7 @@ There are only three steps are needed.
 - You can choose `Groovy` build or `Kotlin DSL` build
     - build.gradle (Groovy)
 
-    ``` gradle
+    ``` groovy
 
     android {
         ...
@@ -57,7 +57,7 @@ There are only three steps are needed.
 
     - build.gradle.kts (Kotlin DSL)
 
-    ``` gradle
+    ``` kotlin
 
     android {
         ...

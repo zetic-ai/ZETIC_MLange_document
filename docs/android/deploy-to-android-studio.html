@@ -28,7 +28,7 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
   
@@ -48,7 +48,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Deploy to XCode" href="../ios/deploy-to-xcode.html" />
-    <link rel="prev" title="Object Detection (YOLOv8)" href="../examples/yolov8.html" />
+    <link rel="prev" title="Face Emotion Recognition (EMO-AffectNet)" href="../examples/face_emotion_recognition.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -161,6 +161,9 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../examples/yolov8.html">Object Detection (YOLOv8)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/face_detection.html">Face Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/face_landmark.html">Face Landmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/face_emotion_recognition.html">Face Emotion Recognition (EMO-AffectNet)</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Android</span></p>
 <ul class="current nav bd-sidenav">
@@ -338,7 +341,7 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="deploy-to-android-studio">
+  <section class="tex2jax_ignore mathjax_ignore" id="deploy-to-android-studio">
 <h1>Deploy to Android Studio<a class="headerlink" href="#deploy-to-android-studio" title="Link to this heading">#</a></h1>
 <p>MLange supports both for <strong>Kotlin</strong> and <strong>Java</strong> implementations.</p>
 <p>Deploy your own On-device AI Android application easily.
@@ -369,7 +372,7 @@ There are only three steps are needed.</p>
 <li><p>Leave <a class="reference external" href="https://github.com/zetic-ai/zetic_mlange_android_sample/releases/download/v0.2.0/zeticMLange.aar"><code class="docutils literal notranslate"><span class="pre">zeticMLange.aar</span></code></a> under <code class="docutils literal notranslate"><span class="pre">app/libs/zeticlibs</span></code></p>
 <ul>
 <li><p>e.g. Android project structure</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>app
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>app
 └── libs
     └── zeticlibs
         └── zeticMLange.aar
@@ -388,39 +391,35 @@ There are only three steps are needed.</p>
 <ul class="simple">
 <li><p>build.gradle (Groovy)</p></li>
 </ul>
-<div class="highlight-gradle notranslate"><div class="highlight"><pre><span></span>
-android {
-    ...
-    packagingOptions {
-        jniLibs {
-            useLegacyPackaging true
-        }
-    }
-}
+<div class="highlight-groovy notranslate"><div class="highlight"><pre><span></span><span class="n">android</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="o">...</span>
+<span class="w">    </span><span class="n">packagingOptions</span><span class="w"> </span><span class="o">{</span>
+<span class="w">        </span><span class="n">jniLibs</span><span class="w"> </span><span class="o">{</span>
+<span class="w">            </span><span class="n">useLegacyPackaging</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">        </span><span class="o">}</span>
+<span class="w">    </span><span class="o">}</span>
+<span class="o">}</span>
 
-dependencies {
-    implementation files(&#39;libs/zeticlibs/zeticMLange.aar&#39;)
-}
-
+<span class="n">dependencies</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="n">implementation</span><span class="w"> </span><span class="n">files</span><span class="o">(</span><span class="s1">&#39;libs/zeticlibs/zeticMLange.aar&#39;</span><span class="o">)</span>
+<span class="o">}</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>build.gradle.kts (Kotlin DSL)</p></li>
 </ul>
-<div class="highlight-gradle notranslate"><div class="highlight"><pre><span></span>
-android {
-    ...
-    packaging {
-        jniLibs {
-            useLegacyPackaging = true
-        }
-    }
-}
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="n">android</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="p">...</span>
+<span class="w">    </span><span class="n">packaging</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">jniLibs</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="n">useLegacyPackaging</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
 
-dependencies {
-    implementation(files(&quot;libs/zeticlibs/zeticMLange.aar&quot;))
-}
-
+<span class="n">dependencies</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">implementation</span><span class="p">(</span><span class="n">files</span><span class="p">(</span><span class="s">&quot;libs/zeticlibs/zeticMLange.aar&quot;</span><span class="p">))</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </li>
@@ -508,12 +507,12 @@ dependencies {
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../examples/yolov8.html"
+       href="../examples/face_emotion_recognition.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Object Detection (YOLOv8)</p>
+        <p class="prev-next-title">Face Emotion Recognition (EMO-AffectNet)</p>
       </div>
     </a>
     <a class="right-next"

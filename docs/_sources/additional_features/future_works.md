@@ -7,8 +7,8 @@
 
     - Util functions handling input & output data from MLange run
     - Librosa
-    - OpenCV
     - Tokenizer
+    - FFMPEG
 
 ## 2. ML Library support
 
@@ -16,13 +16,14 @@
     - TFLite
     - ARM NN
     - Samsung Exynos NPU support
+    - UNISOC NPU support
 
 ## 3. Example Applications
 
-    - STT
-    - TTS
-    - Segmentations
     - sLLM
+    - Automatic Speech Recognition
+    - Text to Speech
+    - Text summarization
 
 ## Contact us
 
