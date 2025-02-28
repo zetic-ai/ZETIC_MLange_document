@@ -1,4 +1,4 @@
-# ZETIC.MLange LLM Model
+# (Beta) ZETIC.MLange LLM Model
 
 ## Overview
 
@@ -43,7 +43,7 @@ Model compatibility depends on device capacity.
 - We prepared a model key for the demo app: `deepseek-r1-distill-qwen-1.5b-f16`. You can use the model key to try the ZETIC.LLM.MLange Application.
 
 - Android app
-  - For the detailed application setup, please follow [`deploy to Android Studio`](../deploy_model/android.md) page
+  - For the detailed application setup, please follow [`deploy to Android Studio`](../app_implementation/android.md) page
   - ZETIC.LLM.MLange usage in `Kotlin`
 
     ``` kotlin
@@ -61,7 +61,7 @@ Model compatibility depends on device capacity.
     ```
 
 - iOS app
-  - For the detailed application setup, please follow [`deploy to XCode`](../deploy_model/iOS.md) page
+  - For the detailed application setup, please follow [`deploy to XCode`](../app_implementation/iOS.md) page
   - ZETIC.LLM.MLange usage in `Swift`
     ``` swift
     let model = ZeticMLangeLLMModel("PERSONAL_KEY", "deepseek-r1-distill-qwen-1.5b-f16")

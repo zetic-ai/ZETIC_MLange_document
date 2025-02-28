@@ -1,10 +1,10 @@
 
-SaaS Method
-===========
+Dashboard
+=========
 
-### How to Generate a Model Key Using SaaS
+### How to Generate a Model Key Using MLange Web Dashboard
 
-This guide explains how to generate a model key using the SaaS(Software as a Service) method by visit [mlange.zetic.ai](https://mlange.zetic.ai). You need to use this method at the first time.
+This guide explains how to generate a model key using the ZETIC.MLange Web based Dashboard, a.k.a SaaS(Software as a Service) method, by visit [mlange.zetic.ai](https://mlange.zetic.ai). You need to use this method at the first time.
 
 1. **Sign Up / Log In**
 ![alt text](SaaS_imgs/1_login.png)

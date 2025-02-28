@@ -1,10 +1,10 @@
 Generate Personal Key
 =====================
 
-To access the generated model key with ZETIC.MLange, you need to generate a personal key. Currently, we only support the SaaS (Software as a Service) method for generating personal keys.
+To access the generated model key with ZETIC.MLange, you need to generate a personal key. Currently, we only support the Web Dashboard method for generating personal keys.
 
-How to Generate a Personal Key Using SaaS
------------------------------------------
+How to Generate a Personal Key Using Web Dashborad
+--------------------------------------------------
 
 .. image:: 1_generate_personal_key.png
    :alt: Generate Personal Key

@@ -154,24 +154,24 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../overview/what-is-zetic-mlange.html">What is ZETIC.MLange?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview/getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/how-mlange-works.html">How ZETIC.MLange Works</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview/model_profiling.html">Global Device Benchmark</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../overview/zetic-mlange-llm-model.html">ZETIC.MLange LLM Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/zetic-mlange-llm-model.html">(Beta) ZETIC.MLange LLM Model</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Perpare Steps</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../steps/prepare_model/index.html">Prepare Model and Input(s)</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../steps/generate_model_key/index.html">Generate Model Key</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../steps/generate_model_key/generate-to-SaaS.html">SaaS Method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../steps/generate_model_key/generate-to-CLI.html">CLI Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../steps/generate_model_key/generate-to-SaaS.html">Dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../steps/generate_model_key/generate-to-CLI.html">Command Line</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../steps/generate_personal_key/index.html">Generate Personal Key</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deploy Model</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">App Implementation</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../deploy_model/android.html">Android</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../deploy_model/iOS.html">iOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_implementation/android.html">Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_implementation/iOS.html">iOS</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
@@ -335,6 +335,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocess-to-handle-multi-modal-input-features">1. Preprocess to handle multi-modal Input features</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-library-support">2. ML Library support</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ux-improvements">3. UX improvements</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-applications">3. Example Applications</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contact-us">Contact us</a></li>
 </ul>
@@ -355,7 +356,8 @@ document.write(`
 </ul>
 <section id="preprocess-to-handle-multi-modal-input-features">
 <h2>1. Preprocess to handle multi-modal Input features<a class="headerlink" href="#preprocess-to-handle-multi-modal-input-features" title="Link to this heading">#</a></h2>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- Util functions handling input &amp; output data from MLange run
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- Open extension sources as open-source project
+- Util functions handling input &amp; output data from MLange run
 - Librosa
 - Tokenizer
 - FFMPEG
@@ -364,20 +366,27 @@ document.write(`
 </section>
 <section id="ml-library-support">
 <h2>2. ML Library support<a class="headerlink" href="#ml-library-support" title="Link to this heading">#</a></h2>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- GGML
-- TFLite
-- ARM NN
-- Samsung Exynos NPU support
-- UNISOC NPU support
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- LLM Support with NPU utilizations
+- Samsung Exynos NPU
+- UNISOC NPU
+</pre></div>
+</div>
+</section>
+<section id="ux-improvements">
+<h2>3. UX improvements<a class="headerlink" href="#ux-improvements" title="Link to this heading">#</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- MLange run without sample input
+- UI update
+- iOS - swift pakage manager support
 </pre></div>
 </div>
 </section>
 <section id="example-applications">
 <h2>3. Example Applications<a class="headerlink" href="#example-applications" title="Link to this heading">#</a></h2>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- sLLM
-- Automatic Speech Recognition
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- Automatic Speech Recognition
 - Text to Speech
 - Text summarization
+- Multimodal LLM
+- MLange Model Zoo
 </pre></div>
 </div>
 </section>
@@ -427,6 +436,7 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preprocess-to-handle-multi-modal-input-features">1. Preprocess to handle multi-modal Input features</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-library-support">2. ML Library support</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ux-improvements">3. UX improvements</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-applications">3. Example Applications</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contact-us">Contact us</a></li>
 </ul>

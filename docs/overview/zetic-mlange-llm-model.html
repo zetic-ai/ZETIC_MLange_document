@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>ZETIC.MLange LLM Model &#8212; ZETIC.MLange  documentation</title>
+    <title>(Beta) ZETIC.MLange LLM Model &#8212; ZETIC.MLange  documentation</title>
   
   
   
@@ -155,24 +155,24 @@
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="what-is-zetic-mlange.html">What is ZETIC.MLange?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how-mlange-works.html">How ZETIC.MLange Works</a></li>
 <li class="toctree-l1"><a class="reference internal" href="model_profiling.html">Global Device Benchmark</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">ZETIC.MLange LLM Model</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">(Beta) ZETIC.MLange LLM Model</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Perpare Steps</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../steps/prepare_model/index.html">Prepare Model and Input(s)</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../steps/generate_model_key/index.html">Generate Model Key</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
-<li class="toctree-l2"><a class="reference internal" href="../steps/generate_model_key/generate-to-SaaS.html">SaaS Method</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../steps/generate_model_key/generate-to-CLI.html">CLI Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../steps/generate_model_key/generate-to-SaaS.html">Dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../steps/generate_model_key/generate-to-CLI.html">Command Line</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference internal" href="../steps/generate_personal_key/index.html">Generate Personal Key</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deploy Model</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">App Implementation</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../deploy_model/android.html">Android</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../deploy_model/iOS.html">iOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_implementation/android.html">Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_implementation/iOS.html">iOS</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
@@ -324,7 +324,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>ZETIC.MLange LLM Model</h1>
+    <h1>(Beta) ZETIC.MLange LLM Model</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -361,8 +361,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="zetic-mlange-llm-model">
-<h1>ZETIC.MLange LLM Model<a class="headerlink" href="#zetic-mlange-llm-model" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="beta-zetic-mlange-llm-model">
+<h1>(Beta) ZETIC.MLange LLM Model<a class="headerlink" href="#beta-zetic-mlange-llm-model" title="Link to this heading">#</a></h1>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">#</a></h2>
 <p>ZETIC.MLange LLM Model provides an abstraction layer for LLM (Large Language Model) implementations using ZETIC.ai’s infrastructure. It offers a developer-friendly interface for downloading and running LLM models on mobile devices, managing model downloads.</p>
@@ -426,7 +426,7 @@ document.write(`
 <li><p>We prepared a model key for the demo app: <code class="docutils literal notranslate"><span class="pre">deepseek-r1-distill-qwen-1.5b-f16</span></code>. You can use the model key to try the ZETIC.LLM.MLange Application.</p></li>
 <li><p>Android app</p>
 <ul>
-<li><p>For the detailed application setup, please follow <a class="reference internal" href="../deploy_model/android.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">deploy</span> <span class="pre">to</span> <span class="pre">Android</span> <span class="pre">Studio</span></code></span></a> page</p></li>
+<li><p>For the detailed application setup, please follow <a class="reference internal" href="../app_implementation/android.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">deploy</span> <span class="pre">to</span> <span class="pre">Android</span> <span class="pre">Studio</span></code></span></a> page</p></li>
 <li><p>ZETIC.LLM.MLange usage in <code class="docutils literal notranslate"><span class="pre">Kotlin</span></code></p>
 <div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="nv">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ZeticMLangeLLMModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;PERSONAL_KEY&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;deepseek-r1-distill-qwen-1.5b-f16&quot;</span><span class="p">)</span>
 
@@ -446,7 +446,7 @@ document.write(`
 </li>
 <li><p>iOS app</p>
 <ul>
-<li><p>For the detailed application setup, please follow <a class="reference internal" href="../deploy_model/iOS.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">deploy</span> <span class="pre">to</span> <span class="pre">XCode</span></code></span></a> page</p></li>
+<li><p>For the detailed application setup, please follow <a class="reference internal" href="../app_implementation/iOS.html"><span class="std std-doc"><code class="docutils literal notranslate"><span class="pre">deploy</span> <span class="pre">to</span> <span class="pre">XCode</span></code></span></a> page</p></li>
 <li><p>ZETIC.LLM.MLange usage in <code class="docutils literal notranslate"><span class="pre">Swift</span></code></p>
 <div class="highlight-swift notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nv">model</span> <span class="p">=</span> <span class="n">ZeticMLangeLLMModel</span><span class="p">(</span><span class="s">&quot;PERSONAL_KEY&quot;</span><span class="p">,</span> <span class="s">&quot;deepseek-r1-distill-qwen-1.5b-f16&quot;</span><span class="p">)</span>
 

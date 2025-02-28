@@ -65,6 +65,7 @@ There are only three steps are needed.
 
 
 ## (+) Additional API for MLange-iOS usage
+- The Swift pakage manager support will be updated soon.
 - (This will be updated very soon!)
   - As a default we set the model to use FP16 data type over NPU
   - We set 1 more option for user to choose runtime mode for Better output accuracy.

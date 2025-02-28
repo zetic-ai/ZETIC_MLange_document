@@ -1,4 +1,4 @@
-# Getting Started
+# How ZETIC.MLange Works
 
 This page describes the requirements to start ZETIC.MLange
 
@@ -15,13 +15,13 @@ We guarantee that your AI model and data remain confidential and we won't use or
 - For more details, refer to [Prepare Model and Input(s)](../steps/prepare_model/index.rst)
 
 ## 1. Prepare Model Key and Personal Key
-- Use `SaaS Method` or `CLI Method` to generate **Model Key**.
+- Use `Web Dashboard` or `Command Line Interface` to generate **Model Key**.
     - Generating `Model Key` Example
     ``` bash
     # Generating Model Key with CLI Method.
     $ zetic gen -p $PROJECT_NAME -i $INPUT_0 -i $INPUT_1 .... $MODEL_PATH
     ```
-- Use `SaaS Method` to generate **Personal Key**
+- Use `Web Dashboard` to generate **Personal Key**
     - Copying `Personal Key` Example
     ![Copying-Personal-Key](../steps/generate_personal_key/2_copy_personal_key.png)
 - For more details, refer to [Generate Model Key](../steps/generate_model_key/index.rst) and [Generate Personal Key](../steps/generate_personal_key/index.rst)
@@ -30,7 +30,7 @@ We guarantee that your AI model and data remain confidential and we won't use or
 
 - Android
 
-    - Please follow [deploy-to-android-studio](../deploy_model/android.md) page for details
+    - Please follow [deploy-to-android-studio](../app_implementation/android.md) page for details
 
     - **Kotlin**
 
@@ -41,7 +41,7 @@ We guarantee that your AI model and data remain confidential and we won't use or
 
 - iOS
 
-    - Please follow [deploy-to-xcode](../deploy_model/iOS.md) page for details
+    - Please follow [deploy-to-xcode](../app_implementation/iOS.md) page for details
 
     - **Swift**
 
@@ -52,5 +52,5 @@ We guarantee that your AI model and data remain confidential and we won't use or
 
 
 ## (+) Profiling MLange Model
-With proving [SaaS](https://mlange.zetic.ai), You can also get much information about MLange Model. Including progress of making Model Key and how effectively the model can be used on various devices.
+With proving [Web Dashboard](https://mlange.zetic.ai), You can also get much information about MLange Model. Including progress of making Model Key and how effectively the model can be used on various devices.
 

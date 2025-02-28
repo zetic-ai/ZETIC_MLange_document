@@ -2,7 +2,8 @@
 
 ![Image](img_yolov8_demo.png)
 
-- On-device AI Object Detection App with ZETIC.MLange (YOLOv11)
+- On-device AI Object Detection App with ZETIC.MLange (YOLOv8/v11)
+- (Above capture image generated with YOLOv8 demo application)
 
 ## GitHub repository
 - We provide YOLOv11 demo application source code for both Android and iOS applications for the YOLOv8 demo. If input model key is changed to YOLOv8, you can experience YOLOv8 also. [repository](https://github.com/zetic-ai/ZETIC_MLange_apps/tree/main/yolov8)

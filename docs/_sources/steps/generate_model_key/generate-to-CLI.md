@@ -1,10 +1,10 @@
 
-CLI Method
-==========
+Command Line
+============
 
-### How to Generate a Model Key Using CLI
+### How to Generate a Model Key at Your Terminal Using CLI
 
-This guide explains how to generate a model key using the CLI(Command Line Interface) method. **We assume that the project has already been created using the SaaS method.**
+This guide explains how to generate a model key through your terminal, a.k.a CLI(Command Line Interface) method. **We assume that the project has already been created using the SaaS method.**
 
 0. **Install zetic CLI** 
 To get started, install the zetic CLI by running the following command:

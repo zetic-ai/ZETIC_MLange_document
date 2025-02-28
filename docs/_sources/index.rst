@@ -73,13 +73,13 @@ Contents
    :caption: Overview
 
    overview/what-is-zetic-mlange.md
-   overview/getting-started.md
+   overview/how-mlange-works.md
    overview/model_profiling.md
    overview/zetic-mlange-llm-model.md
 
 .. toctree::
    :maxdepth: 2
-   :caption: Perpare Steps
+   :caption: Getting Started
    :glob:
 
    steps/prepare_model/index.rst
@@ -88,10 +88,10 @@ Contents
 
 .. toctree::
    :maxdepth: 1
-   :caption: Deploy Model
+   :caption: App Implementation
 
-   deploy_model/android.md
-   deploy_model/iOS.md
+   app_implementation/android.md
+   app_implementation/iOS.md
 
 .. toctree::
    :maxdepth: 1

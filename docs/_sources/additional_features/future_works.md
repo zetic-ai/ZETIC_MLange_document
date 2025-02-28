@@ -5,6 +5,7 @@
 
 ## 1. Preprocess to handle multi-modal Input features
 
+    - Open extension sources as open-source project
     - Util functions handling input & output data from MLange run
     - Librosa
     - Tokenizer
@@ -12,18 +13,23 @@
 
 ## 2. ML Library support
 
-    - GGML
-    - TFLite
-    - ARM NN
-    - Samsung Exynos NPU support
-    - UNISOC NPU support
+    - LLM Support with NPU utilizations
+    - Samsung Exynos NPU
+    - UNISOC NPU
+
+## 3. UX improvements
+
+    - MLange run without sample input
+    - UI update
+    - iOS - swift pakage manager support
 
 ## 3. Example Applications
 
-    - sLLM
     - Automatic Speech Recognition
     - Text to Speech
     - Text summarization
+    - Multimodal LLM
+    - MLange Model Zoo
 
 ## Contact us
 

@@ -1,7 +1,9 @@
 Generate Model Key
 ==================
   
-To run the prepared model with ZETIC.MLange, you need to generate a model key. We offer two primary methods: `SaaS (Software as a Service) <generate-to-SaaS.html>`_ and `CLI (Command Line Interface) <generate-to-CLI.html>`_. Initially, you must use the SaaS method, after which you can switch to the CLI method for convenience.
+To run the prepared model with ZETIC.MLange, you need to generate a model key. We offer two primary methods: `Web Dashboard (SaaS) <generate-to-SaaS.html>`_ and `CLI (Command Line Interface) <generate-to-CLI.html>`_. 
+
+- **You MUST initiate with the Web Dashboard method first, and then you can switch to the CLI method for convenience.**
 
 Terms about Generating Key
 """"""""""""""""""""""""""
