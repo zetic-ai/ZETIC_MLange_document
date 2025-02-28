@@ -5,9 +5,9 @@
 
 - On-device AI Face Emotion Recognition App with ZETIC.MLange
 
-## Github Repository
+## GitHub Repository
 
-• We provide Face Emotion Recognition demo application source code for both Android and iOS. [repository](https://github.com/zetic-ai/ZETIC_MLange_apps/tree/main/face_emotion_recognition)
+- We provide Face Emotion Recognition demo application source code for both Android and iOS. [repository](https://github.com/zetic-ai/ZETIC_MLange_apps/tree/main/face_emotion_recognition)
 
 ## What is EMO-AffectNet
 
@@ -27,13 +27,13 @@ For accurate use of the face emotion recognition model, it is necessary to pass 
 
 Prepare the model and input sample of [`Face Emotion Recognition`](https://huggingface.co/ElenaRyumina/face_emotion_recognition) and [`Face Detection`](https://github.com/patlevin/face-detection-tflite/tree/main/fdlite/data) from hugging face.
 
-- Face Detection: Convert the Tensorflow model to the TorchScript model.
+- Face Detection: Convert the TensorFlow model to the TorchScript model.
     ``` bash
     $ pip install tf2onnx
     $ python -m tf2onnx.convert --tflite face_detection_short_range.tflite --output face_detection_short_range.onnx --opset 13
     ```
 
-- Face Emotion Recognition: Trace the Pytorch model to be a TorchScript model and save.
+- Face Emotion Recognition: Trace the PyTorch model to be a TorchScript model and save.
     - You can find ResNet50 class in [here](https://huggingface.co/ElenaRyumina/face_emotion_recognition/blob/main/run_webcam.ipynb)
     ``` python
     import torch
@@ -87,7 +87,7 @@ Prepare the model and input sample of [`Face Emotion Recognition`](https://huggi
 
 - We prepared a model key for the demo app: `face_detection` and `face_emotion_recognition`. You can use the model key to try the Zetic.MLange Application.
 
-- Anroid app
+- Android app
   - For the detailed application setup, please follow [`deploy to Android Studio`](https://docs.zetic.ai/android/deploy-to-android-studio.html) page
   - ZETIC.MLange usage in `Kotlin`
 
@@ -117,8 +117,8 @@ Prepare the model and input sample of [`Face Emotion Recognition`](https://huggi
 
 - For Android 
     ``` kotlin
-    // (0) Initialize ZeticMLangeFeatureFaceEmotionRecognition
-    val feature = ZeticMLangeFeatureFaceEmotionRecognition()
+    // (0) Initialize FaceEmotionRecognitionWrapper
+    val feature = FaceEmotionRecognitionWrapper()
 
     // (1) Preprocess bitmap and get processed float array
     val inputs = feature.preprocess(bitmap)
@@ -134,8 +134,8 @@ Prepare the model and input sample of [`Face Emotion Recognition`](https://huggi
     ``` swift
     import ZeticMLange
 
-    // (0) Initialize ZeticMLangeFeatureFaceEmotionRecognition
-    let feature = ZeticMLangeFeatureFaceEmotionRecognition()
+    // (0) Initialize FaceEmotionRecognitionWrapper
+    let feature = FaceEmotionRecognitionWrapper()
     
     // (1) Preprocess UIImage and get processed float array
     let inputs = feature.preprocess(image)
@@ -156,37 +156,37 @@ Pipelining two models.
         val faceDetectionModel = ZeticMLangeModel(this, 'face_detection')
 
         // (1) Initialization Feature
-        val faceDetectionFeature = ZeticMLangeFeatureFaceDetection()
+        val faceDetection = FaceDetectionWrapper()
         
         // (2) Preprocess Image
-        val faceDetectionInputs = faceDetectionFeature.preprocess(bitmap)
+        val faceDetectionInputs = faceDetection.preprocess(bitmap)
 
         // (3) Process Model
         faceDetectionModel.run(faceDetectionInputs)
         val faceDetectionOutputs = faceDetectionModel.outputBuffers
 
         // (4) Postprocess model run result
-        val faceDetectionPostprocessed = faceDetectionFeature.postprocess(faceDetectionOutputs)
+        val faceDetectionPostprocessed = faceDetection.postprocess(faceDetectionOutputs)
         ```
 
         2. Face Emotion Recognition Model
-        Pass the result of face detection model as a input.
+        Pass the result of face detection model as an input.
         ``` kotlin
         // (0) Initialization Models
         val faceEmotionRecognitionModel = ZeticMLangeModel(this, 'face_emotion_recognition')
 
         // (1) Initialization Feature
-        val faceEmotionRecognitionFeature = ZeticMLangeFeatureFaceEmotionRecognition()
+        val faceEmotionRecognition = FaceEmotionRecognitionWrapper()
         
         // (2) Preprocess Image
-        val faceEmotionRecognitionInputs = faceEmotionRecognitionFeature.preprocess(bitmap, faceDetectionPostprocessed)
+        val faceEmotionRecognitionInputs = faceEmotionRecognition.preprocess(bitmap, faceDetectionPostprocessed)
 
         // (3) Process Model
         faceEmotionRecognitionModel.run(faceEmotionRecognitionInputs)
         val faceEmotionRecognitionOutputs = faceEmotionRecognitionModel.outputBuffers
 
         // (4) Postprocess model run result
-        val faceEmotionRecognitionPostprocessed = faceEmotionRecognitionFeature.postprocess(faceEmotionRecognitionOutputs)
+        val faceEmotionRecognitionPostprocessed = faceEmotionRecognition.postprocess(faceEmotionRecognitionOutputs)
         ```
 
 - For iOS
@@ -197,39 +197,39 @@ Pipelining two models.
         let faceDetectionModel = ZeticMLangeModel('face_detection')
 
         // (1) Initialization Feature
-        let faceDetectionFeature = ZeticMLangeFeatureFaceDetection()
+        let faceDetection = FaceDetectionWrapper()
         
         // (2) Preprocess Image
-        let faceDetectionInputs = faceDetectionFeature.preprocess(bitmap)
+        let faceDetectionInputs = faceDetection.preprocess(bitmap)
 
         // (3) Process Model
         faceDetectionModel.run(faceDetectionInputs)
         let faceDetectionOutputs = faceDetectionModel.getOutputDataArray()
 
         // (4) Postprocess model run result
-        let faceDetectionPostprocessed = faceDetectionFeature.postprocess(&faceDetectionOutputs)
+        let faceDetectionPostprocessed = faceDetection.postprocess(&faceDetectionOutputs)
         ```
 
         2. Face Emotion Recognition Model
-        Pass the result of face detection model as a input.
+        Pass the result of face detection model as an input.
         ``` swift
         // (0) Initialization Models
         let faceEmotionRecognitionModel = ZeticMLangeModel('face_emotion_recognition')
 
         // (1) Initialization Feature
-        let faceEmotionRecognitionFeature = ZeticMLangeFeatureFaceEmotionRecognition()
+        let faceEmotionRecognition = FaceEmotionRecognitionWrapper()
         
         // (2) Preprocess Image
-        let faceEmotionRecognitionInputs = faceEmotionRecognitionFeature.preprocess(bitmap, faceDetectionPostprocessed)
+        let faceEmotionRecognitionInputs = faceEmotionRecognition.preprocess(bitmap, faceDetectionPostprocessed)
 
         // (3) Process Model
         faceEmotionRecognitionModel.run(faceEmotionRecognitionInputs)
         let faceEmotionRecognitionOutputs = faceEmotionRecognitionModel.getOutputDataArray()
 
         // (4) Postprocess model run result
-        let faceEmotionRecognitionPostprocessed = faceEmotionRecognitionFeature.postprocess(&faceEmotionRecognitionOutputs)
+        let faceEmotionRecognitionPostprocessed = faceEmotionRecognition.postprocess(&faceEmotionRecognitionOutputs)
         ```
 
 ## Conclusion
 
- With ZETIC.MLange, building your own on-device AI applications with NPU utilization is incredibly easy and silky smooth. We provide the simplest way to implement machine learning applications within pipelines. For example, in our Face Emotion Recognition application, we construct a straightforward pipeline: `Face Detection` to `Face Emotion Recognition`. We're continually uploading new models to our examples and [HuggingFace](https://huggingface.co/ZETIC-ai)  page. Stay tuned, and [contact us](https://zetic.ai/contact-sales) for collaborations!
+ With ZETIC.MLange, building your own on-device AI applications with NPU utilization is incredibly easy and silky smooth. We provide the simplest way to implement machine learning applications within pipelines. For example, in our Face Emotion Recognition application, we construct a straightforward pipeline: `Face Detection` to `Face Emotion Recognition`. We're continually uploading new models to our examples and [HuggingFace](https://huggingface.co/ZETIC-ai) page. Stay tuned, and [contact us](https://zetic.ai/contact-sales) for collaborations!

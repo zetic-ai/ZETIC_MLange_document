@@ -5,7 +5,7 @@
 
 - On-device AI Face Landmark App with ZETIC.MLange
 
-## Github Repository
+## GitHub Repository
 
 - We provide Face Landmark demo application source code for both Android and iOS. [repository](https://github.com/zetic-ai/ZETIC_MLange_apps/tree/main/face_landmark)
 
@@ -25,14 +25,14 @@ For accurate use of the face landmark model, it is necessary to pass an image of
 
 ### 0. Prerequisites
 
-Prepare the model [`Face Detection and Face Landmark`](https://github.com/patlevin/face-detection-tflite) from github.
+Prepare the model [`Face Detection and Face Landmark`](https://github.com/patlevin/face-detection-tflite) from GitHub.
 
-- Face Detection: Convert the Tensorflow model to the TorchScript model.
+- Face Detection: Convert the TensorFlow model to the TorchScript model.
     ``` bash
     $ pip install tf2onnx
     $ python -m tf2onnx.convert --tflite face_detection_short_range.tflite --output face_detection_short_range.onnx --opset 13
     ```
-- Face Landmark: Convert the Tensorflow model to the TorchScript model.
+- Face Landmark: Convert the TensorFlow model to the TorchScript model.
     ``` bash
     $ pip install tf2onnx
     $ python -m tf2onnx.convert --tflite face_landmark.tflite --output face_landmark.onnx --opset 13
@@ -70,7 +70,7 @@ Prepare the model [`Face Detection and Face Landmark`](https://github.com/patlev
 
 - We prepared a model key for the demo app: `face_detection` and `face_landmark`. You can use the model key to try the Zetic.MLange Application.
 
-- Anroid app
+- Android app
   - For the detailed application setup, please follow [`deploy to Android Studio`](https://docs.zetic.ai/android/deploy-to-android-studio.html) page
   - ZETIC.MLange usage in `Kotlin`
 
@@ -100,8 +100,8 @@ Prepare the model [`Face Detection and Face Landmark`](https://github.com/patlev
 
 - For Android 
     ``` kotlin
-    // (0) Initialize ZeticMLangeFeatureFaceLandmark
-    val feature = ZeticMLangeFeatureFaceLandmark()
+    // (0) Initialize FaceLandmarkWrapper
+    val feature = FaceLandmarkWrapper()
 
     // (1) Preprocess bitmap and get processed float array
     val inputs = feature.preprocess(bitmap)
@@ -117,8 +117,8 @@ Prepare the model [`Face Detection and Face Landmark`](https://github.com/patlev
     ``` swift
     import ZeticMLange
 
-    // (0) Initialize ZeticMLangeFeatureFaceLandmark
-    let feature = ZeticMLangeFeatureFaceLandmark()
+    // (0) Initialize FaceLandmarkWrapper
+    let feature = FaceLandmarkWrapper()
     
     // (1) Preprocess UIImage and get processed float array
     let inputs = feature.preprocess(image)
@@ -139,37 +139,37 @@ Pipelining two models.
         val faceDetectionModel = ZeticMLangeModel(this, 'face_detection')
 
         // (1) Initialization Feature
-        val faceDetectionFeature = ZeticMLangeFeatureFaceDetection()
+        val faceDetection = FaceDetectionWrapper()
         
         // (2) Preprocess Image
-        val faceDetectionInputs = faceDetectionFeature.preprocess(bitmap)
+        val faceDetectionInputs = faceDetection.preprocess(bitmap)
 
         // (3) Process Model
         faceDetectionModel.run(faceDetectionInputs)
         val faceDetectionOutputs = faceDetectionModel.outputBuffers
 
         // (4) Postprocess model run result
-        val faceDetectionPostprocessed = faceDetectionFeature.postprocess(faceDetectionOutputs)
+        val faceDetectionPostprocessed = faceDetection.postprocess(faceDetectionOutputs)
         ```
 
         2. Face Landmark Model
-        Pass the result of face detection model as a input.
+        Pass the result of face detection model as an input.
         ``` kotlin
         // (0) Initialization Models
         val faceLandmarkModel = ZeticMLangeModel(this, 'face_landmark')
 
         // (1) Initialization Feature
-        val faceLandmarkFeature = ZeticMLangeFeatureFaceLandmark()
+        val faceLandmark = FaceLandmarkWrapper()
         
         // (2) Preprocess Image
-        val faceLandmarkInputs = faceLandmarkFeature.preprocess(bitmap, faceDetectionPostprocessed)
+        val faceLandmarkInputs = faceLandmark.preprocess(bitmap, faceDetectionPostprocessed)
 
         // (3) Process Model
         faceLandmarkModel.run(faceLandmarkInputs)
         val faceLandmarkOutputs = faceLandmarkModel.outputBuffers
 
         // (4) Postprocess model run result
-        val faceLandmarkPostprocessed = faceLandmarkFeature.postprocess(faceLandmarkOutputs)
+        val faceLandmarkPostprocessed = faceLandmark.postprocess(faceLandmarkOutputs)
         ```
 
 - For iOS
@@ -180,21 +180,21 @@ Pipelining two models.
         let faceDetectionModel = ZeticMLangeModel('face_detection')
 
         // (1) Initialization Feature
-        let faceDetectionFeature = ZeticMLangeFeatureFaceDetection()
+        let faceDetection = FaceDetectionWrapper()
         
         // (2) Preprocess Image
-        let faceDetectionInputs = faceDetectionFeature.preprocess(bitmap)
+        let faceDetectionInputs = faceDetection.preprocess(bitmap)
 
         // (3) Process Model
         faceDetectionModel.run(faceDetectionInputs)
         let faceDetectionOutputs = faceDetectionModel.getOutputDataArray()
 
         // (4) Postprocess model run result
-        let faceDetectionPostprocessed = faceDetectionFeature.postprocess(&faceDetectionOutputs)
+        let faceDetectionPostprocessed = faceDetection.postprocess(&faceDetectionOutputs)
         ```
 
         2. Face Landmark Model
-        Pass the result of face detection model as a input.
+        Pass the result of face detection model as an input.
 
         ``` swift
         
@@ -202,17 +202,17 @@ Pipelining two models.
         let faceLandmarkModel = ZeticMLangeModel('face_landmark')
 
         // (1) Initialization Feature
-        let faceLandmarkFeature = ZeticMLangeFeatureFaceLandmark()
+        let faceLandmark = FaceLandmarkWrapper()
         
         // (2) Preprocess Image
-        let faceLandmarkInputs = faceLandmarkFeature.preprocess(bitmap, faceDetectionPostprocessed)
+        let faceLandmarkInputs = faceLandmark.preprocess(bitmap, faceDetectionPostprocessed)
 
         // (3) Process Model
         faceLandmarkModel.run(faceLandmarkInputs)
         let faceLandmarkOutputs = faceLandmarkModel.getOutputDataArray()
 
         // (4) Postprocess model run result
-        let faceLandmarkPostprocessed = faceLandmarkFeature.postprocess(&faceLandmarkOutputs)
+        let faceLandmarkPostprocessed = faceLandmark.postprocess(&faceLandmarkOutputs)
 
         ```
 

@@ -1,33 +1,33 @@
-# Object Detection (YOLOv8)
+# Object Detection (YOLOv8 / YOLOv11)
 
 ![Image](img_yolov8_demo.png)
 
-- On-device AI Object Detection App with ZETIC.MLange (YOLOv8)
+- On-device AI Object Detection App with ZETIC.MLange (YOLOv11)
 
-## Github repository
-- We provide YOLOv8 demo application source code for both Android and iOS applications for the YOLOv8 demo. [repository](https://github.com/zetic-ai/ZETIC_MLange_apps/tree/main/yolov8)
+## GitHub repository
+- We provide YOLOv11 demo application source code for both Android and iOS applications for the YOLOv8 demo. If input model key is changed to YOLOv8, you can experience YOLOv8 also. [repository](https://github.com/zetic-ai/ZETIC_MLange_apps/tree/main/yolov8)
 
-## What is YOLOv8
- - The YOLOv8 is the latest version of the acclaimed real-time object detection and image segmentation model.
- - YOLOv8 document page by Ultralytics: [link](https://docs.ultralytics.com)
- - Currently, we only support detector mode. We'll support other features for the YOLOv8 model later.
+## What is YOLOv11
+ - The YOLOv11 is the latest version of the acclaimed real-time object detection and image segmentation model.
+ - YOLOv11 document page by Ultralytics: [link](https://docs.ultralytics.com)
+ - Currently, we only support detector mode. We'll support other features for the YOLOv11 model later.
 
 ## Step-by-step implementation
 
 ### 0. Prerequisites
   - We prepared the model key for the model for you. You can skip to step `2` if you want.
 
-#### Prepare the YOLOv8 model and input sample
+#### Prepare the YOLO11 model and input sample
 
-- Export YOLOv8 model 
-    - You will get `yolov8n.onnx` model after the following script
+- Export YOLO11 model 
+    - You will get `yolo11n.onnx` model after the following script
 
     ``` python
     from ultralytics import YOLO
     import torch
 
-    # Load a YOLOv8 model
-    model = YOLO("yolov8n.pt")
+    # Load a YOLOv11 model
+    model = YOLO("yolo11n.pt")
 
     # Export the model
     model.export(format="onnx", opset=12, simplify=True, dynamic=False, imgsz=640)
@@ -35,7 +35,7 @@
 
 - Prepare input sample as NumPy array
     - You can use the default sample input that we prepared: [link](https://github.com/zetic-ai/ZETIC_MLange_apps/raw/main/yolov8/samples/yolo8_detector_input.npy)
-    - Default input size for `yolov8n` model
+    - Default input size for `yolo11n` model
     - Or prepare input from your image file with the below function `preprocess_image(...)`
 
     ``` python
@@ -63,7 +63,7 @@
         $ wget https://github.com/zetic-ai/ZETIC_MLange_document/raw/main/bin/mlange_gen && chmod 755 mlange_gen
 
         # (2) Run mlange_gen 
-        $ ./mlange_gen -m yolov8n.onnx -i yolo8_detector_input.npy
+        $ ./mlange_gen -m yolo11n.onnx -i images.npy
 
         # Expected output
         # ...
@@ -73,50 +73,51 @@
 
 ### 2. Implement ZeticMLangeModel with your model key
 
-- We prepared a model key for the demo app: `yolo-v8n-test`. You can use the model key to try the Zetic.MLange Application.
+- We prepared a model key for the demo app: `yolo-v11n-test`. You can use the model key to try the Zetic.MLange Application.
 
-- Anroid app
+- Android app
   - For the detailed application setup, please follow [`deploy to Android Studio`](https://docs.zetic.ai/android/deploy-to-android-studio.html) page
   - ZETIC.MLange usage in `Java`
     - Demo app is written in `Java`, but you can use `Kotlin` as well.
 
   ``` java
-    ZeticMLangeModel zeticMLangeYoloVModel = new ZeticMLangeModel(this, "YOUR_YOLOV8_MODEL_KEY");
+    ZeticMLangeModel model = new ZeticMLangeModel(this, "YOUR_YOLOV11_MODEL_KEY");
 
-    zeticMLangeYoloVModel.run(inputs);
+    model.run(inputs);
 
-    ByteBuffer[] outputs = zeticMLangeYoloVModel.getOutputBuffers();
+    ByteBuffer[] outputs = model.getOutputBuffers();
   ```
 
 - iOS app
   - For the detailed application setup, please follow [`deploy to XCode`](https://docs.zetic.ai/ios/deploy-to-xcode.html) page
   - ZETIC.MLange usage in Swift
   ``` swift
-    let yoloModel = ZeticMLangeModel(mlange_model_key)
+    let model = ZeticMLangeModel(mlange_model_key)
 
-    yoloModel.run(yoloModelInput);
+    model.run(yoloModelInput);
 
-    let outputs = yoloModel.getOutputDataArray()
+    let outputs = model.getOutputDataArray()
   ```
 
 
 ### 3. Prepare YOLOv8 image feature extractor for Android and iOS
-- We provide a YOLOv8 feature extractor as an Android and iOS module.
-    - (The YOLOv8 feature extractor extension will be exposed as an open-source repository soon.)
+- We provide a YOLOv8 feature extractor as an Android and iOS module. This feature extractor can be used for YOLOv11 model.
+    - (We checked this image feature extractor works on YOLOv8 and YOLOv11)
+    - (The YOLOv8 feature extractor extension will be exposed as an open-source repository soon)
     - You can use your own feature extractor if you have one for YOLOv8 usage
 
 - For Android 
     ``` java
     // (0) Initialize ZeticMLangeFeatureYolov8 with `coco.yaml` for the model
-    ZeticMLangeFeatureYolov8 zeticMLangeFeatureYolov8 = new ZeticMLangeFeatureYolov8(cocoYamlFilePath);
+    Yolov8Wrapper yolov8Wrapper = new Yolov8Wrapper(cocoYamlFilePath);
 
     // (1) Preprocess bitmap and get processed float array
-    float[] floatInput = zeticMLangeFeatureYolov8.preprocess(bitmap);
+    ByteBuffer input = yolov8Wrapper.preprocess(bitmap);
 
     ...
 
     // (2) Postprocess to bitmap
-    Bitmap resultBitmap = zeticMLangeFeatureYolov8.postprocess(outputFloatArray);
+    YoloResult result = yolov8Wrapper.postprocess(outputFloatArray);
     ```
 
 - For iOS
@@ -125,35 +126,35 @@
     import ZeticMLange
 
     // (0) Initialize ZeticMLangeFeatureYolov8
-    let yoloFeature = ZeticMLangeFeatureYolov8(cocoYamlFileUrl)
+    let yolov8Wrapper = YOLOv8Wrapper(cocoYamlFileUrl)
     
     // (1) Preprocess UIImage and get processed float array
-    let yoloProcessedData = self.yoloFeature.preprocess(image)
+    let input = yolov8Wrapper.featurePreprocess(imageAddress, width, height, bytesPerRow)
 
     ...
 
     // (2) Postprocess to UIImage
-    let yoloResultImage = self.yoloFeature.postprocess(image, &outputs[0])
+    let result = yolov8Wrapper.featurePostprocess(&outputs[0])
     ```
 
-## Total YOLOv8 Process implementation
+## Total YOLOv11 Process implementation
 
 - For Android
     - Java
         ``` java
         // (0) Initialization
-        ZeticMLangeFeatureYolov8 zeticMLangeFeatureYolov8 = new ZeticMLangeFeatureYolov8(cocoYamlFilePath);
-        zeticMLangeYoloVModel = new ZeticMLangeModel(this, "YOUR_YOLOV8_MODEL_KEY");
+        Yolov8Wrapper yolov8Wrapper = new Yolov8Wrapper(cocoYamlFilePath);
+        ZeticMLangeModel model = new ZeticMLangeModel(this, "YOUR_YOLOV8_MODEL_KEY");
 
         // (1) Preprocess image
-        float[] floatInput = zeticMLangeFeatureYolov8.preprocess(bitmap);
+        ByteBuffer input = yolov8Wrapper.preprocess(bitmap);
 
-        // (2) Process YOLOv8 Model
-        zeticMLangeYoloVModel.run([floatInput]);
-        ByteBuffer[] outputs = zeticMLangeYoloVModel.getOutputBuffers();
+        // (2) Process YOLOv11 Model
+        model.run([input]);
+        ByteBuffer[] outputs = model.getOutputBuffers();
 
         // (3) Postprocess to bitmap
-        Bitmap resultBitmap = zeticMLangeFeatureYolov8.postprocess(outputFloatArray);        
+        YoloResult result = yolov8Wrapper.postprocess(outputs[0]);
         ```
 
 - For iOS
@@ -162,20 +163,20 @@
 
         ``` swift
         // (0) Initialization
-        private let yoloModel: ZeticMLangeModel
-        private let yoloFeature = ZeticMLangeFeatureYolov8(cocoYamlFileUrl)
+        let model = ZeticMLangeModel(mlange_model_key)
+        let yolov8Wrapper = YOLOv8Wrapper(cocoYamlFileUrl)
 
         // (1) Preprocess image
-        let yoloProcessedData = self.yoloFeature.preprocess(image)
+        let input = yolov8Wrapper.featurePreprocess(imageAddress, width, height, bytesPerRow)
 
-        // (2) Process YOLOv8 Model
-        self.yoloModel.run([yoloProcessedData]);
-        let outputs = self.yoloModel.getOutputDataArray()
+        // (2) Process YOLOv11 Model
+        yoloModel.run([yoloProcessedData]);
+        let outputs = yoloModel.getOutputDataArray()
 
         // (3) Postprocess the output
-        let yoloResultImage = self.yoloFeature.postprocess(image, &outputs[0])
+        let result = yolov8Wrapper.featurePostprocess(&outputs[0])
         ```
 
 ## Conclusion
 
-  With ZETIC.MLange, You can easily build your own on-device AI application with NPU utilizations. We are going to keep uploading the models to our examples and huggingface page. Please keep noticed and [contact us](https://zetic.ai/contact-sales) for the collaborations!
+  With ZETIC.MLange, You can easily build your own on-device AI application with NPU utilization. We are going to keep uploading the models to our examples and [HuggingFace](https://huggingface.co/ZETIC-ai) page. Please keep noticed and [contact us](https://zetic.ai/contact-sales) for the collaborations!

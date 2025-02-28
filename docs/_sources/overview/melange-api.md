@@ -1,7 +1,7 @@
 # ZETIC.MLange API 
 
- This page describes the APIs of ZETIC.MLange internal library.
-We provide unified API format for target libraries
+This page describes the APIs of ZETIC.MLange internal library.
+We provide a unified API format for target libraries
 
 
 ## C++ (For JNI libraries)

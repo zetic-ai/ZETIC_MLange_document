@@ -10,14 +10,14 @@ ZETIC.MLange API
   :width: 75
   :alt: MLange icon image
 
-ZETIC.MLange is an On-device AI runtime library supporting heterogeneous Mobile NPUs' utilizations.
+ZETIC.MLange is an On-device AI runtime library supporting heterogeneous Mobile NPUs' utilization.
 
 We provide the real On-device AI immediately with key features below
    1. `End-to-end on-device AI`
    2. `One-stop deployment`
    3. `Heterogeneous OS and target Hardware supporting`
 
-In this documentations, we provide instructions and examples for the ZETIC.MLange.
+In these documentations, we provide instructions and examples for the ZETIC.MLange.
 Since we are keep developing very hardly with speed, Please contact ZETIC.ai for any kind of issues.
 
 *This is the `Beta` version of the ZETIC.MLange before official release.*
@@ -28,22 +28,23 @@ Since we are keep developing very hardly with speed, Please contact ZETIC.ai for
 Quick Start
 ---------------------
 
-0. Get `mlange_gen` to generate ZETIC.MLange
+1. Go to `mlange.zetic.ai <https://mlange.zetic.ai>`_ and generate **Model Key** and **Personal Key**
 
-.. code-block:: bash
-   
-   $ wget https://github.com/zetic-ai/ZETIC_MLange_document/raw/main/bin/mlange_gen
+   - Generating **Model Key** Example
+   .. code-block:: bash
+
+      # Generating Model Key with CLI Method.
+      $ zetic gen -p $PROJECT_NAME -i $INPUT_0 -i $INPUT_1 .... $MODEL_PATH
 
 
-1. Let ZETIC.MLange automatically make runnable target model for heterogeneous target devices!
+   - Copying **Personal Key** Example
+   .. image:: steps/generate_personal_key/2_copy_personal_key.png
+      :alt: copy-personal-key
+      :align: center
 
-.. code-block:: bash
-   
-   $ ./mlange_gen -m ai_model -i input0.npy,input1.npy,...
-
-   # ...
-   # MLange Model Key : {YOUR_MODEL_KEY}
-
+   - For more detail, refer to folowing documentations:
+      - `Generating Model Key <steps/generate_model_key/index.html>`_
+      - `Generating Personal Key <steps/generate_personal_key/index.html>`_
 
 2. Use your model key in Mobile Applications
 
@@ -51,7 +52,7 @@ Quick Start
 
 .. code-block:: Kotlin
 
-   val model = ZeticMLangeModel(this, "YOUR MODEL KEY")
+   val model = ZeticMLangeModel(this, "YOUR_PERSONAL_KEY", "YOUR_MODEL_KEY")
    model.run(YOUR_INPUT_BYTE_BUFFERS)
 
 
@@ -59,7 +60,7 @@ Quick Start
 
 .. code-block:: Swift
 
-   let model = try ZeticMLangeModel("YOUR MODEL KEY")
+   let model = try ZeticMLangeModel("YOUR_PERSONAL_KEY", "YOUR_MODEL_KEY")
    model.run(YOUR_INPUT_DATA_ARRAY)
 
 
@@ -74,6 +75,23 @@ Contents
    overview/what-is-zetic-mlange.md
    overview/getting-started.md
    overview/model_profiling.md
+   overview/zetic-mlange-llm-model.md
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Perpare Steps
+   :glob:
+
+   steps/prepare_model/index.rst
+   steps/generate_model_key/index.rst
+   steps/generate_personal_key/index.rst
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Deploy Model
+
+   deploy_model/android.md
+   deploy_model/iOS.md
 
 .. toctree::
    :maxdepth: 1
@@ -83,18 +101,8 @@ Contents
    examples/face_detection.md
    examples/face_landmark.md
    examples/face_emotion_recognition.md
-
-.. toctree::
-   :maxdepth: 1
-   :caption: Android
-
-   android/deploy-to-android-studio.md
-
-.. toctree::
-   :maxdepth: 1
-   :caption: iOS
-
-   ios/deploy-to-xcode.rst
+   examples/yamnet.md
+   examples/whisper.md
 
 .. toctree::
    :maxdepth: 1

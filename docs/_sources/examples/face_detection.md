@@ -5,7 +5,7 @@
 
 - On-device AI Face Detection App with ZETIC.MLange
 
-## Github Repository
+## GitHub Repository
 
 - We provide Face Detection demo application source code for both Android and iOS. [repository](https://github.com/zetic-ai/ZETIC_MLange_apps/tree/main/face_detection)
 
@@ -18,9 +18,9 @@
 
 ### 0. Prerequisites
 
-Prepare the model [`Face Detection`](https://github.com/patlevin/face-detection-tflite) from github.
+Prepare the model [`Face Detection`](https://github.com/patlevin/face-detection-tflite) from GitHub.
 
-- Face Detection: Convert the Tensorflow model to the TorchScript model.
+- Face Detection: Convert the TensorFlow model to the TorchScript model.
     ``` bash
     $ pip install tf2onnx
     $ python -m tf2onnx.convert --tflite face_detection_short_range.tflite --output face_detection_short_range.onnx --opset 13
@@ -51,27 +51,27 @@ Prepare the model [`Face Detection`](https://github.com/patlevin/face-detection-
 
 - We prepared a model key for the demo app: `face_detection`. You can use the model key to try the Zetic.MLange Application.
 
-- Anroid app
+- Android app
   - For the detailed application setup, please follow [`deploy to Android Studio`](https://docs.zetic.ai/android/deploy-to-android-studio.html) page
   - ZETIC.MLange usage in `Kotlin`
 
   ``` kotlin
-    val faceDetectionModel = ZeticMLangeModel(this, 'face_detection')
+    val model = ZeticMLangeModel(this, 'face_detection')
 
-    faceDetectionModel.run(inputs)
+    model.run(inputs)
 
-    val outputs = faceDetectionModel.outputBuffers
+    val outputs = model.outputBuffers
   ```
 
 - iOS app
   - For the detailed application setup, please follow [`deploy to XCode`](https://docs.zetic.ai/ios/deploy-to-xcode.html) page
   - ZETIC.MLange usage in `Swift`
   ``` swift
-    let faceDetectionModel = ZeticMLangeModel('face_detection')
+    let model = ZeticMLangeModel('face_detection')
 
-    faceDetectionModel.run(inputs)
+    model.run(inputs)
 
-    let outputs = faceDetectionModel.getOutputDataArray()
+    let outputs = model.getOutputDataArray()
   ```
 
 ### 3. Prepare Face Detection image feature extractor for Android and iOS
@@ -82,7 +82,7 @@ Prepare the model [`Face Detection`](https://github.com/patlevin/face-detection-
 - For Android 
     ``` kotlin
     // (0) Initialize ZeticMLangeFeatureFaceDetection
-    val feature = ZeticMLangeFeatureFaceDetection()
+    val feature = FaceDetectionWrapper()
 
     // (1) Preprocess bitmap and get processed float array
     val inputs = feature.preprocess(bitmap)
@@ -99,7 +99,7 @@ Prepare the model [`Face Detection`](https://github.com/patlevin/face-detection-
     import ZeticMLange
 
     // (0) Initialize ZeticMLangeFeatureFaceDetection
-    let feature = ZeticMLangeFeatureFaceDetection()
+    let feature = FaceDetectionWrapper()
     
     // (1) Preprocess UIImage and get processed float array
     let inputs = feature.preprocess(image)
@@ -117,17 +117,17 @@ Pipelining two models.
         - Face Detection Model
         ``` kotlin
         // (0) Initialization Models
-        val faceDetectionModel = ZeticMLangeModel(this, 'face_detection')
+        val model = ZeticMLangeModel(this, 'face_detection')
 
         // (1) Initialization Feature
-        val faceDetectionFeature = ZeticMLangeFeatureFaceDetection()
+        val faceDetection = FaceDetectionWrapper()
         
         // (2) Preprocess Image
-        val faceDetectionInputs = faceDetectionFeature.preprocess(bitmap)
+        val faceDetectionInputs = faceDetectionFeature.preprocess(imagePtr)
 
         // (3) Process Model
-        faceDetectionModel.run(faceDetectionInputs)
-        val faceDetectionOutputs = faceDetectionModel.getOutputDataArray()
+        model.run(faceDetectionInputs)
+        val faceDetectionOutputs = model.getOutputBuffers()
 
         // (4) Postprocess model run result
         val faceDetectionPostprocessed = faceDetectionFeature.postprocess(faceDetectionOutputs)
@@ -137,21 +137,21 @@ Pipelining two models.
         - Face Detection Model
         ``` swift
         // (0) Initialization Models
-        let faceDetectionModel = ZeticMLangeModel('face_detection')
+        let model = ZeticMLangeModel('face_detection')
 
         // (1) Initialization Feature
-        let faceDetectionFeature = ZeticMLangeFeatureFaceDetection()
+        let faceDetection = FaceDetectionWrapper()
         
         // (2) Preprocess Image
-        let faceDetectionInputs = faceDetectionFeature.preprocess(bitmap)
+        let faceDetectionInputs = faceDetection.preprocess(uiImage)
 
         // (3) Process Model
-        faceDetectionModel.run(faceDetectionInputs)
-        let faceDetectionOutputs = faceDetectionModel.getOutputDataArray()
+        model.run(faceDetectionInputs)
+        let faceDetectionOutputs = model.getOutputDataArray()
 
         // (4) Postprocess model run result
-        let faceDetectionPostprocessed = faceDetectionFeature.postprocess(&faceDetectionOutputs)
+        let faceDetectionPostprocessed = faceDetection.postprocess(&faceDetectionOutputs)
         ```
 
 ## Conclusion
- With ZETIC.MLange, building your own on-device AI applications with NPU utilization is incredibly easy. We've developed a custom OpenCV module and an ML application pipeline, making the implementation of models like face detection remarkably simple and efficient. This streamlined approach allows you to integrate advanced features with minimal effort. We're continually uploading new models to our examples and [HuggingFace](https://huggingface.co/ZETIC-ai)  page. Stay tuned, and [contact us](https://zetic.ai/contact-sales) for collaborations!
+ With ZETIC.MLange, building your own on-device AI applications with NPU utilization is incredibly easy. We've developed a custom OpenCV module and an ML application pipeline, making the implementation of models like face detection remarkably simple and efficient. This streamlined approach allows you to integrate advanced features with minimal effort. We're continually uploading new models to our examples and [HuggingFace](https://huggingface.co/ZETIC-ai) page. Stay tuned, and [contact us](https://zetic.ai/contact-sales) for collaborations!

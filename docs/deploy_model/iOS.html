@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>What is ZETIC.MLange? &#8212; ZETIC.MLange  documentation</title>
+    <title>iOS &#8212; ZETIC.MLange  documentation</title>
   
   
   
@@ -43,12 +43,12 @@
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'overview/what-is-zetic-mlange';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'deploy_model/iOS';</script>
     <script src="../_static/insert_hotjar.js?v=02373137"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Getting Started" href="getting-started.html" />
-    <link rel="prev" title="ZETIC.MLange API" href="../index.html" />
+    <link rel="next" title="Object Detection (YOLOv8 / YOLOv11)" href="../examples/yolov8.html" />
+    <link rel="prev" title="Android" href="android.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -153,11 +153,11 @@
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">What is ZETIC.MLange?</a></li>
-<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="model_profiling.html">Global Device Benchmark</a></li>
-<li class="toctree-l1"><a class="reference internal" href="zetic-mlange-llm-model.html">ZETIC.MLange LLM Model</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../overview/what-is-zetic-mlange.html">What is ZETIC.MLange?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/model_profiling.html">Global Device Benchmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/zetic-mlange-llm-model.html">ZETIC.MLange LLM Model</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Perpare Steps</span></p>
 <ul class="nav bd-sidenav">
@@ -170,9 +170,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../steps/generate_personal_key/index.html">Generate Personal Key</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Deploy Model</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../deploy_model/android.html">Android</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../deploy_model/iOS.html">iOS</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="android.html">Android</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">iOS</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
@@ -240,7 +240,7 @@
       
       
       
-      <li><a href="../_sources/overview/what-is-zetic-mlange.rst" target="_blank"
+      <li><a href="../_sources/deploy_model/iOS.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -250,7 +250,7 @@
 <span class="btn__icon-container">
   <i class="fas fa-file"></i>
   </span>
-<span class="btn__text-container">.rst</span>
+<span class="btn__text-container">.md</span>
 </a>
 </li>
       
@@ -324,7 +324,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>What is ZETIC.MLange?</h1>
+    <h1>iOS</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -334,8 +334,18 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-zetic-mlange-makes-different">What ZETIC.MLange makes different?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collaborations">Collaborations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-to-xcode">Deploy to Xcode</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisite">Prerequisite</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-key">Model Key</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#personal-key">Personal Key</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zeticmlange-framework-library"><code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code> Library</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-and-embed-place-zeticmlange-framework-to-your-project">1. Download and embed place <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code> to your project</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#update-project-settings-to-use-zeticmlange-framework-to-your-project">2. Update project settings to use <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code> to your project</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-and-run-zeticmlangemodel-model-with-your-model-key">3. Initialize and run <code class="docutils literal notranslate"><span class="pre">ZeticMLangeModel</span></code> model with your Model Key</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mlange-ios-sample-app">MLange iOS Sample App</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-api-for-mlange-ios-usage">(+) Additional API for MLange-iOS usage</a></li>
 </ul>
             </nav>
         </div>
@@ -347,49 +357,98 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="what-is-zetic-mlange">
-<h1>What is ZETIC.MLange?<a class="headerlink" href="#what-is-zetic-mlange" title="Link to this heading">#</a></h1>
-<blockquote>
-<div><p>ZETIC.MLange is an <strong>end-to-end</strong>, <strong>one-stop</strong>, <strong>heterogeneous target support</strong> On-device AI Software.</p>
-</div></blockquote>
-<p>We unify all edge hardware’s utilization and make a new On-device AI ecosystem.
-There are three big innovations in On-device AI with ZETIC.MLange</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="ios">
+<h1>iOS<a class="headerlink" href="#ios" title="Link to this heading">#</a></h1>
+<section id="deploy-to-xcode">
+<h2>Deploy to Xcode<a class="headerlink" href="#deploy-to-xcode" title="Link to this heading">#</a></h2>
+<p>We provide Swift Native Interface.</p>
+<p>Deploy your own On-device AI iOS application easily.
+There are only three steps are needed.</p>
 <ol class="arabic simple">
-<li><p>From model to target library, we provide <strong>End-to-end on-device AI</strong>.</p></li>
-<li><p>MLange just needs a model and sample input. MLange is a solid <strong>One-stop deployment</strong> software.</p></li>
-<li><dl class="simple">
-<dt>MLange provides NPU utilization for <strong>Heterogeneous OS and target Hardware</strong>.</dt><dd><ul class="simple">
-<li><p><strong>80% of NPUs in the global smartphone market</strong> are supported, and more is to be covered soon.</p></li>
-<li><p><strong>99.34% of mobile OS</strong> in the global smartphone market are supported.</p></li>
-</ul>
-</dd>
-</dl>
-</li>
+<li><p>Embed <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code> to your iOS application project</p></li>
+<li><p>Update project settings to use <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code></p></li>
+<li><p>Initialize <code class="docutils literal notranslate"><span class="pre">ZeticMLangeModel</span></code> with your <strong>Model Key / Personal Key</strong> and run</p></li>
 </ol>
-<hr class="docutils" />
-<section id="what-zetic-mlange-makes-different">
-<h2>What ZETIC.MLange makes different?<a class="headerlink" href="#what-zetic-mlange-makes-different" title="Link to this heading">#</a></h2>
-<p>With ZETIC.MLange, you don’t need to research, verify, and implement the On-device AI from the basics.
-All you need to do is just run <cite>mlange_gen</cite> and deploy your App.
-You can immediately get an On-device AI Application.</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>We provide a <strong>one-stop</strong>, <strong>end-to-end</strong> pipeline for On-device AI.</p></li>
-<li><p>We provide <strong>target HW specified model Compression</strong> as default, you can also select options in Default mode, Accuracy first mode, and latency first mode.</p></li>
-<li><p>We provide the most rapid deployment process for On-device AI, with Mobile NPU utilization.</p></li>
-</ul>
-</div></blockquote>
-<a class="reference internal image-reference" href="../_images/mlange_pipeline.png"><img alt="MLange Pipeline image" src="../_images/mlange_pipeline.png" style="width: 800px;" />
-</a>
+</section>
+<section id="prerequisite">
+<h2>Prerequisite<a class="headerlink" href="#prerequisite" title="Link to this heading">#</a></h2>
+<section id="model-key">
+<h3>Model Key<a class="headerlink" href="#model-key" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>Currently, the <cite>ZETIC.MLange</cite> is the <cite>beta</cite> version, and we are going to release the official version soon.</p></li>
+<li><p>You can get Model Key in with <a class="reference internal" href="../steps/generate_model_key/generate-to-SaaS.html"><span class="std std-doc"><strong>SaaS</strong></span></a> or <a class="reference internal" href="../steps/generate_model_key/generate-to-CLI.html"><span class="std std-doc"><strong>CLI</strong></span></a> method</p></li>
 </ul>
 </section>
-<hr class="docutils" />
-<section id="collaborations">
-<h2>Collaborations<a class="headerlink" href="#collaborations" title="Link to this heading">#</a></h2>
-<p>We are always welcome to collaborate our work with others.
-Please contact us through the mail (<cite>contact&#64;zetic.ai</cite>), and let’s innovate the world together!</p>
+<section id="personal-key">
+<h3>Personal Key<a class="headerlink" href="#personal-key" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>You can get Personal Key in with <a class="reference internal" href="../steps/generate_personal_key/index.html"><span class="std std-doc"><strong>SaaS</strong></span></a> method</p></li>
+</ul>
+</section>
+<section id="zeticmlange-framework-library">
+<h3><code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code> Library<a class="headerlink" href="#zeticmlange-framework-library" title="Link to this heading">#</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- Zetic MLange : [`ZeticMLange.framework`](https://github.com/zetic-ai/ZETIC_MLange_apps/tree/add_framework_1.0.1/ZeticLLMApps/ZeticLLMApp-iOS/ZeticMLange.framework)
+  - you can download [`ZeticMLange.framework.zip` (*click to download*)](https://github.com/zetic-ai/ZETIC_MLange_apps/raw/refs/heads/add_framework_1.0.1/files/ZeticMLange.framework.zip). Please unzip the library to your Xcode project.
+</pre></div>
+</div>
+</section>
+</section>
+<section id="download-and-embed-place-zeticmlange-framework-to-your-project">
+<h2>1. Download and embed place <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code> to your project<a class="headerlink" href="#download-and-embed-place-zeticmlange-framework-to-your-project" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>e.g. iOS application project structure</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>MyiOSApplicationProject
+└── MyiOSApplication
+└── ZeticMLange.framework
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="update-project-settings-to-use-zeticmlange-framework-to-your-project">
+<h2>2. Update project settings to use <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code> to your project<a class="headerlink" href="#update-project-settings-to-use-zeticmlange-framework-to-your-project" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>Embed <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code> to your application project
+<img alt="alt text" src="../_images/mlange_xcode_app_setting_01.png" /></p></li>
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">runpath</span></code> Search Paths to <code class="docutils literal notranslate"><span class="pre">&#64;executable_path/Frameworks</span></code>
+<img alt="alt text" src="../_images/mlange_xcode_app_setting_02.png" /></p></li>
+</ol>
+</section>
+<section id="initialize-and-run-zeticmlangemodel-model-with-your-model-key">
+<h2>3. Initialize and run <code class="docutils literal notranslate"><span class="pre">ZeticMLangeModel</span></code> model with your Model Key<a class="headerlink" href="#initialize-and-run-zeticmlangemodel-model-with-your-model-key" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>Zetic MLange model running (Swift)</p>
+<div class="highlight-swift notranslate"><div class="highlight"><pre><span></span><span class="c1">// 1. Zetic MLange model running</span>
+
+<span class="c1">// (1) Load Zetic MLange model</span>
+<span class="kd">let</span> <span class="nv">model</span> <span class="p">=</span> <span class="k">try</span> <span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="s">&quot;MLANGE_PERSONAL_KEY&quot;</span><span class="p">,</span> <span class="s">&quot;MLANGE_MODEL_KEY&quot;</span><span class="p">)</span>
+
+<span class="c1">// (2) Run model after preparing model inputs</span>
+<span class="kd">let</span> <span class="nv">inputs</span><span class="p">:</span> <span class="p">[</span><span class="n">Data</span><span class="p">]</span> <span class="p">=</span> <span class="p">[]</span> <span class="c1">// Prepare your inputs</span>
+<span class="k">try</span> <span class="n">model</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+
+<span class="c1">// (3) Get output data array</span>
+<span class="kd">let</span> <span class="nv">outputs</span> <span class="p">=</span> <span class="n">model</span><span class="p">.</span><span class="n">getOutputDataArray</span><span class="p">()</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="mlange-ios-sample-app">
+<h2>MLange iOS Sample App<a class="headerlink" href="#mlange-ios-sample-app" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Please refer <a class="reference external" href="https://github.com/zetic-ai/zetic_mlange_ios_sample">MLange iOS sample app</a> for more details</p></li>
+</ul>
+</section>
+<section id="additional-api-for-mlange-ios-usage">
+<h2>(+) Additional API for MLange-iOS usage<a class="headerlink" href="#additional-api-for-mlange-ios-usage" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>(This will be updated very soon!)</p>
+<ul>
+<li><p>As a default we set the model to use FP16 data type over NPU</p></li>
+<li><p>We set 1 more option for user to choose runtime mode for Better output accuracy.</p></li>
+</ul>
+</li>
+</ul>
 </section>
 </section>
 
@@ -405,20 +464,20 @@ Please contact us through the mail (<cite>contact&#64;zetic.ai</cite>), and let�
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../index.html"
+       href="android.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">ZETIC.MLange API</p>
+        <p class="prev-next-title">Android</p>
       </div>
     </a>
     <a class="right-next"
-       href="getting-started.html"
+       href="../examples/yolov8.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Getting Started</p>
+        <p class="prev-next-title">Object Detection (YOLOv8 / YOLOv11)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -438,8 +497,18 @@ Please contact us through the mail (<cite>contact&#64;zetic.ai</cite>), and let�
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-zetic-mlange-makes-different">What ZETIC.MLange makes different?</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#collaborations">Collaborations</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-to-xcode">Deploy to Xcode</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisite">Prerequisite</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-key">Model Key</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#personal-key">Personal Key</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zeticmlange-framework-library"><code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code> Library</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-and-embed-place-zeticmlange-framework-to-your-project">1. Download and embed place <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code> to your project</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#update-project-settings-to-use-zeticmlange-framework-to-your-project">2. Update project settings to use <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code> to your project</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-and-run-zeticmlangemodel-model-with-your-model-key">3. Initialize and run <code class="docutils literal notranslate"><span class="pre">ZeticMLangeModel</span></code> model with your Model Key</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mlange-ios-sample-app">MLange iOS Sample App</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-api-for-mlange-ios-usage">(+) Additional API for MLange-iOS usage</a></li>
 </ul>
   </nav></div>
 

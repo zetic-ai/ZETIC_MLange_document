@@ -157,21 +157,31 @@
 <li class="toctree-l1"><a class="reference internal" href="what-is-zetic-mlange.html">What is ZETIC.MLange?</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="model_profiling.html">Global Device Benchmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zetic-mlange-llm-model.html">ZETIC.MLange LLM Model</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Perpare Steps</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../steps/prepare_model/index.html">Prepare Model and Input(s)</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../steps/generate_model_key/index.html">Generate Model Key</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../steps/generate_model_key/generate-to-SaaS.html">SaaS Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../steps/generate_model_key/generate-to-CLI.html">CLI Method</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../steps/generate_personal_key/index.html">Generate Personal Key</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deploy Model</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../deploy_model/android.html">Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deploy_model/iOS.html">iOS</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../examples/yolov8.html">Object Detection (YOLOv8)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/yolov8.html">Object Detection (YOLOv8 / YOLOv11)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/face_detection.html">Face Detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/face_landmark.html">Face Landmark</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../examples/face_emotion_recognition.html">Face Emotion Recognition (EMO-AffectNet)</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Android</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../android/deploy-to-android-studio.html">Deploy to Android Studio</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">iOS</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../ios/deploy-to-xcode.html">Deploy to XCode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/yamnet.html">Audio Classification (YAMNet)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/whisper.html">Speech Recognition (Whisper)</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional features</span></p>
 <ul class="nav bd-sidenav">
@@ -325,12 +335,9 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-model">0. Prepare model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zetic-mlange-model-generator">1. ZETIC.MLange Model generator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-model-key-and-personal-key">1. Prepare Model Key and Personal Key</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-and-run-your-model-in-mobile-app">2. Initialize and run your model in mobile app</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mlange-model-status-checker">(+) MLange model status checker</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-outputs-per-status">[Expected outputs per status]</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#profiling-mlange-model">(+) Profiling MLange Model</a></li>
 </ul>
             </nav>
         </div>
@@ -352,136 +359,62 @@ We guarantee that your AI model and data remain confidential and we won’t use 
 </div>
 <section id="prepare-model">
 <h2>0. Prepare model<a class="headerlink" href="#prepare-model" title="Link to this heading">#</a></h2>
-<ul>
-<li><p>The input for the MLange is (1) [TorchScript, ONNX] model and (2) numpy input.</p></li>
-<li><p>To use Torch <code class="docutils literal notranslate"><span class="pre">nn.Module</span></code>, please trace your model first.</p>
 <ul class="simple">
-<li><p>Refer the following page for details: <a class="reference external" href="https://pytorch.org/docs/stable/generated/torch.jit.save.html">link</a></p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="kn">import</span> <span class="nn">torch</span>
-    <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-
-    <span class="n">torch_model</span> <span class="o">=</span> <span class="n">Torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
-
-    <span class="c1"># Trace Your PyTorch model</span>
-    <span class="n">torchscript_model</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">your_torch_model</span><span class="p">,</span> <span class="n">TORCH_INPUTS</span><span class="p">)</span>
-
-    <span class="c1"># (1) Save your traced model</span>
-    <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">torchscript_model</span><span class="p">,</span> <span class="n">OUTPUT_TORCHSCRIPT_MODEL_PATH</span><span class="p">)</span>
-
-    <span class="c1"># (2) Save your sample inputs to use</span>
-    <span class="n">np_input</span> <span class="o">=</span> <span class="n">TORCH_INPUT</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
-    <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;INPUT.npy&quot;</span><span class="p">,</span> <span class="n">np_input</span><span class="p">)</span>
-
-</pre></div>
-</div>
-</li>
-<li><p>Or you can get ONNX model from your own model</p>
-<ul class="simple">
-<li><p>Refer the following page for getting ONNX model: <a class="reference external" href="https://github.com/onnx/tutorials#converting-to-onnx-format">link</a></p></li>
-</ul>
-</li>
+<li><p>The input for the MLange is (1) [TorchScript, ONNX] model and (2) NumPy input(s).</p></li>
+<li><p>For more details, refer to <a class="reference internal" href="../steps/prepare_model/index.html"><span class="std std-doc">Prepare Model and Input(s)</span></a></p></li>
 </ul>
 </section>
-<section id="zetic-mlange-model-generator">
-<h2>1. ZETIC.MLange Model generator<a class="headerlink" href="#zetic-mlange-model-generator" title="Link to this heading">#</a></h2>
+<section id="prepare-model-key-and-personal-key">
+<h2>1. Prepare Model Key and Personal Key<a class="headerlink" href="#prepare-model-key-and-personal-key" title="Link to this heading">#</a></h2>
 <ul>
-<li><p>Run <code class="docutils literal notranslate"><span class="pre">mlange_gen</span></code> and get <code class="docutils literal notranslate"><span class="pre">MLANGE_MODEL_KEY</span></code> for your model</p>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">SaaS</span> <span class="pre">Method</span></code> or <code class="docutils literal notranslate"><span class="pre">CLI</span> <span class="pre">Method</span></code> to generate <strong>Model Key</strong>.</p>
 <ul class="simple">
-<li><p>Please save your <code class="docutils literal notranslate"><span class="pre">MLANGE_MODEL_KEY</span></code> to utilize in your app</p></li>
+<li><p>Generating <code class="docutils literal notranslate"><span class="pre">Model</span> <span class="pre">Key</span></code> Example</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">    </span>$<span class="w"> </span>wget<span class="w"> </span>https://github.com/zetic-ai/ZETIC_MLange_document/raw/main/bin/mlange_gen
-<span class="w">    </span>$<span class="w"> </span>./mlange_gen<span class="w"> </span>-m<span class="w"> </span>ai_model.pt<span class="w"> </span>-i<span class="w"> </span>input0.npy,input1.npy,...
-<span class="w">    </span><span class="c1"># You can also use onnx model for `mlange_gen`</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p>Expected Output: Save <code class="docutils literal notranslate"><span class="pre">MLANGE_MODEL_KEY</span></code></p></li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="c1"># Enter your email to receive updates from us</span>
-<span class="w">    </span><span class="c1"># Press Enter to skip</span>
-<span class="w">    </span>Email<span class="w"> </span>:<span class="w"> </span><span class="o">{</span>TYPE<span class="w"> </span>YOUR<span class="w"> </span>EMAIL<span class="o">}</span>
-
-<span class="w">    </span>File<span class="w"> </span>Uploading...
-
-<span class="w">    </span>MLange<span class="w"> </span>Model<span class="w"> </span>Key<span class="w"> </span>:<span class="w"> </span>MLANGE_MODEL_KEY
-<span class="w">    </span>MLange<span class="w"> </span>model<span class="w"> </span>profiling<span class="w"> </span>started.<span class="w"> </span>it<span class="w"> </span>might<span class="w"> </span>takes<span class="w"> </span><span class="m">10</span><span class="w"> </span>or<span class="w"> </span>more<span class="w"> </span>minutes.
-<span class="w">    </span>The<span class="w"> </span>number<span class="w"> </span>of<span class="w"> </span>model<span class="w"> </span>downloads<span class="w"> </span>is<span class="w"> </span>limited.<span class="w"> </span>You<span class="w"> </span>can<span class="w"> </span>download<span class="w"> </span>it<span class="w"> </span><span class="m">5</span><span class="w"> </span><span class="nb">times</span><span class="w"> </span>during<span class="w"> </span>the<span class="w"> </span>trial.
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generating Model Key with CLI Method.</span>
+$<span class="w"> </span>zetic<span class="w"> </span>gen<span class="w"> </span>-p<span class="w"> </span><span class="nv">$PROJECT_NAME</span><span class="w"> </span>-i<span class="w"> </span><span class="nv">$INPUT_0</span><span class="w"> </span>-i<span class="w"> </span><span class="nv">$INPUT_1</span><span class="w"> </span>....<span class="w"> </span><span class="nv">$MODEL_PATH</span>
 </pre></div>
 </div>
 </li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">SaaS</span> <span class="pre">Method</span></code> to generate <strong>Personal Key</strong></p>
+<ul class="simple">
+<li><p>Copying <code class="docutils literal notranslate"><span class="pre">Personal</span> <span class="pre">Key</span></code> Example
+<img alt="Copying-Personal-Key" src="../_images/2_copy_personal_key.png" /></p></li>
+</ul>
+</li>
+<li><p>For more details, refer to <a class="reference internal" href="../steps/generate_model_key/index.html"><span class="std std-doc">Generate Model Key</span></a> and <a class="reference internal" href="../steps/generate_personal_key/index.html"><span class="std std-doc">Generate Personal Key</span></a></p></li>
 </ul>
 </section>
 <section id="initialize-and-run-your-model-in-mobile-app">
 <h2>2. Initialize and run your model in mobile app<a class="headerlink" href="#initialize-and-run-your-model-in-mobile-app" title="Link to this heading">#</a></h2>
 <ul>
 <li><p>Android</p>
-<ul class="simple">
-<li><p>Please follow <a class="reference external" href="https://zetic-ai.github.io/ZETIC_MLange_document/android/deploy-to-android-studio.html">deploy-to-android-studio</a> page for details</p></li>
-<li><p>(Kotlin)</p></li>
-</ul>
-<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="kd">val</span><span class="w"> </span><span class="nv">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MLANGE_MODEL_KEY&quot;</span><span class="p">)</span>
-<span class="w">    </span><span class="n">model</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">YOUR_INPUT_BYTE_BUFFERS</span><span class="p">)</span>
+<ul>
+<li><p>Please follow <a class="reference internal" href="../deploy_model/android.html"><span class="std std-doc">deploy-to-android-studio</span></a> page for details</p></li>
+<li><p><strong>Kotlin</strong></p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="nv">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MLANGE_PERSONAL_KEY&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;MLANGE_MODEL_KEY&quot;</span><span class="p">)</span>
+<span class="n">model</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">YOUR_INPUT_BYTE_BUFFERS</span><span class="p">)</span>
 </pre></div>
 </div>
+</li>
+</ul>
 </li>
 <li><p>iOS</p>
-<ul class="simple">
-<li><p>Please follow <a class="reference external" href="https://zetic-ai.github.io/ZETIC_MLange_document/ios/deploy-to-xcode.html">deploy-to-xcode</a> page for details</p></li>
-<li><p>(Swift)</p></li>
-</ul>
-<div class="highlight-swift notranslate"><div class="highlight"><pre><span></span>    <span class="kd">let</span> <span class="nv">model</span> <span class="p">=</span> <span class="k">try</span> <span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="s">&quot;MLANGE_MODEL_KEY&quot;</span><span class="p">)</span>
-    <span class="n">model</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">YOUR_INPUT_DATA_ARRAY</span><span class="p">)</span>
+<ul>
+<li><p>Please follow <a class="reference internal" href="../deploy_model/iOS.html"><span class="std std-doc">deploy-to-xcode</span></a> page for details</p></li>
+<li><p><strong>Swift</strong></p>
+<div class="highlight-swift notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nv">model</span> <span class="p">=</span> <span class="k">try</span> <span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="s">&quot;MLANGE_PERSONAL_KEY&quot;</span><span class="p">,</span> <span class="s">&quot;MLANGE_MODEL_KEY&quot;</span><span class="p">)</span>
+<span class="n">model</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">YOUR_INPUT_DATA_ARRAY</span><span class="p">)</span>
 </pre></div>
 </div>
+</li>
+</ul>
 </li>
 </ul>
 </section>
-<section id="mlange-model-status-checker">
-<h2>(+) MLange model status checker<a class="headerlink" href="#mlange-model-status-checker" title="Link to this heading">#</a></h2>
-<ul>
-<li><p>We provide <code class="docutils literal notranslate"><span class="pre">mlange_stat</span></code> to check the profiling status of your model.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>./mlange_stat<span class="w"> </span>-k<span class="w"> </span>MLANGE_MODEL_KEY
-</pre></div>
-</div>
-</li>
-</ul>
-<section id="expected-outputs-per-status">
-<h3>[Expected outputs per status]<a class="headerlink" href="#expected-outputs-per-status" title="Link to this heading">#</a></h3>
-<ul>
-<li><p>(1) On converting</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>MLange<span class="w"> </span>Model<span class="w"> </span>:<span class="w"> </span>MODEL_KEY<span class="w"> </span>is<span class="w"> </span>on<span class="w"> </span>CONVERTING.
-Your<span class="w"> </span>model<span class="w"> </span>is<span class="w"> </span>converting<span class="w"> </span>to<span class="w"> </span>target<span class="w"> </span>libraries.
-It<span class="w"> </span>takes<span class="w"> </span>about<span class="w"> </span><span class="m">5</span><span class="w"> </span>~<span class="w"> </span><span class="m">10</span><span class="w"> </span>minutes.
-</pre></div>
-</div>
-</li>
-<li><p>(2) On benchmarking</p>
-<ul class="simple">
-<li><p>Benchmark result will be provided to starter package users only: <a class="reference external" href="https://zetic.ai/contact-sales">Contact us for detail</a></p></li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>MLange<span class="w"> </span>Model<span class="w"> </span>:<span class="w"> </span>MODEL_KEY<span class="w"> </span>is<span class="w"> </span>on<span class="w"> </span>BENCHMARKING
-Converted<span class="w"> </span>target<span class="w"> </span>libraries<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>benchmarked<span class="w"> </span>on<span class="w"> </span>a<span class="w"> </span>pool<span class="w"> </span>of<span class="w"> </span>real<span class="w"> </span>devices.
-It<span class="w"> </span>takes<span class="w"> </span>about<span class="w"> </span><span class="m">20</span><span class="w"> </span>~<span class="w"> </span><span class="m">30</span><span class="w"> </span>minutes.
-</pre></div>
-</div>
-</li>
-<li><p>(3) Available to use</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>MLange<span class="w"> </span>Model<span class="w"> </span>:<span class="w"> </span>MODEL_KEY<span class="w"> </span>is<span class="w"> </span>on<span class="w"> </span>AVAILABLE
-ZETIC.MLange<span class="w"> </span>Model<span class="w"> </span>is<span class="w"> </span>now<span class="w"> </span>ready<span class="w"> </span>to<span class="w"> </span>be<span class="w"> </span>used.
-Please<span class="w"> </span>refer<span class="w"> </span>the<span class="w"> </span>documentation<span class="w"> </span>to<span class="w"> </span>deploy<span class="w"> </span>on<span class="w"> </span>real<span class="w"> </span>device.<span class="w"> </span>https://docs.zetic.ai/
-You<span class="w"> </span>have<span class="w"> </span><span class="m">5</span><span class="w"> </span>downloads<span class="w"> </span>left.
-</pre></div>
-</div>
-</li>
-<li><p>(4) Failed</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>MLange<span class="w"> </span>Model<span class="w"> </span>:<span class="w"> </span>MODEL_KEY<span class="w"> </span>is<span class="w"> </span>on<span class="w"> </span>FAILED.
-Model<span class="w"> </span>profiling<span class="w"> </span>has<span class="w"> </span>failed.<span class="w"> </span>Please<span class="w"> </span>Contact<span class="w"> </span>us.<span class="w"> </span>https://zetic.ai/contact-sales
-</pre></div>
-</div>
-</li>
-</ul>
-</section>
+<section id="profiling-mlange-model">
+<h2>(+) Profiling MLange Model<a class="headerlink" href="#profiling-mlange-model" title="Link to this heading">#</a></h2>
+<p>With proving <a class="reference external" href="https://mlange.zetic.ai">SaaS</a>, You can also get much information about MLange Model. Including progress of making Model Key and how effectively the model can be used on various devices.</p>
 </section>
 </section>
 
@@ -531,12 +464,9 @@ Model<span class="w"> </span>profiling<span class="w"> </span>has<span class="w"
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-model">0. Prepare model</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zetic-mlange-model-generator">1. ZETIC.MLange Model generator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-model-key-and-personal-key">1. Prepare Model Key and Personal Key</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-and-run-your-model-in-mobile-app">2. Initialize and run your model in mobile app</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mlange-model-status-checker">(+) MLange model status checker</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-outputs-per-status">[Expected outputs per status]</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#profiling-mlange-model">(+) Profiling MLange Model</a></li>
 </ul>
   </nav></div>
 

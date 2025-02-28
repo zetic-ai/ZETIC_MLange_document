@@ -1,7 +1,7 @@
 
 # Future Works
 
-- ZETIC.ai is working hardly to implement below items to official releses
+- ZETIC.ai is working hardly to implement below items to official release
 
 ## 1. Preprocess to handle multi-modal Input features
 

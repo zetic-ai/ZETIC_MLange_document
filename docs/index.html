@@ -158,21 +158,31 @@
 <li class="toctree-l1"><a class="reference internal" href="overview/what-is-zetic-mlange.html">What is ZETIC.MLange?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="overview/getting-started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="overview/model_profiling.html">Global Device Benchmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview/zetic-mlange-llm-model.html">ZETIC.MLange LLM Model</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Perpare Steps</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="steps/prepare_model/index.html">Prepare Model and Input(s)</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="steps/generate_model_key/index.html">Generate Model Key</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="steps/generate_model_key/generate-to-SaaS.html">SaaS Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="steps/generate_model_key/generate-to-CLI.html">CLI Method</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="steps/generate_personal_key/index.html">Generate Personal Key</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deploy Model</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="deploy_model/android.html">Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deploy_model/iOS.html">iOS</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="examples/yolov8.html">Object Detection (YOLOv8)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/yolov8.html">Object Detection (YOLOv8 / YOLOv11)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/face_detection.html">Face Detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/face_landmark.html">Face Landmark</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/face_emotion_recognition.html">Face Emotion Recognition (EMO-AffectNet)</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Android</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="android/deploy-to-android-studio.html">Deploy to Android Studio</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">iOS</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="ios/deploy-to-xcode.html">Deploy to XCode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/yamnet.html">Audio Classification (YAMNet)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/whisper.html">Speech Recognition (Whisper)</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional features</span></p>
 <ul class="nav bd-sidenav">
@@ -344,7 +354,7 @@ document.write(`
 <h1>ZETIC.MLange API<a class="headerlink" href="#zetic-mlange-api" title="Link to this heading">#</a></h1>
 <a class="reference internal image-reference" href="_images/zetic_mlange_icon.png"><img alt="MLange icon image" src="_images/zetic_mlange_icon.png" style="width: 75px;" />
 </a>
-<p>ZETIC.MLange is an On-device AI runtime library supporting heterogeneous Mobile NPUs’ utilizations.</p>
+<p>ZETIC.MLange is an On-device AI runtime library supporting heterogeneous Mobile NPUs’ utilization.</p>
 <dl class="simple">
 <dt>We provide the real On-device AI immediately with key features below</dt><dd><ol class="arabic simple">
 <li><p><cite>End-to-end on-device AI</cite></p></li>
@@ -353,41 +363,49 @@ document.write(`
 </ol>
 </dd>
 </dl>
-<p>In this documentations, we provide instructions and examples for the ZETIC.MLange.
+<p>In these documentations, we provide instructions and examples for the ZETIC.MLange.
 Since we are keep developing very hardly with speed, Please contact ZETIC.ai for any kind of issues.</p>
 <p><em>This is the `Beta` version of the ZETIC.MLange before official release.</em></p>
 <hr class="docutils" />
 <section id="quick-start">
 <h2>Quick Start<a class="headerlink" href="#quick-start" title="Link to this heading">#</a></h2>
-<ol class="arabic simple" start="0">
-<li><p>Get <cite>mlange_gen</cite> to generate ZETIC.MLange</p></li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>wget<span class="w"> </span>https://github.com/zetic-ai/ZETIC_MLange_document/raw/main/bin/mlange_gen
+<ol class="arabic">
+<li><p>Go to <a class="reference external" href="https://mlange.zetic.ai">mlange.zetic.ai</a> and generate <strong>Model Key</strong> and <strong>Personal Key</strong></p>
+<ul class="simple">
+<li><p>Generating <strong>Model Key</strong> Example</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generating Model Key with CLI Method.</span>
+$<span class="w"> </span>zetic<span class="w"> </span>gen<span class="w"> </span>-p<span class="w"> </span><span class="nv">$PROJECT_NAME</span><span class="w"> </span>-i<span class="w"> </span><span class="nv">$INPUT_0</span><span class="w"> </span>-i<span class="w"> </span><span class="nv">$INPUT_1</span><span class="w"> </span>....<span class="w"> </span><span class="nv">$MODEL_PATH</span>
 </pre></div>
 </div>
-<ol class="arabic simple">
-<li><p>Let ZETIC.MLange automatically make runnable target model for heterogeneous target devices!</p></li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>./mlange_gen<span class="w"> </span>-m<span class="w"> </span>ai_model<span class="w"> </span>-i<span class="w"> </span>input0.npy,input1.npy,...
-
-<span class="c1"># ...</span>
-<span class="c1"># MLange Model Key : {YOUR_MODEL_KEY}</span>
-</pre></div>
-</div>
-<ol class="arabic simple" start="2">
+<ul class="simple">
+<li><p>Copying <strong>Personal Key</strong> Example</p></li>
+</ul>
+<img alt="copy-personal-key" class="align-center" src="_images/2_copy_personal_key.png" />
+<ul class="simple">
+<li><dl class="simple">
+<dt>For more detail, refer to folowing documentations:</dt><dd><ul>
+<li><p><a class="reference external" href="steps/generate_model_key/index.html">Generating Model Key</a></p></li>
+<li><p><a class="reference external" href="steps/generate_personal_key/index.html">Generating Personal Key</a></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</li>
 <li><p>Use your model key in Mobile Applications</p></li>
 </ol>
 <ul class="simple">
 <li><p>Android - Kotlin</p></li>
 </ul>
-<div class="highlight-Kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="nv">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;YOUR MODEL KEY&quot;</span><span class="p">)</span>
+<div class="highlight-Kotlin notranslate"><div class="highlight"><pre><span></span><span class="kd">val</span><span class="w"> </span><span class="nv">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;YOUR_PERSONAL_KEY&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;YOUR_MODEL_KEY&quot;</span><span class="p">)</span>
 <span class="n">model</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">YOUR_INPUT_BYTE_BUFFERS</span><span class="p">)</span>
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>iOS - Swift</p></li>
 </ul>
-<div class="highlight-Swift notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nv">model</span> <span class="p">=</span> <span class="k">try</span> <span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="s">&quot;YOUR MODEL KEY&quot;</span><span class="p">)</span>
+<div class="highlight-Swift notranslate"><div class="highlight"><pre><span></span><span class="kd">let</span> <span class="nv">model</span> <span class="p">=</span> <span class="k">try</span> <span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="s">&quot;YOUR_PERSONAL_KEY&quot;</span><span class="p">,</span> <span class="s">&quot;YOUR_MODEL_KEY&quot;</span><span class="p">)</span>
 <span class="n">model</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">YOUR_INPUT_DATA_ARRAY</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -400,27 +418,43 @@ Since we are keep developing very hardly with speed, Please contact ZETIC.ai for
 <li class="toctree-l1"><a class="reference internal" href="overview/what-is-zetic-mlange.html">What is ZETIC.MLange?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="overview/getting-started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="overview/model_profiling.html">Global Device Benchmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="overview/zetic-mlange-llm-model.html">ZETIC.MLange LLM Model</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Perpare Steps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="steps/prepare_model/index.html">Prepare Model and Input(s)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="steps/prepare_model/index.html#save-model-and-input-s">Save Model and Input(s)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="steps/prepare_model/index.html#check-the-order-of-model-input-s">Check the Order of Model Input(s)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="steps/generate_model_key/index.html">Generate Model Key</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="steps/generate_model_key/index.html#terms-about-generating-key">Terms about Generating Key</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="steps/generate_personal_key/index.html">Generate Personal Key</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="steps/generate_personal_key/index.html#how-to-generate-a-personal-key-using-saas">How to Generate a Personal Key Using SaaS</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deploy Model</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="deploy_model/android.html">Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deploy_model/iOS.html">iOS</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="examples/yolov8.html">Object Detection (YOLOv8)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/yolov8.html">Object Detection (YOLOv8 / YOLOv11)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/face_detection.html">Face Detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/face_landmark.html">Face Landmark</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/face_emotion_recognition.html">Face Emotion Recognition (EMO-AffectNet)</a></li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Android</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="android/deploy-to-android-studio.html">Deploy to Android Studio</a></li>
-</ul>
-</div>
-<div class="toctree-wrapper compound">
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">iOS</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="ios/deploy-to-xcode.html">Deploy to XCode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/yamnet.html">Audio Classification (YAMNet)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples/whisper.html">Speech Recognition (Whisper)</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">

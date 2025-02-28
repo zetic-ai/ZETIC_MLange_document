@@ -5,12 +5,12 @@ What is ZETIC.MLange?
 
  ZETIC.MLange is an **end-to-end**, **one-stop**, **heterogeneous target support** On-device AI Software.
 
-We unify all edge hardware's utilizations and make a new On-device AI ecosystem.
+We unify all edge hardware's utilization and make a new On-device AI ecosystem.
 There are three big innovations in On-device AI with ZETIC.MLange
 
 1. From model to target library, we provide **End-to-end on-device AI**.
 2. MLange just needs a model and sample input. MLange is a solid **One-stop deployment** software.
-3. MLange provides NPU utilizations for **Heterogeneous OS and target Hardware**. 
+3. MLange provides NPU utilization for **Heterogeneous OS and target Hardware**. 
     - **80% of NPUs in the global smartphone market** are supported, and more is to be covered soon. 
     - **99.34% of mobile OS** in the global smartphone market are supported.
 
@@ -26,7 +26,7 @@ You can immediately get an On-device AI Application.
 
     - We provide a **one-stop**, **end-to-end** pipeline for On-device AI.
     - We provide **target HW specified model Compression** as default, you can also select options in Default mode, Accuracy first mode, and latency first mode.
-    - We provide the most rapid deployment process for On-device AI, with Mobile NPU utilizations.
+    - We provide the most rapid deployment process for On-device AI, with Mobile NPU utilization.
 
 
 .. image:: mlange_pipeline.png

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Face Detection &#8212; ZETIC.MLange  documentation</title>
+    <title>Audio Classification (YAMNet) &#8212; ZETIC.MLange  documentation</title>
   
   
   
@@ -43,12 +43,12 @@
     <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
     <script src="../_static/copybutton.js?v=f281be69"></script>
     <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/face_detection';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/yamnet';</script>
     <script src="../_static/insert_hotjar.js?v=02373137"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Face Landmark" href="face_landmark.html" />
-    <link rel="prev" title="Object Detection (YOLOv8 / YOLOv11)" href="yolov8.html" />
+    <link rel="next" title="Speech Recognition (Whisper)" href="whisper.html" />
+    <link rel="prev" title="Face Emotion Recognition (EMO-AffectNet)" href="face_emotion_recognition.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -177,10 +177,10 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="yolov8.html">Object Detection (YOLOv8 / YOLOv11)</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Face Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="face_detection.html">Face Detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="face_landmark.html">Face Landmark</a></li>
 <li class="toctree-l1"><a class="reference internal" href="face_emotion_recognition.html">Face Emotion Recognition (EMO-AffectNet)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="yamnet.html">Audio Classification (YAMNet)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Audio Classification (YAMNet)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="whisper.html">Speech Recognition (Whisper)</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional features</span></p>
@@ -240,7 +240,7 @@
       
       
       
-      <li><a href="../_sources/examples/face_detection.md" target="_blank"
+      <li><a href="../_sources/examples/yamnet.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -324,7 +324,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Face Detection</h1>
+    <h1>Audio Classification (YAMNet)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -334,16 +334,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#github-repository">GitHub Repository</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-face-detection">What is Face Detection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-yamnet">What is YAMNet</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-by-step-implementation">Step-by-step implementation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">0. Prerequisites</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-zetic-mlange-model">1. Generate ZETIC.MLange model</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implement-zeticmlangemodel-with-your-model-key">2. Implement ZeticMLangeModel with your model key</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-face-detection-image-feature-extractor-for-android-and-ios">3. Prepare Face Detection image feature extractor for Android and iOS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-audio-feature-extractor-for-android-and-ios">3. Prepare Audio Feature Extractor for Android and iOS</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#total-face-detection-process-implementation">Total Face Detection Process implementation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-audio-classification-implementation">Complete Audio Classification Implementation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
             </nav>
@@ -356,36 +355,56 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="face-detection">
-<h1>Face Detection<a class="headerlink" href="#face-detection" title="Link to this heading">#</a></h1>
-<div class="video-container" style="text-align:center;position:relative;height:0;padding-bottom:56.25%;padding-top:0px;overflow:hidden;">
-<iframe style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://www.youtube.com/embed/GXtJKk7MdjQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="audio-classification-yamnet">
+<h1>Audio Classification (YAMNet)<a class="headerlink" href="#audio-classification-yamnet" title="Link to this heading">#</a></h1>
+<section id="what-is-yamnet">
+<h2>What is YAMNet<a class="headerlink" href="#what-is-yamnet" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>On-device AI Face Detection App with ZETIC.MLange</p></li>
-</ul>
-<section id="github-repository">
-<h2>GitHub Repository<a class="headerlink" href="#github-repository" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>We provide Face Detection demo application source code for both Android and iOS. <a class="reference external" href="https://github.com/zetic-ai/ZETIC_MLange_apps/tree/main/face_detection">repository</a></p></li>
-</ul>
-</section>
-<section id="what-is-face-detection">
-<h2>What is Face Detection<a class="headerlink" href="#what-is-face-detection" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>The Face Detection model in Google’s MediaPipe is a high-performance machine learning model designed for real-time face detection in images and video streams.</p></li>
-<li><p>Face Detection Google AI Document : <a class="reference external" href="https://ai.google.dev/edge/mediapipe/solutions/vision/face_detector">link</a></p></li>
+<li><p>YAMNet is a deep neural network that predicts audio events from the AudioSet-YouTube corpus</p></li>
+<li><p>YAMNet was trained on the AudioSet dataset, which includes 521 audio event classes</p></li>
+<li><p>YAMNet hugging face: <a class="reference external" href="https://huggingface.co/tensorflow/yamnet">link</a></p></li>
 </ul>
 </section>
 <section id="step-by-step-implementation">
 <h2>Step-by-step implementation<a class="headerlink" href="#step-by-step-implementation" title="Link to this heading">#</a></h2>
 <section id="prerequisites">
 <h3>0. Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h3>
-<p>Prepare the model <a class="reference external" href="https://github.com/patlevin/face-detection-tflite"><code class="docutils literal notranslate"><span class="pre">Face</span> <span class="pre">Detection</span></code></a> from GitHub.</p>
+<p>Prepare the YAMNet model from TensorFlow Hub or Hugging Face.</p>
 <ul>
-<li><p>Face Detection: Convert the TensorFlow model to the TorchScript model.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>tf2onnx
-$<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>tf2onnx.convert<span class="w"> </span>--tflite<span class="w"> </span>face_detection_short_range.tflite<span class="w"> </span>--output<span class="w"> </span>face_detection_short_range.onnx<span class="w"> </span>--opset<span class="w"> </span><span class="m">13</span>
+<li><p>YAMNet: Convert the TensorFlow model to ONNX format</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">import</span> <span class="nn">tensorflow_hub</span> <span class="k">as</span> <span class="nn">hub</span>
+<span class="kn">import</span> <span class="nn">tf2onnx</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">hub</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;https://tfhub.dev/google/yamnet/1&#39;</span><span class="p">)</span>
+<span class="n">concrete_func</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">signatures</span><span class="p">[</span><span class="s1">&#39;serving_default&#39;</span><span class="p">]</span>
+
+<span class="n">input_shape</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">16000</span><span class="p">]</span>
+<span class="n">sample_input</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="o">*</span><span class="n">input_shape</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="n">input_tensor</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">waveform</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+
+<span class="n">tf</span><span class="o">.</span><span class="n">saved_model</span><span class="o">.</span><span class="n">save</span><span class="p">(</span>
+    <span class="n">model</span><span class="p">,</span>
+    <span class="s2">&quot;yamnet_saved_model&quot;</span><span class="p">,</span>
+    <span class="n">signatures</span><span class="o">=</span><span class="n">concrete_func</span>
+<span class="p">)</span>
+
+<span class="c1"># Now use tf2onnx command line</span>
+<span class="c1"># python -m tf2onnx.convert --saved-model yamnet_saved_model --output yamnet.onnx --opset 13</span>
+</pre></div>
+</div>
+</li>
+<li><p>Prepare sample input for converting:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="n">sample_rate</span> <span class="o">=</span> <span class="mi">16000</span>
+<span class="n">duration</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># 1 second</span>
+<span class="n">waveform</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mi">440</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">sample_rate</span><span class="p">))</span>
+<span class="n">waveform</span> <span class="o">=</span> <span class="n">waveform</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<span class="n">waveform</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">waveform</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;waveform.npy&#39;</span><span class="p">,</span> <span class="n">waveform</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
@@ -394,24 +413,20 @@ $<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span
 <section id="generate-zetic-mlange-model">
 <h3>1. Generate ZETIC.MLange model<a class="headerlink" href="#generate-zetic-mlange-model" title="Link to this heading">#</a></h3>
 <ul>
-<li><p>Get your own MLange model key from the model</p>
-<ul class="simple">
-<li><p>If you want to get your own model key, please get your own model key as below.</p></li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="c1"># (1) Get mlange_gen</span>
-<span class="w">    </span>$<span class="w"> </span>wget<span class="w"> </span>https://github.com/zetic-ai/ZETIC_MLange_document/raw/main/bin/mlange_gen<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>chmod<span class="w"> </span><span class="m">755</span><span class="w"> </span>mlange_gen
+<li><p>Get your own MLange model key</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># (1) Get mlange_gen</span>
+$<span class="w"> </span>wget<span class="w"> </span>https://github.com/zetic-ai/ZETIC_MLange_document/raw/main/bin/mlange_gen<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>chmod<span class="w"> </span><span class="m">755</span><span class="w"> </span>mlange_gen
 
-<span class="w">    </span><span class="c1"># (2) Run mlange_gen for two models</span>
-<span class="w">    </span><span class="c1">#    - Face detection model</span>
-<span class="w">    </span>$<span class="w"> </span>./mlange_gen<span class="w"> </span>-m<span class="w"> </span>face_detection_short_range.onnx<span class="w"> </span>-i<span class="w"> </span>input.npy
+<span class="c1"># (2) Run mlange_gen for YAMNet model</span>
+$<span class="w"> </span>./mlange_gen<span class="w"> </span>-m<span class="w"> </span>yamnet.onnx<span class="w"> </span>-i<span class="w"> </span>waveform.npy
 </pre></div>
 </div>
 <ul class="simple">
 <li><p>Expected output</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">    </span>...
-<span class="w">    </span>MLange<span class="w"> </span>Model<span class="w"> </span>Key<span class="w"> </span>:<span class="w"> </span><span class="o">{</span>YOUR_FACE_DETECTION_MODEL_KEY<span class="o">}</span>
-<span class="w">    </span>...
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>...
+MLange<span class="w"> </span>Model<span class="w"> </span>Key<span class="w"> </span>:<span class="w"> </span><span class="o">{</span>YOUR_YAMNET_MODEL_KEY<span class="o">}</span>
+...
 </pre></div>
 </div>
 </li>
@@ -420,138 +435,116 @@ $<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span
 <section id="implement-zeticmlangemodel-with-your-model-key">
 <h3>2. Implement ZeticMLangeModel with your model key<a class="headerlink" href="#implement-zeticmlangemodel-with-your-model-key" title="Link to this heading">#</a></h3>
 <ul>
-<li><p>We prepared a model key for the demo app: <code class="docutils literal notranslate"><span class="pre">face_detection</span></code>. You can use the model key to try the Zetic.MLange Application.</p></li>
+<li><p>We provide a model key for the demo app: <code class="docutils literal notranslate"><span class="pre">yamnet</span></code>. You can use this model key to try the Zetic.MLange Application.</p></li>
 <li><p>Android app</p>
 <ul class="simple">
-<li><p>For the detailed application setup, please follow <a class="reference external" href="https://docs.zetic.ai/android/deploy-to-android-studio.html"><code class="docutils literal notranslate"><span class="pre">deploy</span> <span class="pre">to</span> <span class="pre">Android</span> <span class="pre">Studio</span></code></a> page</p></li>
+<li><p>For detailed application setup, please follow <a class="reference external" href="https://docs.zetic.ai/android/deploy-to-android-studio.html"><code class="docutils literal notranslate"><span class="pre">deploy</span> <span class="pre">to</span> <span class="pre">Android</span> <span class="pre">Studio</span></code></a></p></li>
 <li><p>ZETIC.MLange usage in <code class="docutils literal notranslate"><span class="pre">Kotlin</span></code></p></li>
 </ul>
-<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="nv">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="n">face_detection</span><span class="err">&#39;</span><span class="p">)</span>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="nv">yamnetModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;yamnet&quot;</span><span class="p">)</span>
 
-<span class="w">  </span><span class="n">model</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+<span class="w">  </span><span class="n">yamnetModel</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
 
-<span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="nv">outputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model</span><span class="p">.</span><span class="na">outputBuffers</span>
+<span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="nv">outputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yamnetModel</span><span class="p">.</span><span class="na">outputBuffers</span>
 </pre></div>
 </div>
 </li>
 <li><p>iOS app</p>
 <ul class="simple">
-<li><p>For the detailed application setup, please follow <a class="reference external" href="https://docs.zetic.ai/ios/deploy-to-xcode.html"><code class="docutils literal notranslate"><span class="pre">deploy</span> <span class="pre">to</span> <span class="pre">XCode</span></code></a> page</p></li>
+<li><p>For detailed application setup, please follow <a class="reference external" href="https://docs.zetic.ai/ios/deploy-to-xcode.html"><code class="docutils literal notranslate"><span class="pre">deploy</span> <span class="pre">to</span> <span class="pre">XCode</span></code></a></p></li>
 <li><p>ZETIC.MLange usage in <code class="docutils literal notranslate"><span class="pre">Swift</span></code></p></li>
 </ul>
-<div class="highlight-swift notranslate"><div class="highlight"><pre><span></span>  <span class="kd">let</span> <span class="nv">model</span> <span class="p">=</span> <span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="err">&#39;</span><span class="n">face_detection</span><span class="err">&#39;</span><span class="p">)</span>
+<div class="highlight-swift notranslate"><div class="highlight"><pre><span></span>  <span class="kd">let</span> <span class="nv">yamnetModel</span> <span class="p">=</span> <span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="s">&quot;yamnet&quot;</span><span class="p">)</span>
 
-  <span class="n">model</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+  <span class="n">yamnetModel</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
 
-  <span class="kd">let</span> <span class="nv">outputs</span> <span class="p">=</span> <span class="n">model</span><span class="p">.</span><span class="n">getOutputDataArray</span><span class="p">()</span>
+  <span class="kd">let</span> <span class="nv">outputs</span> <span class="p">=</span> <span class="n">yamnetModel</span><span class="p">.</span><span class="n">getOutputDataArray</span><span class="p">()</span>
 </pre></div>
 </div>
 </li>
 </ul>
 </section>
-<section id="prepare-face-detection-image-feature-extractor-for-android-and-ios">
-<h3>3. Prepare Face Detection image feature extractor for Android and iOS<a class="headerlink" href="#prepare-face-detection-image-feature-extractor-for-android-and-ios" title="Link to this heading">#</a></h3>
+<section id="prepare-audio-feature-extractor-for-android-and-ios">
+<h3>3. Prepare Audio Feature Extractor for Android and iOS<a class="headerlink" href="#prepare-audio-feature-extractor-for-android-and-ios" title="Link to this heading">#</a></h3>
 <ul>
-<li><p>We provide a Face Detection feature extractor as an Android and iOS module.</p>
+<li><p>We provide an Audio Feature Extractor as an Android and iOS module</p>
 <ul class="simple">
-<li><p>(The Face Detection feature extractor extension will be exposed as an open-source repository soon.)</p></li>
-<li><p>You can use your own feature extractor if you have one for Face Detection usage</p></li>
+<li><p>You can use your own feature extractor if you have one for audio processing</p></li>
 </ul>
 </li>
 <li><p>For Android</p>
-<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="c1">// (0) Initialize ZeticMLangeFeatureFaceDetection</span>
-<span class="kd">val</span><span class="w"> </span><span class="nv">feature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FaceDetectionWrapper</span><span class="p">()</span>
-
-<span class="c1">// (1) Preprocess bitmap and get processed float array</span>
-<span class="kd">val</span><span class="w"> </span><span class="nv">inputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">feature</span><span class="p">.</span><span class="na">preprocess</span><span class="p">(</span><span class="n">bitmap</span><span class="p">)</span>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="c1">// (1) Preprocess audio data and get processed float array</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">inputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">preprocess</span><span class="p">(</span><span class="n">audioData</span><span class="p">)</span>
 
 <span class="p">...</span>
 
-<span class="c1">// (2) Postprocess to bitmap</span>
-<span class="kd">val</span><span class="w"> </span><span class="nv">resultBitmap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">feature</span><span class="p">.</span><span class="na">postprocess</span><span class="p">(</span><span class="n">outputs</span><span class="p">)</span>
+<span class="c1">// (2) Postprocess model outputs</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">results</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">postprocess</span><span class="p">(</span><span class="n">outputs</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
 <li><p>For iOS</p>
 <div class="highlight-swift notranslate"><div class="highlight"><pre><span></span><span class="kd">import</span> <span class="nc">ZeticMLange</span>
 
-<span class="c1">// (0) Initialize ZeticMLangeFeatureFaceDetection</span>
-<span class="kd">let</span> <span class="nv">feature</span> <span class="p">=</span> <span class="n">FaceDetectionWrapper</span><span class="p">()</span>
-
-<span class="c1">// (1) Preprocess UIImage and get processed float array</span>
-<span class="kd">let</span> <span class="nv">inputs</span> <span class="p">=</span> <span class="n">feature</span><span class="p">.</span><span class="n">preprocess</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<span class="c1">// (1) Preprocess audio data and get processed float array</span>
+<span class="kd">let</span> <span class="nv">inputs</span> <span class="p">=</span> <span class="n">preprocess</span><span class="p">(</span><span class="n">audioData</span><span class="p">)</span>
 
 <span class="p">...</span>
 
-<span class="c1">// (2) Postprocess to UIImage</span>
-<span class="kd">let</span> <span class="nv">resultBitmap</span> <span class="p">=</span> <span class="n">feature</span><span class="p">.</span><span class="n">postprocess</span><span class="p">(&amp;</span><span class="n">outputs</span><span class="p">)</span>
+<span class="c1">// (2) Postprocess model outputs</span>
+<span class="kd">let</span> <span class="nv">results</span> <span class="p">=</span> <span class="n">postprocess</span><span class="p">(&amp;</span><span class="n">outputs</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
 </ul>
 </section>
 </section>
-<section id="total-face-detection-process-implementation">
-<h2>Total Face Detection Process implementation<a class="headerlink" href="#total-face-detection-process-implementation" title="Link to this heading">#</a></h2>
-<p>Pipelining two models.</p>
+<section id="complete-audio-classification-implementation">
+<h2>Complete Audio Classification Implementation<a class="headerlink" href="#complete-audio-classification-implementation" title="Link to this heading">#</a></h2>
 <ul>
 <li><p>For Android</p>
-<ul>
-<li><p>Kotlin</p>
 <ul class="simple">
-<li><p>Face Detection Model</p></li>
+<li><p>Kotlin</p></li>
 </ul>
-<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="c1">// (0) Initialization Models</span>
-<span class="kd">val</span><span class="w"> </span><span class="nv">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="n">face_detection</span><span class="err">&#39;</span><span class="p">)</span>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="c1">// (0) Initialize Model</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">yamnetModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;yamnet&quot;</span><span class="p">)</span>
 
-<span class="c1">// (1) Initialization Feature</span>
-<span class="kd">val</span><span class="w"> </span><span class="nv">faceDetection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FaceDetectionWrapper</span><span class="p">()</span>
+<span class="c1">// (1) Preprocess Audio</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">inputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">preprocess</span><span class="p">(</span><span class="n">audioData</span><span class="p">)</span>
 
-<span class="c1">// (2) Preprocess Image</span>
-<span class="kd">val</span><span class="w"> </span><span class="nv">faceDetectionInputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">faceDetectionFeature</span><span class="p">.</span><span class="na">preprocess</span><span class="p">(</span><span class="n">imagePtr</span><span class="p">)</span>
+<span class="c1">// (2) Run Model</span>
+<span class="n">yamnetModel</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">outputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yamnetModel</span><span class="p">.</span><span class="na">outputBuffers</span>
 
-<span class="c1">// (3) Process Model</span>
-<span class="n">model</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">faceDetectionInputs</span><span class="p">)</span>
-<span class="kd">val</span><span class="w"> </span><span class="nv">faceDetectionOutputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model</span><span class="p">.</span><span class="na">getOutputBuffers</span><span class="p">()</span>
-
-<span class="c1">// (4) Postprocess model run result</span>
-<span class="kd">val</span><span class="w"> </span><span class="nv">faceDetectionPostprocessed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">faceDetectionFeature</span><span class="p">.</span><span class="na">postprocess</span><span class="p">(</span><span class="n">faceDetectionOutputs</span><span class="p">)</span>
+<span class="c1">// (3) Postprocess Results</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">predictions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">postprocess</span><span class="p">(</span><span class="n">outputs</span><span class="p">)</span>
 </pre></div>
 </div>
-</li>
-</ul>
 </li>
 <li><p>For iOS</p>
-<ul>
-<li><p>Swift</p>
 <ul class="simple">
-<li><p>Face Detection Model</p></li>
+<li><p>Swift</p></li>
 </ul>
-<div class="highlight-swift notranslate"><div class="highlight"><pre><span></span><span class="c1">// (0) Initialization Models</span>
-<span class="kd">let</span> <span class="nv">model</span> <span class="p">=</span> <span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="err">&#39;</span><span class="n">face_detection</span><span class="err">&#39;</span><span class="p">)</span>
+<div class="highlight-swift notranslate"><div class="highlight"><pre><span></span><span class="c1">// (0) Initialize Model</span>
+<span class="kd">let</span> <span class="nv">yamnetModel</span> <span class="p">=</span> <span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="s">&quot;yamnet&quot;</span><span class="p">)</span>
 
-<span class="c1">// (1) Initialization Feature</span>
-<span class="kd">let</span> <span class="nv">faceDetection</span> <span class="p">=</span> <span class="n">FaceDetectionWrapper</span><span class="p">()</span>
+<span class="c1">// (1) Preprocess Audio</span>
+<span class="kd">let</span> <span class="nv">inputs</span> <span class="p">=</span> <span class="n">preprocess</span><span class="p">(</span><span class="n">audioData</span><span class="p">)</span>
 
-<span class="c1">// (2) Preprocess Image</span>
-<span class="kd">let</span> <span class="nv">faceDetectionInputs</span> <span class="p">=</span> <span class="n">faceDetection</span><span class="p">.</span><span class="n">preprocess</span><span class="p">(</span><span class="n">uiImage</span><span class="p">)</span>
+<span class="c1">// (2) Run Model</span>
+<span class="n">yamnetModel</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">outputs</span> <span class="p">=</span> <span class="n">yamnetModel</span><span class="p">.</span><span class="n">getOutputDataArray</span><span class="p">()</span>
 
-<span class="c1">// (3) Process Model</span>
-<span class="n">model</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">faceDetectionInputs</span><span class="p">)</span>
-<span class="kd">let</span> <span class="nv">faceDetectionOutputs</span> <span class="p">=</span> <span class="n">model</span><span class="p">.</span><span class="n">getOutputDataArray</span><span class="p">()</span>
-
-<span class="c1">// (4) Postprocess model run result</span>
-<span class="kd">let</span> <span class="nv">faceDetectionPostprocessed</span> <span class="p">=</span> <span class="n">faceDetection</span><span class="p">.</span><span class="n">postprocess</span><span class="p">(&amp;</span><span class="n">faceDetectionOutputs</span><span class="p">)</span>
+<span class="c1">// (3) Postprocess Results</span>
+<span class="kd">let</span> <span class="nv">predictions</span> <span class="p">=</span> <span class="n">postprocess</span><span class="p">(&amp;</span><span class="n">outputs</span><span class="p">)</span>
 </pre></div>
 </div>
-</li>
-</ul>
 </li>
 </ul>
 </section>
 <section id="conclusion">
 <h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
-<p>With ZETIC.MLange, building your own on-device AI applications with NPU utilization is incredibly easy. We’ve developed a custom OpenCV module and an ML application pipeline, making the implementation of models like face detection remarkably simple and efficient. This streamlined approach allows you to integrate advanced features with minimal effort. We’re continually uploading new models to our examples and <a class="reference external" href="https://huggingface.co/ZETIC-ai">HuggingFace</a> page. Stay tuned, and <a class="reference external" href="https://zetic.ai/contact-sales">contact us</a> for collaborations!</p>
+<p>With ZETIC.MLange, implementing on-device audio classification with NPU acceleration is straightforward and efficient. YAMNet provides robust audio event detection capabilities across a wide range of categories. The simple pipeline of audio preprocessing and classification makes it easy to integrate into your applications. We’re continuously adding new models to our examples and <a class="reference external" href="https://huggingface.co/ZETIC-ai">HuggingFace</a> page. Stay tuned, and <a class="reference external" href="https://zetic.ai/contact-sales">contact us</a> for collaborations!</p>
 </section>
 </section>
 
@@ -567,20 +560,20 @@ $<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="yolov8.html"
+       href="face_emotion_recognition.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Object Detection (YOLOv8 / YOLOv11)</p>
+        <p class="prev-next-title">Face Emotion Recognition (EMO-AffectNet)</p>
       </div>
     </a>
     <a class="right-next"
-       href="face_landmark.html"
+       href="whisper.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Face Landmark</p>
+        <p class="prev-next-title">Speech Recognition (Whisper)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -600,16 +593,15 @@ $<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#github-repository">GitHub Repository</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-face-detection">What is Face Detection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-yamnet">What is YAMNet</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-by-step-implementation">Step-by-step implementation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">0. Prerequisites</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-zetic-mlange-model">1. Generate ZETIC.MLange model</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implement-zeticmlangemodel-with-your-model-key">2. Implement ZeticMLangeModel with your model key</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-face-detection-image-feature-extractor-for-android-and-ios">3. Prepare Face Detection image feature extractor for Android and iOS</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-audio-feature-extractor-for-android-and-ios">3. Prepare Audio Feature Extractor for Android and iOS</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#total-face-detection-process-implementation">Total Face Detection Process implementation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-audio-classification-implementation">Complete Audio Classification Implementation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
   </nav></div>

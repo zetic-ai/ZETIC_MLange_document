@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Object Detection (YOLOv8) &#8212; ZETIC.MLange  documentation</title>
+    <title>Object Detection (YOLOv8 / YOLOv11) &#8212; ZETIC.MLange  documentation</title>
   
   
   
@@ -48,7 +48,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Face Detection" href="face_detection.html" />
-    <link rel="prev" title="Global Device Benchmark" href="../overview/model_profiling.html" />
+    <link rel="prev" title="iOS" href="../deploy_model/iOS.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -157,21 +157,31 @@
 <li class="toctree-l1"><a class="reference internal" href="../overview/what-is-zetic-mlange.html">What is ZETIC.MLange?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview/getting-started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview/model_profiling.html">Global Device Benchmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/zetic-mlange-llm-model.html">ZETIC.MLange LLM Model</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Perpare Steps</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../steps/prepare_model/index.html">Prepare Model and Input(s)</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../steps/generate_model_key/index.html">Generate Model Key</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../steps/generate_model_key/generate-to-SaaS.html">SaaS Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../steps/generate_model_key/generate-to-CLI.html">CLI Method</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../steps/generate_personal_key/index.html">Generate Personal Key</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deploy Model</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../deploy_model/android.html">Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deploy_model/iOS.html">iOS</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Object Detection (YOLOv8)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Object Detection (YOLOv8 / YOLOv11)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="face_detection.html">Face Detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="face_landmark.html">Face Landmark</a></li>
 <li class="toctree-l1"><a class="reference internal" href="face_emotion_recognition.html">Face Emotion Recognition (EMO-AffectNet)</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Android</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../android/deploy-to-android-studio.html">Deploy to Android Studio</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">iOS</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../ios/deploy-to-xcode.html">Deploy to XCode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="yamnet.html">Audio Classification (YAMNet)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whisper.html">Speech Recognition (Whisper)</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional features</span></p>
 <ul class="nav bd-sidenav">
@@ -314,7 +324,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Object Detection (YOLOv8)</h1>
+    <h1>Object Detection (YOLOv8 / YOLOv11)</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -324,11 +334,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#github-repository">Github repository</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-yolov8">What is YOLOv8</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#github-repository">GitHub repository</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-yolov11">What is YOLOv11</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-by-step-implementation">Step-by-step implementation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">0. Prerequisites</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-the-yolov8-model-and-input-sample">Prepare the YOLOv8 model and input sample</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-the-yolo11-model-and-input-sample">Prepare the YOLO11 model and input sample</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-zetic-mlange-model-key">1. Generate ZETIC.MLange model key</a></li>
@@ -336,7 +346,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-yolov8-image-feature-extractor-for-android-and-ios">3. Prepare YOLOv8 image feature extractor for Android and iOS</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#total-yolov8-process-implementation">Total YOLOv8 Process implementation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#total-yolov11-process-implementation">Total YOLOv11 Process implementation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
             </nav>
@@ -349,24 +359,24 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="object-detection-yolov8">
-<h1>Object Detection (YOLOv8)<a class="headerlink" href="#object-detection-yolov8" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="object-detection-yolov8-yolov11">
+<h1>Object Detection (YOLOv8 / YOLOv11)<a class="headerlink" href="#object-detection-yolov8-yolov11" title="Link to this heading">#</a></h1>
 <p><img alt="Image" src="../_images/img_yolov8_demo.png" /></p>
 <ul class="simple">
-<li><p>On-device AI Object Detection App with ZETIC.MLange (YOLOv8)</p></li>
+<li><p>On-device AI Object Detection App with ZETIC.MLange (YOLOv11)</p></li>
 </ul>
 <section id="github-repository">
-<h2>Github repository<a class="headerlink" href="#github-repository" title="Link to this heading">#</a></h2>
+<h2>GitHub repository<a class="headerlink" href="#github-repository" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>We provide YOLOv8 demo application source code for both Android and iOS applications for the YOLOv8 demo. <a class="reference external" href="https://github.com/zetic-ai/ZETIC_MLange_apps/tree/main/yolov8">repository</a></p></li>
+<li><p>We provide YOLOv11 demo application source code for both Android and iOS applications for the YOLOv8 demo. If input model key is changed to YOLOv8, you can experience YOLOv8 also. <a class="reference external" href="https://github.com/zetic-ai/ZETIC_MLange_apps/tree/main/yolov8">repository</a></p></li>
 </ul>
 </section>
-<section id="what-is-yolov8">
-<h2>What is YOLOv8<a class="headerlink" href="#what-is-yolov8" title="Link to this heading">#</a></h2>
+<section id="what-is-yolov11">
+<h2>What is YOLOv11<a class="headerlink" href="#what-is-yolov11" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p>The YOLOv8 is the latest version of the acclaimed real-time object detection and image segmentation model.</p></li>
-<li><p>YOLOv8 document page by Ultralytics: <a class="reference external" href="https://docs.ultralytics.com">link</a></p></li>
-<li><p>Currently, we only support detector mode. We’ll support other features for the YOLOv8 model later.</p></li>
+<li><p>The YOLOv11 is the latest version of the acclaimed real-time object detection and image segmentation model.</p></li>
+<li><p>YOLOv11 document page by Ultralytics: <a class="reference external" href="https://docs.ultralytics.com">link</a></p></li>
+<li><p>Currently, we only support detector mode. We’ll support other features for the YOLOv11 model later.</p></li>
 </ul>
 </section>
 <section id="step-by-step-implementation">
@@ -376,18 +386,18 @@ document.write(`
 <ul class="simple">
 <li><p>We prepared the model key for the model for you. You can skip to step <code class="docutils literal notranslate"><span class="pre">2</span></code> if you want.</p></li>
 </ul>
-<section id="prepare-the-yolov8-model-and-input-sample">
-<h4>Prepare the YOLOv8 model and input sample<a class="headerlink" href="#prepare-the-yolov8-model-and-input-sample" title="Link to this heading">#</a></h4>
+<section id="prepare-the-yolo11-model-and-input-sample">
+<h4>Prepare the YOLO11 model and input sample<a class="headerlink" href="#prepare-the-yolo11-model-and-input-sample" title="Link to this heading">#</a></h4>
 <ul>
-<li><p>Export YOLOv8 model</p>
+<li><p>Export YOLO11 model</p>
 <ul class="simple">
-<li><p>You will get <code class="docutils literal notranslate"><span class="pre">yolov8n.onnx</span></code> model after the following script</p></li>
+<li><p>You will get <code class="docutils literal notranslate"><span class="pre">yolo11n.onnx</span></code> model after the following script</p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">ultralytics</span> <span class="kn">import</span> <span class="n">YOLO</span>
 <span class="kn">import</span> <span class="nn">torch</span>
 
-<span class="c1"># Load a YOLOv8 model</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s2">&quot;yolov8n.pt&quot;</span><span class="p">)</span>
+<span class="c1"># Load a YOLOv11 model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">YOLO</span><span class="p">(</span><span class="s2">&quot;yolo11n.pt&quot;</span><span class="p">)</span>
 
 <span class="c1"># Export the model</span>
 <span class="n">model</span><span class="o">.</span><span class="n">export</span><span class="p">(</span><span class="nb">format</span><span class="o">=</span><span class="s2">&quot;onnx&quot;</span><span class="p">,</span> <span class="n">opset</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">simplify</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">dynamic</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">imgsz</span><span class="o">=</span><span class="mi">640</span><span class="p">)</span>
@@ -397,7 +407,7 @@ document.write(`
 <li><p>Prepare input sample as NumPy array</p>
 <ul class="simple">
 <li><p>You can use the default sample input that we prepared: <a class="reference external" href="https://github.com/zetic-ai/ZETIC_MLange_apps/raw/main/yolov8/samples/yolo8_detector_input.npy">link</a></p></li>
-<li><p>Default input size for <code class="docutils literal notranslate"><span class="pre">yolov8n</span></code> model</p></li>
+<li><p>Default input size for <code class="docutils literal notranslate"><span class="pre">yolo11n</span></code> model</p></li>
 <li><p>Or prepare input from your image file with the below function <code class="docutils literal notranslate"><span class="pre">preprocess_image(...)</span></code></p></li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cv2</span>
@@ -428,7 +438,7 @@ document.write(`
 <span class="w">    </span>$<span class="w"> </span>wget<span class="w"> </span>https://github.com/zetic-ai/ZETIC_MLange_document/raw/main/bin/mlange_gen<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>chmod<span class="w"> </span><span class="m">755</span><span class="w"> </span>mlange_gen
 
 <span class="w">    </span><span class="c1"># (2) Run mlange_gen </span>
-<span class="w">    </span>$<span class="w"> </span>./mlange_gen<span class="w"> </span>-m<span class="w"> </span>yolov8n.onnx<span class="w"> </span>-i<span class="w"> </span>yolo8_detector_input.npy
+<span class="w">    </span>$<span class="w"> </span>./mlange_gen<span class="w"> </span>-m<span class="w"> </span>yolo11n.onnx<span class="w"> </span>-i<span class="w"> </span>images.npy
 
 <span class="w">    </span><span class="c1"># Expected output</span>
 <span class="w">    </span><span class="c1"># ...</span>
@@ -442,8 +452,8 @@ document.write(`
 <section id="implement-zeticmlangemodel-with-your-model-key">
 <h3>2. Implement ZeticMLangeModel with your model key<a class="headerlink" href="#implement-zeticmlangemodel-with-your-model-key" title="Link to this heading">#</a></h3>
 <ul>
-<li><p>We prepared a model key for the demo app: <code class="docutils literal notranslate"><span class="pre">yolo-v8n-test</span></code>. You can use the model key to try the Zetic.MLange Application.</p></li>
-<li><p>Anroid app</p>
+<li><p>We prepared a model key for the demo app: <code class="docutils literal notranslate"><span class="pre">yolo-v11n-test</span></code>. You can use the model key to try the Zetic.MLange Application.</p></li>
+<li><p>Android app</p>
 <ul class="simple">
 <li><p>For the detailed application setup, please follow <a class="reference external" href="https://docs.zetic.ai/android/deploy-to-android-studio.html"><code class="docutils literal notranslate"><span class="pre">deploy</span> <span class="pre">to</span> <span class="pre">Android</span> <span class="pre">Studio</span></code></a> page</p></li>
 <li><p>ZETIC.MLange usage in <code class="docutils literal notranslate"><span class="pre">Java</span></code></p>
@@ -452,11 +462,11 @@ document.write(`
 </ul>
 </li>
 </ul>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="n">ZeticMLangeModel</span><span class="w"> </span><span class="n">zeticMLangeYoloVModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;YOUR_YOLOV8_MODEL_KEY&quot;</span><span class="p">);</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="n">ZeticMLangeModel</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;YOUR_YOLOV11_MODEL_KEY&quot;</span><span class="p">);</span>
 
-<span class="w">  </span><span class="n">zeticMLangeYoloVModel</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">inputs</span><span class="p">);</span>
+<span class="w">  </span><span class="n">model</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">inputs</span><span class="p">);</span>
 
-<span class="w">  </span><span class="n">ByteBuffer</span><span class="o">[]</span><span class="w"> </span><span class="n">outputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zeticMLangeYoloVModel</span><span class="p">.</span><span class="na">getOutputBuffers</span><span class="p">();</span>
+<span class="w">  </span><span class="n">ByteBuffer</span><span class="o">[]</span><span class="w"> </span><span class="n">outputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model</span><span class="p">.</span><span class="na">getOutputBuffers</span><span class="p">();</span>
 </pre></div>
 </div>
 </li>
@@ -465,11 +475,11 @@ document.write(`
 <li><p>For the detailed application setup, please follow <a class="reference external" href="https://docs.zetic.ai/ios/deploy-to-xcode.html"><code class="docutils literal notranslate"><span class="pre">deploy</span> <span class="pre">to</span> <span class="pre">XCode</span></code></a> page</p></li>
 <li><p>ZETIC.MLange usage in Swift</p></li>
 </ul>
-<div class="highlight-swift notranslate"><div class="highlight"><pre><span></span>  <span class="kd">let</span> <span class="nv">yoloModel</span> <span class="p">=</span> <span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="n">mlange_model_key</span><span class="p">)</span>
+<div class="highlight-swift notranslate"><div class="highlight"><pre><span></span>  <span class="kd">let</span> <span class="nv">model</span> <span class="p">=</span> <span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="n">mlange_model_key</span><span class="p">)</span>
 
-  <span class="n">yoloModel</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">yoloModelInput</span><span class="p">);</span>
+  <span class="n">model</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">yoloModelInput</span><span class="p">);</span>
 
-  <span class="kd">let</span> <span class="nv">outputs</span> <span class="p">=</span> <span class="n">yoloModel</span><span class="p">.</span><span class="n">getOutputDataArray</span><span class="p">()</span>
+  <span class="kd">let</span> <span class="nv">outputs</span> <span class="p">=</span> <span class="n">model</span><span class="p">.</span><span class="n">getOutputDataArray</span><span class="p">()</span>
 </pre></div>
 </div>
 </li>
@@ -478,23 +488,24 @@ document.write(`
 <section id="prepare-yolov8-image-feature-extractor-for-android-and-ios">
 <h3>3. Prepare YOLOv8 image feature extractor for Android and iOS<a class="headerlink" href="#prepare-yolov8-image-feature-extractor-for-android-and-ios" title="Link to this heading">#</a></h3>
 <ul>
-<li><p>We provide a YOLOv8 feature extractor as an Android and iOS module.</p>
+<li><p>We provide a YOLOv8 feature extractor as an Android and iOS module. This feature extractor can be used for YOLOv11 model.</p>
 <ul class="simple">
-<li><p>(The YOLOv8 feature extractor extension will be exposed as an open-source repository soon.)</p></li>
+<li><p>(We checked this image feature extractor works on YOLOv8 and YOLOv11)</p></li>
+<li><p>(The YOLOv8 feature extractor extension will be exposed as an open-source repository soon)</p></li>
 <li><p>You can use your own feature extractor if you have one for YOLOv8 usage</p></li>
 </ul>
 </li>
 <li><p>For Android</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// (0) Initialize ZeticMLangeFeatureYolov8 with `coco.yaml` for the model</span>
-<span class="n">ZeticMLangeFeatureYolov8</span><span class="w"> </span><span class="n">zeticMLangeFeatureYolov8</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ZeticMLangeFeatureYolov8</span><span class="p">(</span><span class="n">cocoYamlFilePath</span><span class="p">);</span>
+<span class="n">Yolov8Wrapper</span><span class="w"> </span><span class="n">yolov8Wrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Yolov8Wrapper</span><span class="p">(</span><span class="n">cocoYamlFilePath</span><span class="p">);</span>
 
 <span class="c1">// (1) Preprocess bitmap and get processed float array</span>
-<span class="kt">float</span><span class="o">[]</span><span class="w"> </span><span class="n">floatInput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zeticMLangeFeatureYolov8</span><span class="p">.</span><span class="na">preprocess</span><span class="p">(</span><span class="n">bitmap</span><span class="p">);</span>
+<span class="n">ByteBuffer</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yolov8Wrapper</span><span class="p">.</span><span class="na">preprocess</span><span class="p">(</span><span class="n">bitmap</span><span class="p">);</span>
 
 <span class="p">...</span>
 
 <span class="c1">// (2) Postprocess to bitmap</span>
-<span class="n">Bitmap</span><span class="w"> </span><span class="n">resultBitmap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zeticMLangeFeatureYolov8</span><span class="p">.</span><span class="na">postprocess</span><span class="p">(</span><span class="n">outputFloatArray</span><span class="p">);</span>
+<span class="n">YoloResult</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yolov8Wrapper</span><span class="p">.</span><span class="na">postprocess</span><span class="p">(</span><span class="n">outputFloatArray</span><span class="p">);</span>
 </pre></div>
 </div>
 </li>
@@ -502,40 +513,40 @@ document.write(`
 <div class="highlight-swift notranslate"><div class="highlight"><pre><span></span><span class="kd">import</span> <span class="nc">ZeticMLange</span>
 
 <span class="c1">// (0) Initialize ZeticMLangeFeatureYolov8</span>
-<span class="kd">let</span> <span class="nv">yoloFeature</span> <span class="p">=</span> <span class="n">ZeticMLangeFeatureYolov8</span><span class="p">(</span><span class="n">cocoYamlFileUrl</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">yolov8Wrapper</span> <span class="p">=</span> <span class="n">YOLOv8Wrapper</span><span class="p">(</span><span class="n">cocoYamlFileUrl</span><span class="p">)</span>
 
 <span class="c1">// (1) Preprocess UIImage and get processed float array</span>
-<span class="kd">let</span> <span class="nv">yoloProcessedData</span> <span class="p">=</span> <span class="kc">self</span><span class="p">.</span><span class="n">yoloFeature</span><span class="p">.</span><span class="n">preprocess</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">input</span> <span class="p">=</span> <span class="n">yolov8Wrapper</span><span class="p">.</span><span class="n">featurePreprocess</span><span class="p">(</span><span class="n">imageAddress</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">bytesPerRow</span><span class="p">)</span>
 
 <span class="p">...</span>
 
 <span class="c1">// (2) Postprocess to UIImage</span>
-<span class="kd">let</span> <span class="nv">yoloResultImage</span> <span class="p">=</span> <span class="kc">self</span><span class="p">.</span><span class="n">yoloFeature</span><span class="p">.</span><span class="n">postprocess</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">&amp;</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="kd">let</span> <span class="nv">result</span> <span class="p">=</span> <span class="n">yolov8Wrapper</span><span class="p">.</span><span class="n">featurePostprocess</span><span class="p">(&amp;</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
 </li>
 </ul>
 </section>
 </section>
-<section id="total-yolov8-process-implementation">
-<h2>Total YOLOv8 Process implementation<a class="headerlink" href="#total-yolov8-process-implementation" title="Link to this heading">#</a></h2>
+<section id="total-yolov11-process-implementation">
+<h2>Total YOLOv11 Process implementation<a class="headerlink" href="#total-yolov11-process-implementation" title="Link to this heading">#</a></h2>
 <ul>
 <li><p>For Android</p>
 <ul>
 <li><p>Java</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// (0) Initialization</span>
-<span class="n">ZeticMLangeFeatureYolov8</span><span class="w"> </span><span class="n">zeticMLangeFeatureYolov8</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ZeticMLangeFeatureYolov8</span><span class="p">(</span><span class="n">cocoYamlFilePath</span><span class="p">);</span>
-<span class="n">zeticMLangeYoloVModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;YOUR_YOLOV8_MODEL_KEY&quot;</span><span class="p">);</span>
+<span class="n">Yolov8Wrapper</span><span class="w"> </span><span class="n">yolov8Wrapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Yolov8Wrapper</span><span class="p">(</span><span class="n">cocoYamlFilePath</span><span class="p">);</span>
+<span class="n">ZeticMLangeModel</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;YOUR_YOLOV8_MODEL_KEY&quot;</span><span class="p">);</span>
 
 <span class="c1">// (1) Preprocess image</span>
-<span class="kt">float</span><span class="o">[]</span><span class="w"> </span><span class="n">floatInput</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zeticMLangeFeatureYolov8</span><span class="p">.</span><span class="na">preprocess</span><span class="p">(</span><span class="n">bitmap</span><span class="p">);</span>
+<span class="n">ByteBuffer</span><span class="w"> </span><span class="n">input</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yolov8Wrapper</span><span class="p">.</span><span class="na">preprocess</span><span class="p">(</span><span class="n">bitmap</span><span class="p">);</span>
 
-<span class="c1">// (2) Process YOLOv8 Model</span>
-<span class="n">zeticMLangeYoloVModel</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="o">[</span><span class="n">floatInput</span><span class="o">]</span><span class="p">);</span>
-<span class="n">ByteBuffer</span><span class="o">[]</span><span class="w"> </span><span class="n">outputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zeticMLangeYoloVModel</span><span class="p">.</span><span class="na">getOutputBuffers</span><span class="p">();</span>
+<span class="c1">// (2) Process YOLOv11 Model</span>
+<span class="n">model</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="o">[</span><span class="n">input</span><span class="o">]</span><span class="p">);</span>
+<span class="n">ByteBuffer</span><span class="o">[]</span><span class="w"> </span><span class="n">outputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model</span><span class="p">.</span><span class="na">getOutputBuffers</span><span class="p">();</span>
 
 <span class="c1">// (3) Postprocess to bitmap</span>
-<span class="n">Bitmap</span><span class="w"> </span><span class="n">resultBitmap</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zeticMLangeFeatureYolov8</span><span class="p">.</span><span class="na">postprocess</span><span class="p">(</span><span class="n">outputFloatArray</span><span class="p">);</span><span class="w">        </span>
+<span class="n">YoloResult</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">yolov8Wrapper</span><span class="p">.</span><span class="na">postprocess</span><span class="p">(</span><span class="n">outputs</span><span class="o">[</span><span class="mi">0</span><span class="o">]</span><span class="p">);</span>
 </pre></div>
 </div>
 </li>
@@ -545,18 +556,18 @@ document.write(`
 <ul>
 <li><p>iOS</p>
 <div class="highlight-swift notranslate"><div class="highlight"><pre><span></span><span class="c1">// (0) Initialization</span>
-<span class="kd">private</span> <span class="kd">let</span> <span class="nv">yoloModel</span><span class="p">:</span> <span class="n">ZeticMLangeModel</span>
-<span class="kd">private</span> <span class="kd">let</span> <span class="nv">yoloFeature</span> <span class="p">=</span> <span class="n">ZeticMLangeFeatureYolov8</span><span class="p">(</span><span class="n">cocoYamlFileUrl</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">model</span> <span class="p">=</span> <span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="n">mlange_model_key</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">yolov8Wrapper</span> <span class="p">=</span> <span class="n">YOLOv8Wrapper</span><span class="p">(</span><span class="n">cocoYamlFileUrl</span><span class="p">)</span>
 
 <span class="c1">// (1) Preprocess image</span>
-<span class="kd">let</span> <span class="nv">yoloProcessedData</span> <span class="p">=</span> <span class="kc">self</span><span class="p">.</span><span class="n">yoloFeature</span><span class="p">.</span><span class="n">preprocess</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">input</span> <span class="p">=</span> <span class="n">yolov8Wrapper</span><span class="p">.</span><span class="n">featurePreprocess</span><span class="p">(</span><span class="n">imageAddress</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="p">,</span> <span class="n">bytesPerRow</span><span class="p">)</span>
 
-<span class="c1">// (2) Process YOLOv8 Model</span>
-<span class="kc">self</span><span class="p">.</span><span class="n">yoloModel</span><span class="p">.</span><span class="n">run</span><span class="p">([</span><span class="n">yoloProcessedData</span><span class="p">]);</span>
-<span class="kd">let</span> <span class="nv">outputs</span> <span class="p">=</span> <span class="kc">self</span><span class="p">.</span><span class="n">yoloModel</span><span class="p">.</span><span class="n">getOutputDataArray</span><span class="p">()</span>
+<span class="c1">// (2) Process YOLOv11 Model</span>
+<span class="n">yoloModel</span><span class="p">.</span><span class="n">run</span><span class="p">([</span><span class="n">yoloProcessedData</span><span class="p">]);</span>
+<span class="kd">let</span> <span class="nv">outputs</span> <span class="p">=</span> <span class="n">yoloModel</span><span class="p">.</span><span class="n">getOutputDataArray</span><span class="p">()</span>
 
 <span class="c1">// (3) Postprocess the output</span>
-<span class="kd">let</span> <span class="nv">yoloResultImage</span> <span class="p">=</span> <span class="kc">self</span><span class="p">.</span><span class="n">yoloFeature</span><span class="p">.</span><span class="n">postprocess</span><span class="p">(</span><span class="n">image</span><span class="p">,</span> <span class="p">&amp;</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="kd">let</span> <span class="nv">result</span> <span class="p">=</span> <span class="n">yolov8Wrapper</span><span class="p">.</span><span class="n">featurePostprocess</span><span class="p">(&amp;</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
 </li>
@@ -566,7 +577,7 @@ document.write(`
 </section>
 <section id="conclusion">
 <h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
-<p>With ZETIC.MLange, You can easily build your own on-device AI application with NPU utilizations. We are going to keep uploading the models to our examples and huggingface page. Please keep noticed and <a class="reference external" href="https://zetic.ai/contact-sales">contact us</a> for the collaborations!</p>
+<p>With ZETIC.MLange, You can easily build your own on-device AI application with NPU utilization. We are going to keep uploading the models to our examples and <a class="reference external" href="https://huggingface.co/ZETIC-ai">HuggingFace</a> page. Please keep noticed and <a class="reference external" href="https://zetic.ai/contact-sales">contact us</a> for the collaborations!</p>
 </section>
 </section>
 
@@ -582,12 +593,12 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../overview/model_profiling.html"
+       href="../deploy_model/iOS.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Global Device Benchmark</p>
+        <p class="prev-next-title">iOS</p>
       </div>
     </a>
     <a class="right-next"
@@ -615,11 +626,11 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#github-repository">Github repository</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-yolov8">What is YOLOv8</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#github-repository">GitHub repository</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-yolov11">What is YOLOv11</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-by-step-implementation">Step-by-step implementation</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">0. Prerequisites</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-the-yolov8-model-and-input-sample">Prepare the YOLOv8 model and input sample</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-the-yolo11-model-and-input-sample">Prepare the YOLO11 model and input sample</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-zetic-mlange-model-key">1. Generate ZETIC.MLange model key</a></li>
@@ -627,7 +638,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-yolov8-image-feature-extractor-for-android-and-ios">3. Prepare YOLOv8 image feature extractor for Android and iOS</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#total-yolov8-process-implementation">Total YOLOv8 Process implementation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#total-yolov11-process-implementation">Total YOLOv11 Process implementation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
 </ul>
   </nav></div>

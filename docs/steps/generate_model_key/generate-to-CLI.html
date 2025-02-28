@@ -1,0 +1,531 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>CLI Method &#8212; ZETIC.MLange  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'steps/generate_model_key/generate-to-CLI';</script>
+    <script src="../../_static/insert_hotjar.js?v=02373137"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Generate Personal Key" href="../generate_personal_key/index.html" />
+    <link rel="prev" title="SaaS Method" href="generate-to-SaaS.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">ZETIC.MLange  documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../overview/what-is-zetic-mlange.html">What is ZETIC.MLange?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview/getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview/model_profiling.html">Global Device Benchmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../overview/zetic-mlange-llm-model.html">ZETIC.MLange LLM Model</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Perpare Steps</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../prepare_model/index.html">Prepare Model and Input(s)</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Generate Model Key</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="generate-to-SaaS.html">SaaS Method</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">CLI Method</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../generate_personal_key/index.html">Generate Personal Key</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deploy Model</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../deploy_model/android.html">Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../deploy_model/iOS.html">iOS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../examples/yolov8.html">Object Detection (YOLOv8 / YOLOv11)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/face_detection.html">Face Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/face_landmark.html">Face Landmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/face_emotion_recognition.html">Face Emotion Recognition (EMO-AffectNet)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/yamnet.html">Audio Classification (YAMNet)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples/whisper.html">Speech Recognition (Whisper)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional features</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../additional_features/future_works.html">Future Works</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/steps/generate_model_key/generate-to-CLI.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>CLI Method</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-generate-a-model-key-using-cli">How to Generate a Model Key Using CLI</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-output">Expected Output:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-commands-and-help">Additional Commands and Help</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="cli-method">
+<h1>CLI Method<a class="headerlink" href="#cli-method" title="Link to this heading">#</a></h1>
+<section id="how-to-generate-a-model-key-using-cli">
+<h2>How to Generate a Model Key Using CLI<a class="headerlink" href="#how-to-generate-a-model-key-using-cli" title="Link to this heading">#</a></h2>
+<p>This guide explains how to generate a model key using the CLI(Command Line Interface) method. <strong>We assume that the project has already been created using the SaaS method.</strong></p>
+<ol class="arabic simple" start="0">
+<li><p><strong>Install zetic CLI</strong>
+To get started, install the zetic CLI by running the following command:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>zetic
+</pre></div>
+</div>
+<p>This will install the <code class="docutils literal notranslate"><span class="pre">zetic</span></code> command, which you will use to interact with your project.</p>
+<ol class="arabic simple">
+<li><p><strong>Sign Up / Log In</strong>
+Before proceeding, you must be signed in to your ZETIC account. If you are not logged in yet, use the following command:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>zetic<span class="w"> </span>auth<span class="w"> </span>login
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p><strong>Upload Your Model</strong>
+Once you’re logged in, you can upload your model to ZETIC. Use the following command to upload your model:</p></li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>zetic<span class="w"> </span>gen<span class="w"> </span>-p<span class="w"> </span><span class="nv">$PROJECT_NAME</span><span class="w"> </span>-i<span class="w"> </span><span class="nv">$INPUT_0</span><span class="w"> </span>-i<span class="w"> </span><span class="nv">$INPUT_1</span><span class="w"> </span>....<span class="w"> </span><span class="nv">$MODEL_PATH</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Where</strong>:</p>
+<ul>
+<li><p><strong>PROJECT_NAME</strong> is the name of the project that contains your model and is formatted as <code class="docutils literal notranslate"><span class="pre">USER_NAME/MODEL_NAME</span></code>. You can find this by logging into mlange.zetic.ai.</p></li>
+<li><p><strong>INPUT_0, INPUT_1, …</strong> are the paths to input files you want to upload. We currently support only <code class="docutils literal notranslate"><span class="pre">.npy</span></code> files for inputs.</p></li>
+<li><p><strong>MODEL_PATH</strong> is the path to the model file you want to upload. We support <code class="docutils literal notranslate"><span class="pre">TorchScript</span></code> and <code class="docutils literal notranslate"><span class="pre">ONNX</span></code> formats only.</p></li>
+</ul>
+</li>
+<li><p><strong>Pay attention to the input sequence of your model.</strong> For more details on the input sequence, please refer to <a class="reference internal" href="../prepare_model/index.html#check-the-order-of-model-input-s"><span class="std std-ref">this link</span></a>.</p></li>
+</ul>
+<section id="example">
+<h3>Example:<a class="headerlink" href="#example" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>zetic<span class="w"> </span>gen<span class="w"> </span>-p<span class="w"> </span>USER_NAME/MODEL_NAME<span class="w"> </span>-i<span class="w"> </span>INPUT_0.npy<span class="w"> </span>-i<span class="w"> </span>INPUT_1.npy<span class="w"> </span>MODEL_NAME.onnx
+</pre></div>
+</div>
+</section>
+<section id="expected-output">
+<h3>Expected Output:<a class="headerlink" href="#expected-output" title="Link to this heading">#</a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Uploading<span class="w"> </span>model<span class="w"> </span>from<span class="w"> </span>MODEL_NAME.onnx<span class="w"> </span>to<span class="w"> </span>project<span class="w"> </span>USER_NAME/MODEL_NAME
+Starting<span class="w"> </span>upload<span class="w"> </span>process...
+Project:<span class="w"> </span>USER_NAME/MODEL_NAME
+Model<span class="w"> </span>Path:<span class="w"> </span>MODEL_NAME.onnx
+Upload<span class="w"> </span>completed<span class="w"> </span>successfully!
+Model<span class="w"> </span>is<span class="w"> </span>requested<span class="w"> </span>to<span class="w"> </span>convert
+Your<span class="w"> </span>model<span class="w"> </span>key<span class="w"> </span>is<span class="w"> </span>MODEL_KEY_HASH
+Check<span class="w"> </span>your<span class="w"> </span>dashboard<span class="w"> </span>at:<span class="w"> </span>https://mlange.zetic.ai/p/USER_NAME/MODEL_NAME/models/MODEL_KEY_HASH
+The<span class="w"> </span>upload<span class="w"> </span>process<span class="w"> </span>will<span class="w"> </span>begin,<span class="w"> </span>and<span class="w"> </span>after<span class="w"> </span>it<span class="w"> </span>completes,<span class="w"> </span>a<span class="w"> </span>model<span class="w"> </span>key<span class="w"> </span>will<span class="w"> </span>be<span class="w"> </span>generated.
+The<span class="w"> </span>model<span class="w"> </span>key,<span class="w"> </span>shown<span class="w"> </span>as<span class="w"> </span>MODEL_KEY_HASH,<span class="w"> </span>is<span class="w"> </span>unique<span class="w"> </span>to<span class="w"> </span>your<span class="w"> </span>model<span class="w"> </span>and<span class="w"> </span>can<span class="w"> </span>be<span class="w"> </span>used<span class="w"> </span>to<span class="w"> </span>reference<span class="w"> </span>it<span class="w"> </span><span class="k">in</span><span class="w"> </span>your<span class="w"> </span>zetic<span class="w"> </span>dashboard.
+To<span class="w"> </span>view<span class="w"> </span>more<span class="w"> </span>details<span class="w"> </span>about<span class="w"> </span>your<span class="w"> </span>model,<span class="w"> </span>including<span class="w"> </span>settings<span class="w"> </span>and<span class="w"> </span>statistics,<span class="w"> </span>visit<span class="w"> </span>the<span class="w"> </span>link<span class="w"> </span>provided<span class="w"> </span><span class="k">in</span><span class="w"> </span>the<span class="w"> </span>output:<span class="w"> </span>https://mlange.zetic.ai/p/USER_NAME/MODEL_NAME/models/MODEL_KEY_HASH.
+</pre></div>
+</div>
+</section>
+</section>
+<section id="additional-commands-and-help">
+<h2>Additional Commands and Help<a class="headerlink" href="#additional-commands-and-help" title="Link to this heading">#</a></h2>
+<p>If you need more information or options related to the <code class="docutils literal notranslate"><span class="pre">zetic</span></code> CLI, you can run the following commands:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>zetic<span class="w"> </span>--help
+$<span class="w"> </span>zetic<span class="w"> </span>auth<span class="w"> </span>login<span class="w"> </span>--help
+$<span class="w"> </span>zetic<span class="w"> </span>gen<span class="w"> </span>--help
+...
+</pre></div>
+</div>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="generate-to-SaaS.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">SaaS Method</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../generate_personal_key/index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Generate Personal Key</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-generate-a-model-key-using-cli">How to Generate a Model Key Using CLI</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example">Example:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-output">Expected Output:</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-commands-and-help">Additional Commands and Help</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By ZETIC.ai
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, ZETIC.ai.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

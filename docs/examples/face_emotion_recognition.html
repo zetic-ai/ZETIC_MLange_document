@@ -47,7 +47,7 @@
     <script src="../_static/insert_hotjar.js?v=02373137"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Deploy to Android Studio" href="../android/deploy-to-android-studio.html" />
+    <link rel="next" title="Audio Classification (YAMNet)" href="yamnet.html" />
     <link rel="prev" title="Face Landmark" href="face_landmark.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -157,21 +157,31 @@
 <li class="toctree-l1"><a class="reference internal" href="../overview/what-is-zetic-mlange.html">What is ZETIC.MLange?</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview/getting-started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../overview/model_profiling.html">Global Device Benchmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/zetic-mlange-llm-model.html">ZETIC.MLange LLM Model</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Perpare Steps</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../steps/prepare_model/index.html">Prepare Model and Input(s)</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../steps/generate_model_key/index.html">Generate Model Key</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../steps/generate_model_key/generate-to-SaaS.html">SaaS Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../steps/generate_model_key/generate-to-CLI.html">CLI Method</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../steps/generate_personal_key/index.html">Generate Personal Key</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deploy Model</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../deploy_model/android.html">Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deploy_model/iOS.html">iOS</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="yolov8.html">Object Detection (YOLOv8)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="yolov8.html">Object Detection (YOLOv8 / YOLOv11)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="face_detection.html">Face Detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="face_landmark.html">Face Landmark</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Face Emotion Recognition (EMO-AffectNet)</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Android</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../android/deploy-to-android-studio.html">Deploy to Android Studio</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">iOS</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../ios/deploy-to-xcode.html">Deploy to XCode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="yamnet.html">Audio Classification (YAMNet)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whisper.html">Speech Recognition (Whisper)</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional features</span></p>
 <ul class="nav bd-sidenav">
@@ -324,7 +334,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#github-repository">Github Repository</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#github-repository">GitHub Repository</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-emo-affectnet">What is EMO-AffectNet</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-pipelining">Model pipelining</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-by-step-implementation">Step-by-step implementation</a><ul class="nav section-nav flex-column">
@@ -356,8 +366,10 @@ document.write(`
 <li><p>On-device AI Face Emotion Recognition App with ZETIC.MLange</p></li>
 </ul>
 <section id="github-repository">
-<h2>Github Repository<a class="headerlink" href="#github-repository" title="Link to this heading">#</a></h2>
-<p>• We provide Face Emotion Recognition demo application source code for both Android and iOS. <a class="reference external" href="https://github.com/zetic-ai/ZETIC_MLange_apps/tree/main/face_emotion_recognition">repository</a></p>
+<h2>GitHub Repository<a class="headerlink" href="#github-repository" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>We provide Face Emotion Recognition demo application source code for both Android and iOS. <a class="reference external" href="https://github.com/zetic-ai/ZETIC_MLange_apps/tree/main/face_emotion_recognition">repository</a></p></li>
+</ul>
 </section>
 <section id="what-is-emo-affectnet">
 <h2>What is EMO-AffectNet<a class="headerlink" href="#what-is-emo-affectnet" title="Link to this heading">#</a></h2>
@@ -380,13 +392,13 @@ document.write(`
 <h3>0. Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h3>
 <p>Prepare the model and input sample of <a class="reference external" href="https://huggingface.co/ElenaRyumina/face_emotion_recognition"><code class="docutils literal notranslate"><span class="pre">Face</span> <span class="pre">Emotion</span> <span class="pre">Recognition</span></code></a> and <a class="reference external" href="https://github.com/patlevin/face-detection-tflite/tree/main/fdlite/data"><code class="docutils literal notranslate"><span class="pre">Face</span> <span class="pre">Detection</span></code></a> from hugging face.</p>
 <ul>
-<li><p>Face Detection: Convert the Tensorflow model to the TorchScript model.</p>
+<li><p>Face Detection: Convert the TensorFlow model to the TorchScript model.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>tf2onnx
 $<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span>tf2onnx.convert<span class="w"> </span>--tflite<span class="w"> </span>face_detection_short_range.tflite<span class="w"> </span>--output<span class="w"> </span>face_detection_short_range.onnx<span class="w"> </span>--opset<span class="w"> </span><span class="m">13</span>
 </pre></div>
 </div>
 </li>
-<li><p>Face Emotion Recognition: Trace the Pytorch model to be a TorchScript model and save.</p>
+<li><p>Face Emotion Recognition: Trace the PyTorch model to be a TorchScript model and save.</p>
 <ul class="simple">
 <li><p>You can find ResNet50 class in <a class="reference external" href="https://huggingface.co/ElenaRyumina/face_emotion_recognition/blob/main/run_webcam.ipynb">here</a></p></li>
 </ul>
@@ -449,7 +461,7 @@ $<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span
 <h3>2. Implement ZeticMLangeModel with your model key<a class="headerlink" href="#implement-zeticmlangemodel-with-your-model-key" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>We prepared a model key for the demo app: <code class="docutils literal notranslate"><span class="pre">face_detection</span></code> and <code class="docutils literal notranslate"><span class="pre">face_emotion_recognition</span></code>. You can use the model key to try the Zetic.MLange Application.</p></li>
-<li><p>Anroid app</p>
+<li><p>Android app</p>
 <ul class="simple">
 <li><p>For the detailed application setup, please follow <a class="reference external" href="https://docs.zetic.ai/android/deploy-to-android-studio.html"><code class="docutils literal notranslate"><span class="pre">deploy</span> <span class="pre">to</span> <span class="pre">Android</span> <span class="pre">Studio</span></code></a> page</p></li>
 <li><p>ZETIC.MLange usage in <code class="docutils literal notranslate"><span class="pre">Kotlin</span></code></p></li>
@@ -487,8 +499,8 @@ $<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span
 </ul>
 </li>
 <li><p>For Android</p>
-<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="c1">// (0) Initialize ZeticMLangeFeatureFaceEmotionRecognition</span>
-<span class="kd">val</span><span class="w"> </span><span class="nv">feature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ZeticMLangeFeatureFaceEmotionRecognition</span><span class="p">()</span>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="c1">// (0) Initialize FaceEmotionRecognitionWrapper</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">feature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FaceEmotionRecognitionWrapper</span><span class="p">()</span>
 
 <span class="c1">// (1) Preprocess bitmap and get processed float array</span>
 <span class="kd">val</span><span class="w"> </span><span class="nv">inputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">feature</span><span class="p">.</span><span class="na">preprocess</span><span class="p">(</span><span class="n">bitmap</span><span class="p">)</span>
@@ -503,8 +515,8 @@ $<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span
 <li><p>For iOS</p>
 <div class="highlight-swift notranslate"><div class="highlight"><pre><span></span><span class="kd">import</span> <span class="nc">ZeticMLange</span>
 
-<span class="c1">// (0) Initialize ZeticMLangeFeatureFaceEmotionRecognition</span>
-<span class="kd">let</span> <span class="nv">feature</span> <span class="p">=</span> <span class="n">ZeticMLangeFeatureFaceEmotionRecognition</span><span class="p">()</span>
+<span class="c1">// (0) Initialize FaceEmotionRecognitionWrapper</span>
+<span class="kd">let</span> <span class="nv">feature</span> <span class="p">=</span> <span class="n">FaceEmotionRecognitionWrapper</span><span class="p">()</span>
 
 <span class="c1">// (1) Preprocess UIImage and get processed float array</span>
 <span class="kd">let</span> <span class="nv">inputs</span> <span class="p">=</span> <span class="n">feature</span><span class="p">.</span><span class="n">preprocess</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
@@ -533,38 +545,38 @@ $<span class="w"> </span>python<span class="w"> </span>-m<span class="w"> </span
 <span class="kd">val</span><span class="w"> </span><span class="nv">faceDetectionModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="n">face_detection</span><span class="err">&#39;</span><span class="p">)</span>
 
 <span class="c1">// (1) Initialization Feature</span>
-<span class="kd">val</span><span class="w"> </span><span class="nv">faceDetectionFeature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ZeticMLangeFeatureFaceDetection</span><span class="p">()</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">faceDetection</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FaceDetectionWrapper</span><span class="p">()</span>
 
 <span class="c1">// (2) Preprocess Image</span>
-<span class="kd">val</span><span class="w"> </span><span class="nv">faceDetectionInputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">faceDetectionFeature</span><span class="p">.</span><span class="na">preprocess</span><span class="p">(</span><span class="n">bitmap</span><span class="p">)</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">faceDetectionInputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">faceDetection</span><span class="p">.</span><span class="na">preprocess</span><span class="p">(</span><span class="n">bitmap</span><span class="p">)</span>
 
 <span class="c1">// (3) Process Model</span>
 <span class="n">faceDetectionModel</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">faceDetectionInputs</span><span class="p">)</span>
 <span class="kd">val</span><span class="w"> </span><span class="nv">faceDetectionOutputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">faceDetectionModel</span><span class="p">.</span><span class="na">outputBuffers</span>
 
 <span class="c1">// (4) Postprocess model run result</span>
-<span class="kd">val</span><span class="w"> </span><span class="nv">faceDetectionPostprocessed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">faceDetectionFeature</span><span class="p">.</span><span class="na">postprocess</span><span class="p">(</span><span class="n">faceDetectionOutputs</span><span class="p">)</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">faceDetectionPostprocessed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">faceDetection</span><span class="p">.</span><span class="na">postprocess</span><span class="p">(</span><span class="n">faceDetectionOutputs</span><span class="p">)</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
 <li><p>Face Emotion Recognition Model
-Pass the result of face detection model as a input.</p></li>
+Pass the result of face detection model as an input.</p></li>
 </ol>
 <div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="c1">// (0) Initialization Models</span>
 <span class="kd">val</span><span class="w"> </span><span class="nv">faceEmotionRecognitionModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="n">face_emotion_recognition</span><span class="err">&#39;</span><span class="p">)</span>
 
 <span class="c1">// (1) Initialization Feature</span>
-<span class="kd">val</span><span class="w"> </span><span class="nv">faceEmotionRecognitionFeature</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ZeticMLangeFeatureFaceEmotionRecognition</span><span class="p">()</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">faceEmotionRecognition</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FaceEmotionRecognitionWrapper</span><span class="p">()</span>
 
 <span class="c1">// (2) Preprocess Image</span>
-<span class="kd">val</span><span class="w"> </span><span class="nv">faceEmotionRecognitionInputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">faceEmotionRecognitionFeature</span><span class="p">.</span><span class="na">preprocess</span><span class="p">(</span><span class="n">bitmap</span><span class="p">,</span><span class="w"> </span><span class="n">faceDetectionPostprocessed</span><span class="p">)</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">faceEmotionRecognitionInputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">faceEmotionRecognition</span><span class="p">.</span><span class="na">preprocess</span><span class="p">(</span><span class="n">bitmap</span><span class="p">,</span><span class="w"> </span><span class="n">faceDetectionPostprocessed</span><span class="p">)</span>
 
 <span class="c1">// (3) Process Model</span>
 <span class="n">faceEmotionRecognitionModel</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">faceEmotionRecognitionInputs</span><span class="p">)</span>
 <span class="kd">val</span><span class="w"> </span><span class="nv">faceEmotionRecognitionOutputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">faceEmotionRecognitionModel</span><span class="p">.</span><span class="na">outputBuffers</span>
 
 <span class="c1">// (4) Postprocess model run result</span>
-<span class="kd">val</span><span class="w"> </span><span class="nv">faceEmotionRecognitionPostprocessed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">faceEmotionRecognitionFeature</span><span class="p">.</span><span class="na">postprocess</span><span class="p">(</span><span class="n">faceEmotionRecognitionOutputs</span><span class="p">)</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">faceEmotionRecognitionPostprocessed</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">faceEmotionRecognition</span><span class="p">.</span><span class="na">postprocess</span><span class="p">(</span><span class="n">faceEmotionRecognitionOutputs</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
@@ -580,38 +592,38 @@ Pass the result of face detection model as a input.</p></li>
 <span class="kd">let</span> <span class="nv">faceDetectionModel</span> <span class="p">=</span> <span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="err">&#39;</span><span class="n">face_detection</span><span class="err">&#39;</span><span class="p">)</span>
 
 <span class="c1">// (1) Initialization Feature</span>
-<span class="kd">let</span> <span class="nv">faceDetectionFeature</span> <span class="p">=</span> <span class="n">ZeticMLangeFeatureFaceDetection</span><span class="p">()</span>
+<span class="kd">let</span> <span class="nv">faceDetection</span> <span class="p">=</span> <span class="n">FaceDetectionWrapper</span><span class="p">()</span>
 
 <span class="c1">// (2) Preprocess Image</span>
-<span class="kd">let</span> <span class="nv">faceDetectionInputs</span> <span class="p">=</span> <span class="n">faceDetectionFeature</span><span class="p">.</span><span class="n">preprocess</span><span class="p">(</span><span class="n">bitmap</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">faceDetectionInputs</span> <span class="p">=</span> <span class="n">faceDetection</span><span class="p">.</span><span class="n">preprocess</span><span class="p">(</span><span class="n">bitmap</span><span class="p">)</span>
 
 <span class="c1">// (3) Process Model</span>
 <span class="n">faceDetectionModel</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">faceDetectionInputs</span><span class="p">)</span>
 <span class="kd">let</span> <span class="nv">faceDetectionOutputs</span> <span class="p">=</span> <span class="n">faceDetectionModel</span><span class="p">.</span><span class="n">getOutputDataArray</span><span class="p">()</span>
 
 <span class="c1">// (4) Postprocess model run result</span>
-<span class="kd">let</span> <span class="nv">faceDetectionPostprocessed</span> <span class="p">=</span> <span class="n">faceDetectionFeature</span><span class="p">.</span><span class="n">postprocess</span><span class="p">(&amp;</span><span class="n">faceDetectionOutputs</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">faceDetectionPostprocessed</span> <span class="p">=</span> <span class="n">faceDetection</span><span class="p">.</span><span class="n">postprocess</span><span class="p">(&amp;</span><span class="n">faceDetectionOutputs</span><span class="p">)</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
 <li><p>Face Emotion Recognition Model
-Pass the result of face detection model as a input.</p></li>
+Pass the result of face detection model as an input.</p></li>
 </ol>
 <div class="highlight-swift notranslate"><div class="highlight"><pre><span></span><span class="c1">// (0) Initialization Models</span>
 <span class="kd">let</span> <span class="nv">faceEmotionRecognitionModel</span> <span class="p">=</span> <span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="err">&#39;</span><span class="n">face_emotion_recognition</span><span class="err">&#39;</span><span class="p">)</span>
 
 <span class="c1">// (1) Initialization Feature</span>
-<span class="kd">let</span> <span class="nv">faceEmotionRecognitionFeature</span> <span class="p">=</span> <span class="n">ZeticMLangeFeatureFaceEmotionRecognition</span><span class="p">()</span>
+<span class="kd">let</span> <span class="nv">faceEmotionRecognition</span> <span class="p">=</span> <span class="n">FaceEmotionRecognitionWrapper</span><span class="p">()</span>
 
 <span class="c1">// (2) Preprocess Image</span>
-<span class="kd">let</span> <span class="nv">faceEmotionRecognitionInputs</span> <span class="p">=</span> <span class="n">faceEmotionRecognitionFeature</span><span class="p">.</span><span class="n">preprocess</span><span class="p">(</span><span class="n">bitmap</span><span class="p">,</span> <span class="n">faceDetectionPostprocessed</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">faceEmotionRecognitionInputs</span> <span class="p">=</span> <span class="n">faceEmotionRecognition</span><span class="p">.</span><span class="n">preprocess</span><span class="p">(</span><span class="n">bitmap</span><span class="p">,</span> <span class="n">faceDetectionPostprocessed</span><span class="p">)</span>
 
 <span class="c1">// (3) Process Model</span>
 <span class="n">faceEmotionRecognitionModel</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">faceEmotionRecognitionInputs</span><span class="p">)</span>
 <span class="kd">let</span> <span class="nv">faceEmotionRecognitionOutputs</span> <span class="p">=</span> <span class="n">faceEmotionRecognitionModel</span><span class="p">.</span><span class="n">getOutputDataArray</span><span class="p">()</span>
 
 <span class="c1">// (4) Postprocess model run result</span>
-<span class="kd">let</span> <span class="nv">faceEmotionRecognitionPostprocessed</span> <span class="p">=</span> <span class="n">faceEmotionRecognitionFeature</span><span class="p">.</span><span class="n">postprocess</span><span class="p">(&amp;</span><span class="n">faceEmotionRecognitionOutputs</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">faceEmotionRecognitionPostprocessed</span> <span class="p">=</span> <span class="n">faceEmotionRecognition</span><span class="p">.</span><span class="n">postprocess</span><span class="p">(&amp;</span><span class="n">faceEmotionRecognitionOutputs</span><span class="p">)</span>
 </pre></div>
 </div>
 </li>
@@ -621,7 +633,7 @@ Pass the result of face detection model as a input.</p></li>
 </section>
 <section id="conclusion">
 <h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
-<p>With ZETIC.MLange, building your own on-device AI applications with NPU utilization is incredibly easy and silky smooth. We provide the simplest way to implement machine learning applications within pipelines. For example, in our Face Emotion Recognition application, we construct a straightforward pipeline: <code class="docutils literal notranslate"><span class="pre">Face</span> <span class="pre">Detection</span></code> to <code class="docutils literal notranslate"><span class="pre">Face</span> <span class="pre">Emotion</span> <span class="pre">Recognition</span></code>. We’re continually uploading new models to our examples and <a class="reference external" href="https://huggingface.co/ZETIC-ai">HuggingFace</a>  page. Stay tuned, and <a class="reference external" href="https://zetic.ai/contact-sales">contact us</a> for collaborations!</p>
+<p>With ZETIC.MLange, building your own on-device AI applications with NPU utilization is incredibly easy and silky smooth. We provide the simplest way to implement machine learning applications within pipelines. For example, in our Face Emotion Recognition application, we construct a straightforward pipeline: <code class="docutils literal notranslate"><span class="pre">Face</span> <span class="pre">Detection</span></code> to <code class="docutils literal notranslate"><span class="pre">Face</span> <span class="pre">Emotion</span> <span class="pre">Recognition</span></code>. We’re continually uploading new models to our examples and <a class="reference external" href="https://huggingface.co/ZETIC-ai">HuggingFace</a> page. Stay tuned, and <a class="reference external" href="https://zetic.ai/contact-sales">contact us</a> for collaborations!</p>
 </section>
 </section>
 
@@ -646,11 +658,11 @@ Pass the result of face detection model as a input.</p></li>
       </div>
     </a>
     <a class="right-next"
-       href="../android/deploy-to-android-studio.html"
+       href="yamnet.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Deploy to Android Studio</p>
+        <p class="prev-next-title">Audio Classification (YAMNet)</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -670,7 +682,7 @@ Pass the result of face detection model as a input.</p></li>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#github-repository">Github Repository</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#github-repository">GitHub Repository</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-emo-affectnet">What is EMO-AffectNet</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-pipelining">Model pipelining</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-by-step-implementation">Step-by-step implementation</a><ul class="nav section-nav flex-column">

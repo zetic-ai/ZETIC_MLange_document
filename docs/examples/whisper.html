@@ -1,0 +1,691 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Speech Recognition (Whisper) &#8212; ZETIC.MLange  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples/whisper';</script>
+    <script src="../_static/insert_hotjar.js?v=02373137"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Future Works" href="../additional_features/future_works.html" />
+    <link rel="prev" title="Audio Classification (YAMNet)" href="yamnet.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">ZETIC.MLange  documentation</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../overview/what-is-zetic-mlange.html">What is ZETIC.MLange?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/model_profiling.html">Global Device Benchmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../overview/zetic-mlange-llm-model.html">ZETIC.MLange LLM Model</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Perpare Steps</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../steps/prepare_model/index.html">Prepare Model and Input(s)</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../steps/generate_model_key/index.html">Generate Model Key</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../steps/generate_model_key/generate-to-SaaS.html">SaaS Method</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../steps/generate_model_key/generate-to-CLI.html">CLI Method</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="../steps/generate_personal_key/index.html">Generate Personal Key</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Deploy Model</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../deploy_model/android.html">Android</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../deploy_model/iOS.html">iOS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Examples</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="yolov8.html">Object Detection (YOLOv8 / YOLOv11)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="face_detection.html">Face Detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="face_landmark.html">Face Landmark</a></li>
+<li class="toctree-l1"><a class="reference internal" href="face_emotion_recognition.html">Face Emotion Recognition (EMO-AffectNet)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="yamnet.html">Audio Classification (YAMNet)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Speech Recognition (Whisper)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Additional features</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../additional_features/future_works.html">Future Works</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/examples/whisper.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Speech Recognition (Whisper)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-whisper">What is Whisper</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-by-step-implementation">Step-by-step implementation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">0. Prerequisites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-zetic-mlange-model">1. Generate ZETIC.MLange model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implement-zeticmlangemodel-with-your-model-key">2. Implement ZeticMLangeModel with your model key</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#whisper-model-implementation-structure">3. Whisper Model Implementation Structure</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-speech-recognition-implementation">Complete Speech Recognition Implementation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="speech-recognition-whisper">
+<h1>Speech Recognition (Whisper)<a class="headerlink" href="#speech-recognition-whisper" title="Link to this heading">#</a></h1>
+<section id="what-is-whisper">
+<h2>What is Whisper<a class="headerlink" href="#what-is-whisper" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Whisper is a state-of-the-art speech recognition model developed by OpenAI</p></li>
+<li><p>The model supports multilingual speech recognition and translation capabilities</p></li>
+<li><p>Whisper can perform various tasks including speech recognition, language detection, and translation</p></li>
+<li><p>Whisper hugging face: <a class="reference external" href="https://huggingface.co/openai/whisper-small">link</a></p></li>
+</ul>
+</section>
+<section id="step-by-step-implementation">
+<h2>Step-by-step implementation<a class="headerlink" href="#step-by-step-implementation" title="Link to this heading">#</a></h2>
+<section id="prerequisites">
+<h3>0. Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">#</a></h3>
+<p>Prepare the Whisper model from Hugging Face.</p>
+<ul>
+<li><p>Whisper: Convert the PyTorch model to TorchScript format</p>
+<ul class="simple">
+<li><p>decoder</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">DecoderWrapper</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">decoder</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span> <span class="o">=</span> <span class="n">decoder</span>
+    
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_ids</span><span class="p">,</span> <span class="n">encoder_hidden_states</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">decoder</span><span class="p">(</span><span class="n">input_ids</span><span class="o">=</span><span class="n">input_ids</span><span class="p">,</span> <span class="n">encoder_hidden_states</span><span class="o">=</span><span class="n">encoder_hidden_states</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    
+<span class="n">model</span> <span class="o">=</span> <span class="n">WhisperModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+
+<span class="n">wrapped_decoder</span> <span class="o">=</span> <span class="n">DecoderWrapper</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">decoder</span><span class="p">)</span>
+<span class="n">wrapped_decoder</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+
+<span class="n">decoder_input_ids</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">)</span>
+<span class="n">encoder_hidden_states</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1500</span><span class="p">,</span> <span class="mi">384</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">traced_decoder</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span>
+        <span class="n">wrapped_decoder</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">decoder_input_ids</span><span class="p">,</span> <span class="n">encoder_hidden_states</span><span class="p">),</span>
+        <span class="n">strict</span><span class="o">=</span><span class="kc">False</span>
+    <span class="p">)</span>
+    
+<span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">traced_decoder</span><span class="p">,</span> <span class="s2">&quot;whisper_tiny_decoder.pt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>encoder</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">EncoderWrapper</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">encoder</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span> <span class="o">=</span> <span class="n">encoder</span>
+    
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">input_features</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">encoder</span><span class="p">(</span><span class="n">input_features</span><span class="p">)</span><span class="o">.</span><span class="n">last_hidden_state</span>
+    
+<span class="n">model</span> <span class="o">=</span> <span class="n">WhisperModel</span><span class="o">.</span><span class="n">from_pretrained</span><span class="p">(</span><span class="n">model_path</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+
+<span class="n">wrapped_encoder</span> <span class="o">=</span> <span class="n">EncoderWrapper</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">encoder</span><span class="p">)</span>
+<span class="n">wrapped_encoder</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+
+<span class="n">encoder_inputs</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">3000</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+    <span class="n">traced_encoder</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">wrapped_encoder</span><span class="p">,</span> <span class="p">(</span><span class="n">encoder_inputs</span><span class="p">,),</span> <span class="n">strict</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    
+<span class="n">torch</span><span class="o">.</span><span class="n">jit</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">traced_encoder</span><span class="p">,</span> <span class="s2">&quot;whisper_tiny_encoder.pt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>Prepare sample input for converting:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># encoder</span>
+<span class="n">encoder_input</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">3000</span><span class="p">)</span>
+<span class="n">np_encoder_input</span> <span class="o">=</span> <span class="n">encoder_input</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;encoder_input.npy&quot;</span><span class="p">,</span> <span class="n">np_encoder_input</span><span class="p">)</span>
+
+<span class="c1"># decoder</span>
+<span class="n">decoder_input_ids</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">long</span><span class="p">)</span>
+<span class="n">encoder_hidden_states</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1500</span><span class="p">,</span> <span class="mi">384</span><span class="p">)</span>
+
+<span class="n">np_decoder_input_ids</span> <span class="o">=</span> <span class="n">decoder_input_ids</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+<span class="n">np_encoder_hidden_states</span> <span class="o">=</span> <span class="n">encoder_hidden_states</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;decoder_input_ids.npy&quot;</span><span class="p">,</span> <span class="n">np_decoder_input_ids</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;decoder_encoder_hidden_states.npy&quot;</span><span class="p">,</span> <span class="n">np_encoder_hidden_states</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="generate-zetic-mlange-model">
+<h3>1. Generate ZETIC.MLange model<a class="headerlink" href="#generate-zetic-mlange-model" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>Get your own MLange model key</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># (1) Get mlange_gen</span>
+$<span class="w"> </span>wget<span class="w"> </span>https://github.com/zetic-ai/ZETIC_MLange_document/raw/main/bin/mlange_gen<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>chmod<span class="w"> </span><span class="m">755</span><span class="w"> </span>mlange_gen
+
+<span class="c1"># (2) Run mlange_gen for Whisper model both encoder and decoder</span>
+$<span class="w"> </span>./mlange_gen<span class="w"> </span>-m<span class="w"> </span>whisper_tiny_encoder.pt<span class="w"> </span>-i<span class="w"> </span>encoder_input.npy
+$<span class="w"> </span>./mlange_gen<span class="w"> </span>-m<span class="w"> </span>whisper_tiny_decoder.pt<span class="w"> </span>-i<span class="w"> </span>decoder_input_ids.npy,decoder_encoder_hidden_states.npy
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Expected output</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>...
+MLange<span class="w"> </span>Model<span class="w"> </span>Key<span class="w"> </span>:<span class="w"> </span><span class="o">{</span>YOUR_WHISPER_MODEL_KEY<span class="o">}</span>
+...
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="implement-zeticmlangemodel-with-your-model-key">
+<h3>2. Implement ZeticMLangeModel with your model key<a class="headerlink" href="#implement-zeticmlangemodel-with-your-model-key" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>We provide a model key for the demo app: <code class="docutils literal notranslate"><span class="pre">whisper-tiny-encoder</span></code> and <code class="docutils literal notranslate"><span class="pre">whisper-tiny-decoder</span></code>. You can use this model key to try the Zetic.MLange Application.</p></li>
+<li><p>Android app</p>
+<ul class="simple">
+<li><p>For detailed application setup, please follow <a class="reference external" href="https://docs.zetic.ai/android/deploy-to-android-studio.html"><code class="docutils literal notranslate"><span class="pre">deploy</span> <span class="pre">to</span> <span class="pre">Android</span> <span class="pre">Studio</span></code></a></p></li>
+<li><p>ZETIC.MLange usage in <code class="docutils literal notranslate"><span class="pre">Kotlin</span></code></p></li>
+</ul>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="nv">encoderModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;whisper-tiny-encoder&quot;</span><span class="p">)</span>
+<span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="nv">decoderModel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;whisper-tiny-decoder&quot;</span><span class="p">)</span>
+
+<span class="w">  </span><span class="p">...</span>
+
+<span class="w">  </span><span class="n">encoderModel</span><span class="p">.</span><span class="na">run</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+<span class="w">  </span><span class="kd">val</span><span class="w"> </span><span class="nv">outputs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">encoderModel</span><span class="p">.</span><span class="na">outputBuffers</span>
+
+<span class="w">  </span><span class="p">...</span>
+
+<span class="w">  </span><span class="n">decoderModel</span><span class="p">.</span><span class="na">run</span><span class="p">(...,</span><span class="w"> </span><span class="p">...)</span>
+</pre></div>
+</div>
+</li>
+<li><p>iOS app</p>
+<ul class="simple">
+<li><p>For detailed application setup, please follow <a class="reference external" href="https://docs.zetic.ai/ios/deploy-to-xcode.html"><code class="docutils literal notranslate"><span class="pre">deploy</span> <span class="pre">to</span> <span class="pre">XCode</span></code></a></p></li>
+<li><p>ZETIC.MLange usage in <code class="docutils literal notranslate"><span class="pre">Swift</span></code></p></li>
+</ul>
+<div class="highlight-swift notranslate"><div class="highlight"><pre><span></span>  <span class="kd">let</span> <span class="nv">encoderModel</span> <span class="p">=</span> <span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="s">&quot;whisper-tiny-encoder&quot;</span><span class="p">)</span>
+  <span class="kd">let</span> <span class="nv">decoderModel</span> <span class="p">=</span> <span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="s">&quot;whisper-tiny-decoder&quot;</span><span class="p">)</span>
+
+  <span class="p">...</span>
+
+  <span class="n">encoderModel</span><span class="p">.</span><span class="n">run</span><span class="p">(</span><span class="n">inputs</span><span class="p">)</span>
+  <span class="kd">let</span> <span class="nv">outputs</span> <span class="p">=</span> <span class="n">encoderModel</span><span class="p">.</span><span class="n">getOutputDataArray</span><span class="p">()</span>
+
+  <span class="p">...</span>
+
+  <span class="n">decoderModel</span><span class="p">.</span><span class="n">run</span><span class="p">(...,</span> <span class="p">...)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="whisper-model-implementation-structure">
+<h3>3. Whisper Model Implementation Structure<a class="headerlink" href="#whisper-model-implementation-structure" title="Link to this heading">#</a></h3>
+<p>The Whisper implementation consists of three main components:</p>
+<ol class="arabic simple">
+<li><p>Feature Extractor: Processes raw audio into Mel Spectrogram</p></li>
+<li><p>Encoder: Processes Mel Spectrogram to generate audio embeddings</p></li>
+<li><p>Decoder: Generates text tokens from the audio embeddings</p></li>
+</ol>
+<p>you can find <code class="docutils literal notranslate"><span class="pre">WhisperDecoder</span></code> and <code class="docutils literal notranslate"><span class="pre">WhisperEncoder</span></code> in <a class="reference external" href="https://github.com/zetic-ai/ZETIC_MLange_apps/tree/main/whisper">ZETIC MLange apps</a></p>
+</section>
+</section>
+<section id="complete-speech-recognition-implementation">
+<h2>Complete Speech Recognition Implementation<a class="headerlink" href="#complete-speech-recognition-implementation" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>For Android (Kotlin)</p>
+<div class="highlight-kotlin notranslate"><div class="highlight"><pre><span></span><span class="c1">// Initialize components</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">whisper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">WhisperFeatureWrapper</span><span class="p">()</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">encoder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;whisper-tiny-encoder&quot;</span><span class="p">)</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">decoder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="k">this</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;whisper-tiny-decoder&quot;</span><span class="p">)</span>
+
+<span class="c1">// Process audio</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">features</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">whisper</span><span class="p">.</span><span class="na">process</span><span class="p">(</span><span class="n">audioData</span><span class="p">)</span>
+
+<span class="c1">// Run encoder</span>
+<span class="n">encoder</span><span class="p">.</span><span class="na">process</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+
+<span class="c1">// Generate tokens using decoder</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">generatedIds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">decoder</span><span class="p">.</span><span class="na">generateTokens</span><span class="p">(</span><span class="n">outputs</span><span class="p">)</span>
+
+<span class="c1">// Convert tokens to text</span>
+<span class="kd">val</span><span class="w"> </span><span class="nv">text</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">whisper</span><span class="p">.</span><span class="na">decodeToken</span><span class="p">(</span><span class="n">generatedIds</span><span class="p">.</span><span class="na">toIntArray</span><span class="p">(),</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p>For iOS (Swift)</p>
+<div class="highlight-swift notranslate"><div class="highlight"><pre><span></span><span class="c1">// Initialize components</span>
+<span class="kd">let</span> <span class="nv">wrapper</span> <span class="p">=</span> <span class="n">WhisperFeatureWrapper</span><span class="p">()</span>
+<span class="kd">let</span> <span class="nv">encoder</span> <span class="p">=</span> <span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="s">&quot;whisper-tiny-encoder&quot;</span><span class="p">)</span>
+<span class="kd">let</span> <span class="nv">decoder</span> <span class="p">=</span> <span class="n">ZeticMLangeModel</span><span class="p">(</span><span class="s">&quot;whisper-tiny-decoder&quot;</span><span class="p">)</span>
+
+<span class="c1">// Process audio to features</span>
+<span class="kd">let</span> <span class="nv">features</span> <span class="p">=</span> <span class="n">wrapper</span><span class="p">.</span><span class="n">process</span><span class="p">(</span><span class="n">input</span><span class="p">.</span><span class="n">audio</span><span class="p">)</span>
+
+<span class="c1">// Run encoder</span>
+<span class="kd">let</span> <span class="nv">outputs</span> <span class="p">=</span> <span class="n">encoder</span><span class="p">.</span><span class="n">process</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+
+<span class="c1">// Generate tokens using decoder</span>
+<span class="kd">let</span> <span class="nv">generatedIds</span> <span class="p">=</span> <span class="n">decoder</span><span class="p">.</span><span class="n">process</span><span class="p">(</span><span class="n">outputs</span><span class="p">)</span>
+
+<span class="c1">// Convert tokens to text</span>
+<span class="kd">let</span> <span class="nv">text</span> <span class="p">=</span> <span class="n">wrapper</span><span class="p">.</span><span class="n">decodeToken</span><span class="p">(</span><span class="n">generatedIds</span><span class="p">,</span> <span class="kc">true</span><span class="p">)</span>
+<span class="k">return</span> <span class="n">WhisperOutput</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
+<p>With ZETIC.MLange, implementing on-device speech recognition with NPU acceleration is straightforward and efficient. Whisper provides robust multilingual speech recognition and translation capabilities. The simple pipeline of audio preprocessing and recognition makes it easy to integrate into your applications. We’re continuously adding new models to our examples and <a class="reference external" href="https://huggingface.co/ZETIC-ai">HuggingFace</a> page. Stay tuned, and <a class="reference external" href="https://zetic.ai/contact-sales">contact us</a> for collaborations!</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="yamnet.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Audio Classification (YAMNet)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../additional_features/future_works.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Future Works</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#what-is-whisper">What is Whisper</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-by-step-implementation">Step-by-step implementation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">0. Prerequisites</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generate-zetic-mlange-model">1. Generate ZETIC.MLange model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implement-zeticmlangemodel-with-your-model-key">2. Implement ZeticMLangeModel with your model key</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#whisper-model-implementation-structure">3. Whisper Model Implementation Structure</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-speech-recognition-implementation">Complete Speech Recognition Implementation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conclusion">Conclusion</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By ZETIC.ai
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024, ZETIC.ai.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
