@@ -14,7 +14,6 @@ There are only three steps are needed.
 
 
 ## Prerequisite
-
 - Model Key
   - Prepare Model Key in with [**SaaS**](../steps/generate_model_key/generate-to-SaaS.md) or [**CLI**](../steps/generate_model_key/generate-to-CLI.md) method
 - Personal Key
