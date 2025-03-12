@@ -335,15 +335,16 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-to-android-studio">Deploy to Android Studio</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisite">Prerequisite</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-key">Model Key</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#personal-key">Personal Key</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisite">Prerequisite</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-by-step-guideline">Step-by-step Guideline</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-zeitcmlange-dependency">1. Add <code class="docutils literal notranslate"><span class="pre">ZeitcMLange</span></code> dependency</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-and-run-zeticmlangemodel-model-with-model-key">2. Initialize and run <code class="docutils literal notranslate"><span class="pre">ZeticMLangeModel</span></code> model with Model Key</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-zeitcmlange-dependency-to-your-app">1. Add <code class="docutils literal notranslate"><span class="pre">ZeitcMLange</span></code> dependency to your app</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-and-run-zeticmlangemodel-model-with-your-model-key">2. Initialize and run <code class="docutils literal notranslate"><span class="pre">ZeticMLangeModel</span></code> model with your Model Key</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zetic-mlange-android-sample-app">ZETIC.MLange Android Sample App</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-api-for-mlange-android-usage">(+) Additional API for MLange-Android usage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zetic-mlange-android-sample-app">ZETIC.MLange Android Sample App</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-api-for-mlange-android-usage">(+) Additional API for MLange-Android usage</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -369,21 +370,23 @@ document.write(`
 </section>
 <section id="prerequisite">
 <h2>Prerequisite<a class="headerlink" href="#prerequisite" title="Link to this heading">#</a></h2>
-<section id="model-key">
-<h3>Model Key<a class="headerlink" href="#model-key" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>You can get Model Key in with <a class="reference internal" href="../steps/generate_model_key/index.html"><span class="std std-doc"><strong>SaaS</strong></span></a> or <a class="reference internal" href="../steps/generate_model_key/generate-to-CLI.html"><span class="std std-doc"><strong>CLI</strong></span></a> method</p></li>
+<li><p>Model Key</p>
+<ul>
+<li><p>Prepare Model Key in with <a class="reference internal" href="../steps/generate_model_key/index.html"><span class="std std-doc"><strong>SaaS</strong></span></a> or <a class="reference internal" href="../steps/generate_model_key/generate-to-CLI.html"><span class="std std-doc"><strong>CLI</strong></span></a> method</p></li>
+</ul>
+</li>
+<li><p>Personal Key</p>
+<ul>
+<li><p>Prepare Personal Key in with <a class="reference internal" href="../steps/generate_personal_key/index.html"><span class="std std-doc"><strong>SaaS</strong></span></a> method</p></li>
+</ul>
+</li>
 </ul>
 </section>
-<section id="personal-key">
-<h3>Personal Key<a class="headerlink" href="#personal-key" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>You can get Personal Key in with <a class="reference internal" href="../steps/generate_personal_key/index.html"><span class="std std-doc"><strong>SaaS</strong></span></a> method</p></li>
-</ul>
-</section>
-</section>
-<section id="add-zeitcmlange-dependency-to-your-app">
-<h2>1. Add <code class="docutils literal notranslate"><span class="pre">ZeitcMLange</span></code> dependency to your app<a class="headerlink" href="#add-zeitcmlange-dependency-to-your-app" title="Link to this heading">#</a></h2>
+<section id="step-by-step-guideline">
+<h2>Step-by-step Guideline<a class="headerlink" href="#step-by-step-guideline" title="Link to this heading">#</a></h2>
+<section id="add-zeitcmlange-dependency">
+<h3>1. Add <code class="docutils literal notranslate"><span class="pre">ZeitcMLange</span></code> dependency<a class="headerlink" href="#add-zeitcmlange-dependency" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>You can choose <code class="docutils literal notranslate"><span class="pre">Groovy</span></code> build or <code class="docutils literal notranslate"><span class="pre">Kotlin</span> <span class="pre">DSL</span></code> build</p>
 <ul>
@@ -423,8 +426,8 @@ document.write(`
 </li>
 </ul>
 </section>
-<section id="initialize-and-run-zeticmlangemodel-model-with-your-model-key">
-<h2>2. Initialize and run <code class="docutils literal notranslate"><span class="pre">ZeticMLangeModel</span></code> model with your Model Key<a class="headerlink" href="#initialize-and-run-zeticmlangemodel-model-with-your-model-key" title="Link to this heading">#</a></h2>
+<section id="initialize-and-run-zeticmlangemodel-model-with-model-key">
+<h3>2. Initialize and run <code class="docutils literal notranslate"><span class="pre">ZeticMLangeModel</span></code> model with Model Key<a class="headerlink" href="#initialize-and-run-zeticmlangemodel-model-with-model-key" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>MLange supports both Kotlin and Java implementation</p>
 <ol class="arabic simple">
@@ -462,14 +465,14 @@ document.write(`
 </li>
 </ul>
 </section>
+</section>
 <section id="zetic-mlange-android-sample-app">
 <h2>ZETIC.MLange Android Sample App<a class="headerlink" href="#zetic-mlange-android-sample-app" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Please refer <a class="reference external" href="https://github.com/zetic-ai/ZETIC_MLange_apps">ZETIC MLange Apps</a> for more details</p></li>
 </ul>
-</section>
 <section id="additional-api-for-mlange-android-usage">
-<h2>(+) Additional API for MLange-Android usage<a class="headerlink" href="#additional-api-for-mlange-android-usage" title="Link to this heading">#</a></h2>
+<h3>(+) Additional API for MLange-Android usage<a class="headerlink" href="#additional-api-for-mlange-android-usage" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>As a default we set the model to use <strong>FP16</strong> data type over <strong>NPU</strong>.</p></li>
 <li><p>We set 2 more options for user to choose runtime mode for <strong>(1) Better output accuracy</strong> and <strong>(2) High-speed inference</strong>.</p></li>
@@ -490,6 +493,7 @@ document.write(`
 </div>
 </li>
 </ul>
+</section>
 </section>
 </section>
 
@@ -539,15 +543,16 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-to-android-studio">Deploy to Android Studio</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisite">Prerequisite</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-key">Model Key</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#personal-key">Personal Key</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisite">Prerequisite</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-by-step-guideline">Step-by-step Guideline</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-zeitcmlange-dependency">1. Add <code class="docutils literal notranslate"><span class="pre">ZeitcMLange</span></code> dependency</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-and-run-zeticmlangemodel-model-with-model-key">2. Initialize and run <code class="docutils literal notranslate"><span class="pre">ZeticMLangeModel</span></code> model with Model Key</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#add-zeitcmlange-dependency-to-your-app">1. Add <code class="docutils literal notranslate"><span class="pre">ZeitcMLange</span></code> dependency to your app</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-and-run-zeticmlangemodel-model-with-your-model-key">2. Initialize and run <code class="docutils literal notranslate"><span class="pre">ZeticMLangeModel</span></code> model with your Model Key</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zetic-mlange-android-sample-app">ZETIC.MLange Android Sample App</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-api-for-mlange-android-usage">(+) Additional API for MLange-Android usage</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zetic-mlange-android-sample-app">ZETIC.MLange Android Sample App</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-api-for-mlange-android-usage">(+) Additional API for MLange-Android usage</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 

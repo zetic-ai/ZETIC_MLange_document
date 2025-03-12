@@ -13,12 +13,14 @@ There are only two steps are needed.
   2. Initialize `ZeticMLangeModel` with your **Model Key / Personal Key** and run
 
 ## Prerequisite
-### Model Key
-- You can get Model Key in with [**SaaS**](../steps/generate_model_key/index.rst) or [**CLI**](../steps/generate_model_key/generate-to-CLI.md) method
-### Personal Key
-- You can get Personal Key in with [**SaaS**](../steps/generate_personal_key/index.rst) method
+- Model Key
+  - Prepare Model Key in with [**SaaS**](../steps/generate_model_key/index.rst) or [**CLI**](../steps/generate_model_key/generate-to-CLI.md) method
+- Personal Key
+  - Prepare Personal Key in with [**SaaS**](../steps/generate_personal_key/index.rst) method
 
-## 1. Add `ZeitcMLange` dependency to your app
+## Step-by-step Guideline
+
+### 1. Add `ZeitcMLange` dependency
 
 - You can choose `Groovy` build or `Kotlin DSL` build
     - build.gradle (Groovy)
@@ -60,7 +62,7 @@ There are only two steps are needed.
         ```
 
 
-## 2. Initialize and run `ZeticMLangeModel` model with your Model Key
+### 2. Initialize and run `ZeticMLangeModel` model with Model Key
 - MLange supports both Kotlin and Java implementation
 
   1. Zetic MLange model running (Java)
@@ -100,7 +102,7 @@ There are only two steps are needed.
  - Please refer [ZETIC MLange Apps](https://github.com/zetic-ai/ZETIC_MLange_apps) for more details
 
 
-## (+) Additional API for MLange-Android usage
+### (+) Additional API for MLange-Android usage
 
 - As a default we set the model to use **FP16** data type over **NPU**.
 - We set 2 more options for user to choose runtime mode for **(1) Better output accuracy** and **(2) High-speed inference**.

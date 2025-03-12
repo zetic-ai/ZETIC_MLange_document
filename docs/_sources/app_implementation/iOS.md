@@ -15,25 +15,28 @@ There are only three steps are needed.
 
 ## Prerequisite
 
-### Model Key
-- You can get Model Key in with [**SaaS**](../steps/generate_model_key/generate-to-SaaS.md) or [**CLI**](../steps/generate_model_key/generate-to-CLI.md) method
-### Personal Key
-- You can get Personal Key in with [**SaaS**](../steps/generate_personal_key/index.rst) method
-### `ZeticMLange.framework` Library
-    - Zetic MLange : [`ZeticMLange.framework`](https://github.com/zetic-ai/ZETIC_MLange_apps/tree/add_framework_1.0.1/ZeticLLMApps/ZeticLLMApp-iOS/ZeticMLange.framework)
-      - you can download [`ZeticMLange.framework.zip` (*click to download*)](https://github.com/zetic-ai/ZETIC_MLange_apps/raw/refs/heads/add_framework_1.0.1/files/ZeticMLange.framework.zip). Please unzip the library to your Xcode project.
+- Model Key
+  - Prepare Model Key in with [**SaaS**](../steps/generate_model_key/generate-to-SaaS.md) or [**CLI**](../steps/generate_model_key/generate-to-CLI.md) method
+- Personal Key
+  - Prepare Personal Key in with [**SaaS**](../steps/generate_personal_key/index.rst) method
 
+## Step-by-step Guideline
 
-## 1. Download and embed place `ZeticMLange.framework` to your project
+### 1. Download and embed `ZeticMLange.framework`
+- **Future Works**: We are currently working on integrating the `ZeticMLange.framework` via `Swift Package Manager(SPM)` for easier management and inclusion in your project. Once this is available, you will be able to simply add the package through Xcode without needing to manually download and unzip the framework.
+1. Download the `ZeticMLange.framework.zip` file from the provided link and unzip it.
+  - Zetic MLange: [**ZeticMLange.framework**](https://github.com/zetic-ai/ZETIC_MLange_apps/tree/add_framework_1.0.1/ZeticLLMApps/ZeticLLMApp-iOS/ZeticMLange.framework)
+  - Download Link [**ZeticMLange.framework.zip**](https://github.com/zetic-ai/ZETIC_MLange_apps/raw/refs/heads/add_framework_1.0.1/files/ZeticMLange.framework.zip)
+    - Please unzip the library to your Xcode project.
+2. Drag the unzipped `ZeticMLange.framework` file into your Xcode project in the appropriate location.
+  - Example project structure:
+      ```
+      MyiOSApplicationProject
+      └── MyiOSApplication
+      └── ZeticMLange.framework
+      ```
 
-  - e.g. iOS application project structure
-    ```
-    MyiOSApplicationProject
-    └── MyiOSApplication
-    └── ZeticMLange.framework
-    ```
-
-## 2. Update project settings to use `ZeticMLange.framework` to your project
+### 2. Update project settings to use `ZeticMLange.framework`
 
 1. Embed `ZeticMLange.framework` to your application project
 ![alt text](iOS_imgs/mlange_xcode_app_setting_01.png)
@@ -42,7 +45,7 @@ There are only three steps are needed.
 ![alt text](iOS_imgs/mlange_xcode_app_setting_02.png)
 
 
-## 3. Initialize and run `ZeticMLangeModel` model with your Model Key
+### 3. Initialize and run `ZeticMLangeModel` model with Model Key
 
   - Zetic MLange model running (Swift)
 

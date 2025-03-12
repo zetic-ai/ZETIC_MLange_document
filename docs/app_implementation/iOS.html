@@ -335,15 +335,13 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-to-xcode">Deploy to Xcode</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisite">Prerequisite</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-key">Model Key</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#personal-key">Personal Key</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zeticmlange-framework-library"><code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code> Library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisite">Prerequisite</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-by-step-guideline">Step-by-step Guideline</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-and-embed-zeticmlange-framework">1. Download and embed <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update-project-settings-to-use-zeticmlange-framework">2. Update project settings to use <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-and-run-zeticmlangemodel-model-with-model-key">3. Initialize and run <code class="docutils literal notranslate"><span class="pre">ZeticMLangeModel</span></code> model with Model Key</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-and-embed-place-zeticmlange-framework-to-your-project">1. Download and embed place <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code> to your project</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#update-project-settings-to-use-zeticmlange-framework-to-your-project">2. Update project settings to use <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code> to your project</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-and-run-zeticmlangemodel-model-with-your-model-key">3. Initialize and run <code class="docutils literal notranslate"><span class="pre">ZeticMLangeModel</span></code> model with your Model Key</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mlange-ios-sample-app">MLange iOS Sample App</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-api-for-mlange-ios-usage">(+) Additional API for MLange-iOS usage</a></li>
 </ul>
@@ -372,30 +370,42 @@ There are only three steps are needed.</p>
 </section>
 <section id="prerequisite">
 <h2>Prerequisite<a class="headerlink" href="#prerequisite" title="Link to this heading">#</a></h2>
-<section id="model-key">
-<h3>Model Key<a class="headerlink" href="#model-key" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p>You can get Model Key in with <a class="reference internal" href="../steps/generate_model_key/generate-to-SaaS.html"><span class="std std-doc"><strong>SaaS</strong></span></a> or <a class="reference internal" href="../steps/generate_model_key/generate-to-CLI.html"><span class="std std-doc"><strong>CLI</strong></span></a> method</p></li>
-</ul>
-</section>
-<section id="personal-key">
-<h3>Personal Key<a class="headerlink" href="#personal-key" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p>You can get Personal Key in with <a class="reference internal" href="../steps/generate_personal_key/index.html"><span class="std std-doc"><strong>SaaS</strong></span></a> method</p></li>
-</ul>
-</section>
-<section id="zeticmlange-framework-library">
-<h3><code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code> Library<a class="headerlink" href="#zeticmlange-framework-library" title="Link to this heading">#</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- Zetic MLange : [`ZeticMLange.framework`](https://github.com/zetic-ai/ZETIC_MLange_apps/tree/add_framework_1.0.1/ZeticLLMApps/ZeticLLMApp-iOS/ZeticMLange.framework)
-  - you can download [`ZeticMLange.framework.zip` (*click to download*)](https://github.com/zetic-ai/ZETIC_MLange_apps/raw/refs/heads/add_framework_1.0.1/files/ZeticMLange.framework.zip). Please unzip the library to your Xcode project.
-</pre></div>
-</div>
-</section>
-</section>
-<section id="download-and-embed-place-zeticmlange-framework-to-your-project">
-<h2>1. Download and embed place <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code> to your project<a class="headerlink" href="#download-and-embed-place-zeticmlange-framework-to-your-project" title="Link to this heading">#</a></h2>
+<li><p>Model Key</p>
 <ul>
-<li><p>e.g. iOS application project structure</p>
+<li><p>Prepare Model Key in with <a class="reference internal" href="../steps/generate_model_key/generate-to-SaaS.html"><span class="std std-doc"><strong>SaaS</strong></span></a> or <a class="reference internal" href="../steps/generate_model_key/generate-to-CLI.html"><span class="std std-doc"><strong>CLI</strong></span></a> method</p></li>
+</ul>
+</li>
+<li><p>Personal Key</p>
+<ul>
+<li><p>Prepare Personal Key in with <a class="reference internal" href="../steps/generate_personal_key/index.html"><span class="std std-doc"><strong>SaaS</strong></span></a> method</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="step-by-step-guideline">
+<h2>Step-by-step Guideline<a class="headerlink" href="#step-by-step-guideline" title="Link to this heading">#</a></h2>
+<section id="download-and-embed-zeticmlange-framework">
+<h3>1. Download and embed <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code><a class="headerlink" href="#download-and-embed-zeticmlange-framework" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Future Works</strong>: We are currently working on integrating the <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code> via <code class="docutils literal notranslate"><span class="pre">Swift</span> <span class="pre">Package</span> <span class="pre">Manager(SPM)</span></code> for easier management and inclusion in your project. Once this is available, you will be able to simply add the package through Xcode without needing to manually download and unzip the framework.</p></li>
+</ul>
+<ol class="arabic simple">
+<li><p>Download the <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework.zip</span></code> file from the provided link and unzip it.</p></li>
+</ol>
+<ul class="simple">
+<li><p>Zetic MLange: <a class="reference external" href="https://github.com/zetic-ai/ZETIC_MLange_apps/tree/add_framework_1.0.1/ZeticLLMApps/ZeticLLMApp-iOS/ZeticMLange.framework"><strong>ZeticMLange.framework</strong></a></p></li>
+<li><p>Download Link <a class="reference external" href="https://github.com/zetic-ai/ZETIC_MLange_apps/raw/refs/heads/add_framework_1.0.1/files/ZeticMLange.framework.zip"><strong>ZeticMLange.framework.zip</strong></a></p>
+<ul>
+<li><p>Please unzip the library to your Xcode project.</p></li>
+</ul>
+</li>
+</ul>
+<ol class="arabic simple" start="2">
+<li><p>Drag the unzipped <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code> file into your Xcode project in the appropriate location.</p></li>
+</ol>
+<ul>
+<li><p>Example project structure:</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>MyiOSApplicationProject
 └── MyiOSApplication
 └── ZeticMLange.framework
@@ -404,8 +414,8 @@ There are only three steps are needed.</p>
 </li>
 </ul>
 </section>
-<section id="update-project-settings-to-use-zeticmlange-framework-to-your-project">
-<h2>2. Update project settings to use <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code> to your project<a class="headerlink" href="#update-project-settings-to-use-zeticmlange-framework-to-your-project" title="Link to this heading">#</a></h2>
+<section id="update-project-settings-to-use-zeticmlange-framework">
+<h3>2. Update project settings to use <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code><a class="headerlink" href="#update-project-settings-to-use-zeticmlange-framework" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Embed <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code> to your application project
 <img alt="alt text" src="../_images/mlange_xcode_app_setting_01.png" /></p></li>
@@ -413,8 +423,8 @@ There are only three steps are needed.</p>
 <img alt="alt text" src="../_images/mlange_xcode_app_setting_02.png" /></p></li>
 </ol>
 </section>
-<section id="initialize-and-run-zeticmlangemodel-model-with-your-model-key">
-<h2>3. Initialize and run <code class="docutils literal notranslate"><span class="pre">ZeticMLangeModel</span></code> model with your Model Key<a class="headerlink" href="#initialize-and-run-zeticmlangemodel-model-with-your-model-key" title="Link to this heading">#</a></h2>
+<section id="initialize-and-run-zeticmlangemodel-model-with-model-key">
+<h3>3. Initialize and run <code class="docutils literal notranslate"><span class="pre">ZeticMLangeModel</span></code> model with Model Key<a class="headerlink" href="#initialize-and-run-zeticmlangemodel-model-with-model-key" title="Link to this heading">#</a></h3>
 <ul>
 <li><p>Zetic MLange model running (Swift)</p>
 <div class="highlight-swift notranslate"><div class="highlight"><pre><span></span><span class="c1">// 1. Zetic MLange model running</span>
@@ -432,6 +442,7 @@ There are only three steps are needed.</p>
 </div>
 </li>
 </ul>
+</section>
 </section>
 <section id="mlange-ios-sample-app">
 <h2>MLange iOS Sample App<a class="headerlink" href="#mlange-ios-sample-app" title="Link to this heading">#</a></h2>
@@ -499,15 +510,13 @@ There are only three steps are needed.</p>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-to-xcode">Deploy to Xcode</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisite">Prerequisite</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model-key">Model Key</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#personal-key">Personal Key</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zeticmlange-framework-library"><code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code> Library</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisite">Prerequisite</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-by-step-guideline">Step-by-step Guideline</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-and-embed-zeticmlange-framework">1. Download and embed <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update-project-settings-to-use-zeticmlange-framework">2. Update project settings to use <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-and-run-zeticmlangemodel-model-with-model-key">3. Initialize and run <code class="docutils literal notranslate"><span class="pre">ZeticMLangeModel</span></code> model with Model Key</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#download-and-embed-place-zeticmlange-framework-to-your-project">1. Download and embed place <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code> to your project</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#update-project-settings-to-use-zeticmlange-framework-to-your-project">2. Update project settings to use <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code> to your project</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-and-run-zeticmlangemodel-model-with-your-model-key">3. Initialize and run <code class="docutils literal notranslate"><span class="pre">ZeticMLangeModel</span></code> model with your Model Key</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mlange-ios-sample-app">MLange iOS Sample App</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-api-for-mlange-ios-usage">(+) Additional API for MLange-iOS usage</a></li>
 </ul>
