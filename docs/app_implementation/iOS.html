@@ -337,13 +337,12 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-to-xcode">Deploy to Xcode</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisite">Prerequisite</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-by-step-guideline">Step-by-step Guideline</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-and-embed-zeticmlange-framework">1. Download and embed <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update-project-settings-to-use-zeticmlange-framework">2. Update project settings to use <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-zeticmlange-package-in-project">1. Add <code class="docutils literal notranslate"><span class="pre">ZeticMLange</span></code> Package in project.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#select-target-to-add-zeticmlange-package">2. Select target to add <code class="docutils literal notranslate"><span class="pre">ZeticMLange</span></code> Package.</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-and-run-zeticmlangemodel-model-with-model-key">3. Initialize and run <code class="docutils literal notranslate"><span class="pre">ZeticMLangeModel</span></code> model with Model Key</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mlange-ios-sample-app">MLange iOS Sample App</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-api-for-mlange-ios-usage">(+) Additional API for MLange-iOS usage</a></li>
 </ul>
             </nav>
         </div>
@@ -359,12 +358,11 @@ document.write(`
 <h1>iOS<a class="headerlink" href="#ios" title="Link to this heading">#</a></h1>
 <section id="deploy-to-xcode">
 <h2>Deploy to Xcode<a class="headerlink" href="#deploy-to-xcode" title="Link to this heading">#</a></h2>
-<p>We provide Swift Native Interface.</p>
-<p>Deploy your own On-device AI iOS application easily.
-There are only three steps are needed.</p>
+<p>We Provide ZETIC.MLange iOS Package via Swift Package Manager. you can easily add <code class="docutils literal notranslate"><span class="pre">ZeticMLange</span></code> to your project!
+There are only two steps are needed.</p>
 <ol class="arabic simple">
-<li><p>Embed <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code> to your iOS application project</p></li>
-<li><p>Update project settings to use <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code></p></li>
+<li><p>Add <code class="docutils literal notranslate"><span class="pre">ZeticMLange</span></code> Package in project.</p></li>
+<li><p>Select target to add <code class="docutils literal notranslate"><span class="pre">ZeticMLange</span></code> Package.</p></li>
 <li><p>Initialize <code class="docutils literal notranslate"><span class="pre">ZeticMLangeModel</span></code> with your <strong>Model Key / Personal Key</strong> and run</p></li>
 </ol>
 </section>
@@ -385,42 +383,21 @@ There are only three steps are needed.</p>
 </section>
 <section id="step-by-step-guideline">
 <h2>Step-by-step Guideline<a class="headerlink" href="#step-by-step-guideline" title="Link to this heading">#</a></h2>
-<section id="download-and-embed-zeticmlange-framework">
-<h3>1. Download and embed <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code><a class="headerlink" href="#download-and-embed-zeticmlange-framework" title="Link to this heading">#</a></h3>
-<ul class="simple">
-<li><p><strong>Future Works</strong>: We are currently working on integrating the <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code> via <code class="docutils literal notranslate"><span class="pre">Swift</span> <span class="pre">Package</span> <span class="pre">Manager(SPM)</span></code> for easier management and inclusion in your project. Once this is available, you will be able to simply add the package through Xcode without needing to manually download and unzip the framework.</p></li>
-</ul>
+<section id="add-zeticmlange-package-in-project">
+<h3>1. Add <code class="docutils literal notranslate"><span class="pre">ZeticMLange</span></code> Package in project.<a class="headerlink" href="#add-zeticmlange-package-in-project" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p>Download the <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework.zip</span></code> file from the provided link and unzip it.</p></li>
+<li><p>Click File -&gt; Add Package Dependencies in XCode.</p></li>
+<li><p>Search for <code class="docutils literal notranslate"><span class="pre">https://github.com/zetic-ai/ZeticMLangeiOS.git</span></code>.</p></li>
+<li><p>Click Add Package.
+<img alt="add package" src="../_images/mlange_xcode_app_setting_01.png" /></p></li>
 </ol>
-<ul class="simple">
-<li><p>Zetic MLange: <a class="reference external" href="https://github.com/zetic-ai/ZETIC_MLange_apps/tree/add_framework_1.0.1/ZeticLLMApps/ZeticLLMApp-iOS/ZeticMLange.framework"><strong>ZeticMLange.framework</strong></a></p></li>
-<li><p>Download Link <a class="reference external" href="https://github.com/zetic-ai/ZETIC_MLange_apps/raw/refs/heads/add_framework_1.0.1/files/ZeticMLange.framework.zip"><strong>ZeticMLange.framework.zip</strong></a></p>
-<ul>
-<li><p>Please unzip the library to your Xcode project.</p></li>
-</ul>
-</li>
-</ul>
-<ol class="arabic simple" start="2">
-<li><p>Drag the unzipped <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code> file into your Xcode project in the appropriate location.</p></li>
-</ol>
-<ul>
-<li><p>Example project structure:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>MyiOSApplicationProject
-└── MyiOSApplication
-└── ZeticMLange.framework
-</pre></div>
-</div>
-</li>
-</ul>
 </section>
-<section id="update-project-settings-to-use-zeticmlange-framework">
-<h3>2. Update project settings to use <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code><a class="headerlink" href="#update-project-settings-to-use-zeticmlange-framework" title="Link to this heading">#</a></h3>
+<section id="select-target-to-add-zeticmlange-package">
+<h3>2. Select target to add <code class="docutils literal notranslate"><span class="pre">ZeticMLange</span></code> Package.<a class="headerlink" href="#select-target-to-add-zeticmlange-package" title="Link to this heading">#</a></h3>
 <ol class="arabic simple">
-<li><p>Embed <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code> to your application project
-<img alt="alt text" src="../_images/mlange_xcode_app_setting_01.png" /></p></li>
-<li><p>Set <code class="docutils literal notranslate"><span class="pre">runpath</span></code> Search Paths to <code class="docutils literal notranslate"><span class="pre">&#64;executable_path/Frameworks</span></code>
-<img alt="alt text" src="../_images/mlange_xcode_app_setting_02.png" /></p></li>
+<li><p>Select target in <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">to</span> <span class="pre">Target</span></code> column.</p></li>
+<li><p>Click Add Package.
+<img alt="select target" src="../_images/mlange_xcode_app_setting_02.png" /></p></li>
 </ol>
 </section>
 <section id="initialize-and-run-zeticmlangemodel-model-with-model-key">
@@ -448,18 +425,6 @@ There are only three steps are needed.</p>
 <h2>MLange iOS Sample App<a class="headerlink" href="#mlange-ios-sample-app" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Please refer <a class="reference external" href="https://github.com/zetic-ai/zetic_mlange_ios_sample">MLange iOS sample app</a> for more details</p></li>
-</ul>
-</section>
-<section id="additional-api-for-mlange-ios-usage">
-<h2>(+) Additional API for MLange-iOS usage<a class="headerlink" href="#additional-api-for-mlange-ios-usage" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>The Swift pakage manager support will be updated soon.</p></li>
-<li><p>(This will be updated very soon!)</p>
-<ul>
-<li><p>As a default we set the model to use FP16 data type over NPU</p></li>
-<li><p>We set 1 more option for user to choose runtime mode for Better output accuracy.</p></li>
-</ul>
-</li>
 </ul>
 </section>
 </section>
@@ -512,13 +477,12 @@ There are only three steps are needed.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deploy-to-xcode">Deploy to Xcode</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisite">Prerequisite</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-by-step-guideline">Step-by-step Guideline</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-and-embed-zeticmlange-framework">1. Download and embed <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update-project-settings-to-use-zeticmlange-framework">2. Update project settings to use <code class="docutils literal notranslate"><span class="pre">ZeticMLange.framework</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-zeticmlange-package-in-project">1. Add <code class="docutils literal notranslate"><span class="pre">ZeticMLange</span></code> Package in project.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#select-target-to-add-zeticmlange-package">2. Select target to add <code class="docutils literal notranslate"><span class="pre">ZeticMLange</span></code> Package.</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-and-run-zeticmlangemodel-model-with-model-key">3. Initialize and run <code class="docutils literal notranslate"><span class="pre">ZeticMLangeModel</span></code> model with Model Key</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mlange-ios-sample-app">MLange iOS Sample App</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-api-for-mlange-ios-usage">(+) Additional API for MLange-iOS usage</a></li>
 </ul>
   </nav></div>
 

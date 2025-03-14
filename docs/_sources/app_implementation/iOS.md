@@ -4,12 +4,10 @@ iOS
 Deploy to Xcode
 ---------------
 
- We provide Swift Native Interface.
-
-Deploy your own On-device AI iOS application easily.
-There are only three steps are needed.
-  1. Embed `ZeticMLange.framework` to your iOS application project
-  2. Update project settings to use `ZeticMLange.framework`
+We Provide ZETIC.MLange iOS Package via Swift Package Manager. you can easily add `ZeticMLange` to your project!
+There are only two steps are needed.
+  1. Add `ZeticMLange` Package in project.
+  2. Select target to add `ZeticMLange` Package.
   3. Initialize `ZeticMLangeModel` with your **Model Key / Personal Key** and run
 
 
@@ -21,27 +19,17 @@ There are only three steps are needed.
 
 ## Step-by-step Guideline
 
-### 1. Download and embed `ZeticMLange.framework`
-- **Future Works**: We are currently working on integrating the `ZeticMLange.framework` via `Swift Package Manager(SPM)` for easier management and inclusion in your project. Once this is available, you will be able to simply add the package through Xcode without needing to manually download and unzip the framework.
-1. Download the `ZeticMLange.framework.zip` file from the provided link and unzip it.
-  - Zetic MLange: [**ZeticMLange.framework**](https://github.com/zetic-ai/ZETIC_MLange_apps/tree/add_framework_1.0.1/ZeticLLMApps/ZeticLLMApp-iOS/ZeticMLange.framework)
-  - Download Link [**ZeticMLange.framework.zip**](https://github.com/zetic-ai/ZETIC_MLange_apps/raw/refs/heads/add_framework_1.0.1/files/ZeticMLange.framework.zip)
-    - Please unzip the library to your Xcode project.
-2. Drag the unzipped `ZeticMLange.framework` file into your Xcode project in the appropriate location.
-  - Example project structure:
-      ```
-      MyiOSApplicationProject
-      └── MyiOSApplication
-      └── ZeticMLange.framework
-      ```
+### 1. Add `ZeticMLange` Package in project.
+1. Click File -> Add Package Dependencies in XCode.
+2. Search for `https://github.com/zetic-ai/ZeticMLangeiOS.git`.
+3. Click Add Package.
+![add package](iOS_imgs/mlange_xcode_app_setting_01.png)
 
-### 2. Update project settings to use `ZeticMLange.framework`
+### 2. Select target to add `ZeticMLange` Package.
 
-1. Embed `ZeticMLange.framework` to your application project
-![alt text](iOS_imgs/mlange_xcode_app_setting_01.png)
-
-2. Set `runpath` Search Paths to `@executable_path/Frameworks`
-![alt text](iOS_imgs/mlange_xcode_app_setting_02.png)
+1. Select target in `Add to Target` column.
+2. Click Add Package.
+![select target](iOS_imgs/mlange_xcode_app_setting_02.png)
 
 
 ### 3. Initialize and run `ZeticMLangeModel` model with Model Key
@@ -64,10 +52,3 @@ There are only three steps are needed.
 
 ## MLange iOS Sample App
   - Please refer [MLange iOS sample app](https://github.com/zetic-ai/zetic_mlange_ios_sample) for more details
-
-
-## (+) Additional API for MLange-iOS usage
-- The Swift pakage manager support will be updated soon.
-- (This will be updated very soon!)
-  - As a default we set the model to use FP16 data type over NPU
-  - We set 1 more option for user to choose runtime mode for Better output accuracy.
